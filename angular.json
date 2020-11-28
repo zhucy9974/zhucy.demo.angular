@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "zhucy-demo"
+    }
+  },
+  "defaultProject": "zhucy-demo",
+  "cli": {
+    "analytics": false
+  }
 }

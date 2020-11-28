@@ -1,0 +1,45 @@
+{
+    "navbar": {
+        "title":"Chongyang's Home",
+        "home": "Home",
+        "userMgt":"User management",
+        "aboutMe": "About me",
+        "aboutTheWebSite":"About the website",
+        "login":"Login",
+        "logout":"Logout",
+        "hello":"Hello",
+
+        "changeLanguage": "Change language",
+        "languageFR": "Français",
+        "languageEN": "English",
+        "languageZH": "中文"
+    },
+    "loginPage":{
+        "email":"Email address",
+        "securityInfo":"We'll never share your email with anyone else.",
+        "emailRequis":"Email requis",
+        "invalidChar":"Invalid char '#'",
+        "emailNotExist":"Email not exist",
+        "password":"Password",
+        "passwordRequis":"Password requis",
+        "minLength6":"Enter least 6 characters",
+        "login":"Login",
+        "enterEmail":"Enter email",
+        "enterPassword":"Enter password"
+    },
+    "userMgt":{
+        "search_name":"Name",
+        "search_search":"Search",
+        "search_clear":"Clear",
+        "save":"Save",
+        "createUser":"Create user",
+        "list_editableInfo":"You can directly modify the data in this column and save it through the button in the upper right corner.",
+        "list_name":"Name",
+        "list_email":"Email",
+        "list_address":"Address",
+        "list_op":"Operation",
+        "list_op_consult":"Consult the user's information",
+        "list_op_modify":"Modify the user's information",
+        "list_op_delete":"Delete the user"
+    }
+}
