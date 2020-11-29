@@ -1,89 +1,104 @@
-<div class="col-3">
-  <form (ngSubmit)="login()" [formGroup]="myForm">
-    <div class="form-group">
-      <label for="email">{{'loginPage.email'|translate}}</label>
-      <!--
-    <input type="text" [formControl]="propEmail" data-email>-->
-      <input type="email" [formControl]="propEmail" class="form-control"
-        [ngClass]="{'is-invalid': (!this.propEmail.valid)&&submitted, 'is-valid':this.propEmail.valid&&submitted}"
-        id="email" aria-describedby="emailHelp" placeholder="{{'loginPage.enterEmail'|translate}}">
-      <small id="emailHelp" class="form-text text-muted">{{'loginPage.securityInfo'|translate}}</small>
-      <div style="color: red" *ngIf="myForm.invalid&&submitted">
-        <div *ngIf="propEmail.hasError('required')">
-          {{'loginPage.emailRequis'|translate}}
+
+
+<div class="row mt-5">
+  <div class="col-sm">
+
+  </div>
+  <div class="col-sm">
+    <div class="col-12 border border-secondary pb-5 pt-3 rounded justify-content-center">
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="email">{{'loginPage.email'|translate}}</label>
+          <!--
+      <input type="text" [formControl]="propEmail" data-email>-->
+          <input type="email" [formControl]="propEmail" class="form-control"
+            [ngClass]="{'is-invalid': (!this.propEmail.valid)&&submitted, 'is-valid':this.propEmail.valid&&submitted}"
+            id="email" aria-describedby="emailHelp" placeholder="{{'loginPage.enterEmail'|translate}}">
+          <small id="emailHelp" class="form-text text-muted">{{'loginPage.securityInfo'|translate}}</small>
+          <div style="color: red" *ngIf="loginForm.invalid&&submitted">
+            <div *ngIf="propEmail.hasError('required')">
+              {{'loginPage.emailRequis'|translate}}
+            </div>
+
+            <div *ngIf="propEmail.hasError('invalidChar')">
+              {{'loginPage.invalidChar'|translate}}
+            </div>
+            <div *ngIf="propEmail.hasError('emailNotExists')">
+              {{'loginPage.emailNotExist'|translate}}
+            </div>
+            <!--
+          <div *ngIf="invalidCredentials" data-error-message>
+            Invalid credentials
+          </div>-->
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">{{'loginPage.password'|translate}}</label>
+          <!--
+      <input type="password" [formControl]="propPass" data-password>-->
+          <input type="password" [formControl]="propPass" data-password class="form-control"
+            [ngClass]="{'is-invalid': (!this.propPass.valid)&&submitted, 'is-valid':this.propPass.valid&&submitted}"
+            id="exampleInputPassword1" placeholder="{{'loginPage.enterPassword'|translate}}">
+          <div style="color: red" *ngIf="loginForm.invalid&&submitted">
+            <div *ngIf="propPass.hasError('required')">
+              {{'loginPage.passwordRequis'|translate}}
+            </div>
+            <div *ngIf="propPass.hasError('minlength')">
+              {{'loginPage.minLength6'|translate}}
+            </div>
+          </div>
+
         </div>
 
+        <!--
+      <div *ngIf="loginForm.invalid&&submitted" style="color: red">
+        <div *ngIf="propEmail.hasError('required')">
+          Email requis
+        </div>
+  
         <div *ngIf="propEmail.hasError('invalidChar')">
-          {{'loginPage.invalidChar'|translate}}
+          invalidChar
         </div>
         <div *ngIf="propEmail.hasError('emailNotExists')">
-          {{'loginPage.emailNotExist'|translate}}
+          emailNotExists
         </div>
-        <!--
-        <div *ngIf="invalidCredentials" data-error-message>
-          Invalid credentials
-        </div>-->
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">{{'loginPage.password'|translate}}</label>
-      <!--
-    <input type="password" [formControl]="propPass" data-password>-->
-      <input type="password" [formControl]="propPass" data-password class="form-control"
-        [ngClass]="{'is-invalid': (!this.propPass.valid)&&submitted, 'is-valid':this.propPass.valid&&submitted}"
-        id="exampleInputPassword1" placeholder="{{'loginPage.enterPassword'|translate}}">
-      <div style="color: red" *ngIf="myForm.invalid&&submitted">
         <div *ngIf="propPass.hasError('required')">
-          {{'loginPage.passwordRequis'|translate}}
+          Password requis
         </div>
         <div *ngIf="propPass.hasError('minlength')">
-          {{'loginPage.minLength6'|translate}}
+          minLength 6
+        </div>
+        <div *ngIf="invalidCredentials" data-error-message>
+          Invalid credentials
         </div>
       </div>
+  -->
 
+        <button data-submit-button type="submit" class="btn btn-primary float-right">{{'loginPage.login'|translate}}</button>
+
+      </form>
     </div>
+  </div>
+  <div class="col-sm">
 
-    <!--
-    <div *ngIf="myForm.invalid&&submitted" style="color: red">
-      <div *ngIf="propEmail.hasError('required')">
-        Email requis
-      </div>
-
-      <div *ngIf="propEmail.hasError('invalidChar')">
-        invalidChar
-      </div>
-      <div *ngIf="propEmail.hasError('emailNotExists')">
-        emailNotExists
-      </div>
-      <div *ngIf="propPass.hasError('required')">
-        Password requis
-      </div>
-      <div *ngIf="propPass.hasError('minlength')">
-        minLength 6
-      </div>
-      <div *ngIf="invalidCredentials" data-error-message>
-        Invalid credentials
-      </div>
-    </div>
--->
-
-    <button data-submit-button type="submit" class="btn btn-primary">{{'loginPage.login'|translate}}</button>
-
-  </form>
+  </div>
 </div>
 
 
 
+
+
+
 <!--
-<form (ngSubmit)="login(myform)"
-#myform="ngForm">
-  <div *ngIf="myform.invalid && myform.submitted" style="color: red">
+<form (ngSubmit)="login(loginForm)"
+#loginForm="ngForm">
+  <div *ngIf="loginForm.invalid && loginForm.submitted" style="color: red">
     Formulaire invalide
   </div>
-  <div *ngIf="myform.controls.email?.hasError('required')" style="color: red">
+  <div *ngIf="loginForm.controls.email?.hasError('required')" style="color: red">
     Email requis
   </div>
-  <div *ngIf="myform.controls.email?.hasError('minLength')" style="color: red">
+  <div *ngIf="loginForm.controls.email?.hasError('minLength')" style="color: red">
     Email requis minlength 3
   </div>
   <div>

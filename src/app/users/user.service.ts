@@ -77,7 +77,7 @@ export class UserService {
 
     const user = new User();
     user.id = newIndex;
-    user.name = 'Chongyang';
+    //user.name = 'Chongyang';
     user.email = 'zhucy@gmail.com';
     user.address = {street: 'Happy', zipcode: '74000', city: 'Annecy'};
     console.info(user);
