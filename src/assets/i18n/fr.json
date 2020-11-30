@@ -1,4 +1,7 @@
 {
+    "formValite":{
+        "required": "Obligatoire"
+    },
     "navbar": {
         "title": "Chez Chongyang",
         "home": "Accuil",

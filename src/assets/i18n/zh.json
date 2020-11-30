@@ -1,4 +1,7 @@
 {
+    "formValite":{
+        "required": "必填"
+    },
     "navbar": {
         "title": "重阳之家",
         "home": "首页",

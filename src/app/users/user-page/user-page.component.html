@@ -12,7 +12,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
+            <form (ngSubmit)="saveForm()" [formGroup]="userPageForm">
                 <div class="modal-body">
 
                     <div class="form-group row mb-1">
@@ -23,20 +23,25 @@
                                 <span class="input-group-text"
                                     id="basic-addon1">{{'userMgt.userPage_firstName'|translate}}</span>
                             </div>
-                            <input type="text" [readonly]="consultOnly"
-                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="firstName" [(ngModel)]="userToShow.firstName" [ngModelOptions]="{standalone: true}"
-                                required>
+                            <input type="text" [readonly]="consultOnly" [formControl]="propFirstName"
+                                placeholder="{{'formValite.required'|translate}}" [ngClass]="{'form-control-plaintext':consultOnly,
+                                'form-control':!consultOnly,
+                                'is-invalid': (!this.propFirstName.valid)&&submitted, 
+                                'is-valid':this.propFirstName.valid&&submitted}" id="firstName"
+                                [(ngModel)]="userToShow.firstName" [ngModelOptions]="{standalone: true}">
                         </div>
+
                         <div class="input-group col-sm-5 pl-1">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"
                                     id="basic-addon1">{{'userMgt.userPage_lastName'|translate}}</span>
                             </div>
                             <input type="text" [readonly]="consultOnly"
-                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="lastName" [(ngModel)]="userToShow.lastName" [ngModelOptions]="{standalone: true}"
-                                required>
+                                placeholder="{{'formValite.required'|translate}}" [ngClass]="{'form-control-plaintext':consultOnly,
+                                'form-control':!consultOnly,
+                                'is-invalid': (!this.propFirstName.valid)&&submitted, 
+                                'is-valid':this.propFirstName.valid&&submitted}" id="lastName"
+                                [(ngModel)]="userToShow.lastName" [ngModelOptions]="{standalone: true}">
 
                         </div>
                     </div>
@@ -45,15 +50,30 @@
                             class="col-sm-2 col-form-label">{{'userMgt.userPage_username'|translate}}</label>
                         <div class="col-sm-10">
                             <input type="text" [readonly]="consultOnly"
-                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="username" [(ngModel)]="userToShow.username" [ngModelOptions]="{standalone: true}">
+                                placeholder="{{'formValite.required'|translate}}" [ngClass]="{'form-control-plaintext':consultOnly,
+                                'form-control':!consultOnly,
+                                'is-invalid': (!this.propUsername.valid)&&submitted, 
+                                'is-valid':this.propFirstName.valid&&submitted}" id="username"
+                                [(ngModel)]="userToShow.username" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
+
+
+
+                    <custom-form-input [fieldName]="'username'" [submitted]="submitted" [consultOnly]="consultOnly"
+                        [placeholderStr]="'formValite.required'|translate"
+                        [labelStr]="'userMgt.userPage_username'|translate" (sendInputValue)="getInputValue($event)"
+                        [propField]="propUsername"></custom-form-input>
+
+
+
+
                     <div class="form-group row mb-1">
                         <label for="email"
                             class="col-sm-2 col-form-label">{{'userMgt.userPage_email'|translate}}</label>
                         <div class="col-sm-10">
                             <input type="text" [readonly]="consultOnly"
+                                placeholder="{{'formValite.required'|translate}}"
                                 [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
                                 id="email" [(ngModel)]="userToShow.email" [ngModelOptions]="{standalone: true}">
                         </div>
@@ -76,8 +96,6 @@
                                 id="website" [(ngModel)]="userToShow.website" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
-
-
 
                     <!-- address info -->
                     <div class="form-group row mb-0">
@@ -185,12 +203,16 @@
                 <div class="modal-footer">
                     <button type="submit" data-toggle="modal" data-target="#modalAddConfirmation" data-dismiss="modal"
                         class="btn btn-primary btn-sm">Save</button>
+                    <button class="btn btn-primary" type="submit">Submit form</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="modalAddConfirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

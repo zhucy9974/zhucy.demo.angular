@@ -29,4 +29,5 @@ export class SharedService {
   getLoginStatut(): Observable<any>{
     return this.isLogin.asObservable();
   }
+
 }

@@ -66,6 +66,7 @@ export class UsersComponent implements OnInit, OnChanges {
   }
 
   userCreated(data: any) {
+    console.info(12121);
     this.users$ = data;
   }
 

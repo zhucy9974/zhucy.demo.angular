@@ -5,6 +5,8 @@ import {HttpClientModule, HttpClient} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { InputComponent } from './form/input/input.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /*
 export function createTranslateLoader(http:HttpClient){
@@ -21,6 +23,8 @@ export function httpLoaderFactory(http: HttpClient) {
     CommonModule,
     HttpClientModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide:TranslateLoader,
@@ -31,7 +35,9 @@ export function httpLoaderFactory(http: HttpClient) {
   ],
   exports: [FilterPipe,
   RouterModule,
-  TranslateModule]
+  TranslateModule,
+  FormsModule,
+ReactiveFormsModule]
 })
 export class SharedModule { 
   

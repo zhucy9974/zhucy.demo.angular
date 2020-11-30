@@ -15,6 +15,7 @@ import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader"
 import { HttpClient } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //registerLocaleData(localeFr, 'fr-FR');
 
@@ -31,7 +32,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UsersModule,
     NavbarModule,
     LoginModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     /*{provide:LOCALE_ID, useValue: 'fr-FR'}*/

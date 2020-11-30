@@ -7,11 +7,12 @@ import { SearchComponent } from '../navbar/search/search.component';
 import { SearchModule } from '../navbar/search/search.module';
 import { FormsModule } from '@angular/forms';
 import { UserPageComponent } from './user-page/user-page.component';
+import { UserPageModule } from './user-page/user-page.module';
 
 
 
 @NgModule({
-    declarations: [UsersComponent, UserPageComponent],
+    declarations: [UsersComponent],
     exports: [
         UsersComponent
     ],
@@ -20,7 +21,8 @@ import { UserPageComponent } from './user-page/user-page.component';
       SharedModule,
       NavbarModule,
       SearchModule,
-      FormsModule
+      FormsModule,
+      UserPageModule
     ]
 })
 export class UsersModule { }

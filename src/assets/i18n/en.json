@@ -1,4 +1,7 @@
 {
+    "formValite":{
+        "required": "Required"
+    },
     "navbar": {
         "title":"Chongyang's Home",
         "home": "Home",
