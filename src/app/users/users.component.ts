@@ -3,7 +3,7 @@ import { UserService } from "./user.service";
 import { User } from '../shared/user.model';
 import { Observable, of, Subject, Subscription } from "rxjs";
 import { SharedService } from '../shared/shared.service';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import * as $ from 'jquery';
@@ -65,8 +65,10 @@ export class UsersComponent implements OnInit, OnChanges {
     //this.users$ = this.userService.add();
   }
 
-  userCreated(data: any) {
-    this.users$ = data;
+  async userCreated(data: Observable<User>) {
+    const user:User = await data.toPromise();
+    const users:User[] = await this.users$.toPromise();
+    this.users$ = of(users);
   }
 
   toDelete(index: number) {
@@ -74,12 +76,10 @@ export class UsersComponent implements OnInit, OnChanges {
   }
 
   delete() {
-    console.info(this.userIndexToDelete)
     this.userService.delete(this.userIndexToDelete);
   }
 
   dataChanged(id: number, attr: string, event) {
-    console.info(id);
     let userToModifier: User = null;
     userToModifier = this.getModifedUserById(id);
     if (userToModifier == null) {
@@ -108,7 +108,6 @@ export class UsersComponent implements OnInit, OnChanges {
     }
 
     if (userModifed[attr] != userOrigine[attr]) {
-      console.info(attr);
       return true;
     }
 

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   propEmail: FormControl;
   propPass: FormControl;
-  myForm: FormGroup;
+  loginForm: FormGroup;
   submitted: boolean = false;
   invalidCredentials = false;
 
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       Validators.required,
       Validators.minLength(6),
     ]);
-    this.myForm = this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       email: this.propEmail,
       password: this.propPass
     });
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
        
     this.invalidCredentials = true;
-    if(this.myForm.valid){
+    if(this.loginForm.valid){
       this.router.navigate(['welcome']);
       this.sharedService.sendLoginStatut(true);
     }
@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login1(myform){
-    console.info(myform.value);
+  login1(loginform){
+    console.info(loginform.value);
   }
 
 }
