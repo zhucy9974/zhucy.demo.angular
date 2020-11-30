@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SharedService } from '../../shared.service';
 
 @Component({
-  selector: 'custom-form-input',
+  selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
@@ -20,20 +21,20 @@ export class InputComponent implements OnInit {
   placeholderStr: string;
   @Input()
   labelStr: string;
+  @Input()
+  withPrepend: boolean = false;
 
   inputValue: string;
 
   @Output() inputValueChanged: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
   }
 
-  sendInputValue(){
-    console.info(this.inputValue);
-    this.inputValueChanged.emit({key:this.fieldName,value:this.inputValue});
-    console.info(22);
+  sendInputValue() {
+    this.sharedService.sendInputValueChanged({ key: this.fieldName, value: this.inputValue });
   }
 
 }

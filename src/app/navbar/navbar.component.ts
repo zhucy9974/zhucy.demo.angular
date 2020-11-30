@@ -33,11 +33,9 @@ export class NavbarComponent implements OnInit {
       this.isLogin = value;
     });
 
-    console.info(this.user$.toPromise());
   }
 
   changedSearch(value){
-    //console.info(value);
     this.search.emit(value);
   }
 
@@ -47,7 +45,6 @@ export class NavbarComponent implements OnInit {
   }
 
   changeLanguage(language:string){
-    //$('[data-toggle="tooltip"]').tooltip('destroy');
     this.translateService.use(language);
   }
 }

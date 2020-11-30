@@ -1,14 +1,36 @@
-<div class="form-group row mb-1">
-    <label for="{{fieldName}}"
-        class="col-sm-2 col-form-label">{{labelStr}}</label>
+<div *ngIf="!withPrepend" class="form-group row mb-1">
+    <label for="{{fieldName}}" class="col-sm-2 col-form-label">{{labelStr}}</label>
     <div class="col-sm-10">
-        <input type="text" [readonly]="consultOnly"
-            placeholder="{{placeholderStr}}"
-            (keyup)="sendInputValue()"
-            [ngClass]="{'form-control-plaintext':consultOnly,
+        <input *ngIf="propField!=null" type="text" [formControl]="propField" [readonly]="consultOnly"
+            placeholder="{{placeholderStr}}" (keyup)="sendInputValue()" [ngClass]="{'form-control-plaintext':consultOnly,
             'form-control':!consultOnly,
-            'is-invalid': (!this.propField.valid)&&submitted, 
-            'is-valid':this.propField.valid&&submitted}"
-            id="{{fieldName}}" [(ngModel)]="inputValue" [ngModelOptions]="{standalone: true}">
+            'is-invalid': this.propField==null?false:((!this.propField.valid)&&submitted), 
+            'is-valid':this.propField==null?false:(this.propField.valid&&submitted)}" id="{{fieldName}}"
+            [(ngModel)]="inputValue">
+
+        <input *ngIf="propField==null" type="text" [readonly]="consultOnly" placeholder="{{placeholderStr}}"
+            (keyup)="sendInputValue()" [ngClass]="{'form-control-plaintext':consultOnly,
+            'form-control':!consultOnly,
+            'is-invalid': this.propField==null?false:((!this.propField.valid)&&submitted), 
+            'is-valid':this.propField==null?false:(this.propField.valid&&submitted)}" id="{{fieldName}}"
+            [(ngModel)]="inputValue" [ngModelOptions]="{standalone: true}">
     </div>
+</div>
+
+<div *ngIf="withPrepend" class="input-group mb-1">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">{{labelStr}}</span>
+    </div>
+    <input  *ngIf="propField!=null" type="text" [readonly]="consultOnly" [formControl]="propField" placeholder="{{placeholderStr}}" [ngClass]="{'form-control-plaintext':consultOnly,
+        'form-control':!consultOnly,
+        'is-invalid': this.propField==null?false:((!this.propField.valid)&&submitted), 
+        'is-valid':this.propField==null?false:(this.propField.valid&&submitted)}" id="{{fieldName}}"  attr.aria-label="{{fieldName}}"
+        [(ngModel)]="inputValue" (keyup)="sendInputValue()" >
+
+    <input  *ngIf="propField==null" type="text" [readonly]="consultOnly" placeholder="{{placeholderStr}}" [ngClass]="{'form-control-plaintext':consultOnly,
+        'form-control':!consultOnly,
+        'is-invalid': this.propField==null?false:((!this.propField.valid)&&submitted), 
+        'is-valid':this.propField==null?false:(this.propField.valid&&submitted)}" id="{{fieldName}}" attr.aria-label="{{fieldName}}"
+        [(ngModel)]="inputValue" [ngModelOptions]="{standalone: true}"  (keyup)="sendInputValue()" >
+
 </div>

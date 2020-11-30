@@ -7,6 +7,7 @@ import { Subject, Observable } from 'rxjs';
 export class SharedService {
   private msg = new Subject<any>();
   private isLogin = new Subject<any>();
+  private inputValueChanged = new Subject<any>();
 
   constructor() { }
 
@@ -16,6 +17,10 @@ export class SharedService {
 
   sendLoginStatut(message: boolean){
     this.isLogin.next(message);
+  }
+
+  sendInputValueChanged(data:any){
+    this.inputValueChanged.next(data);
   }
 
   clearMessage(){
@@ -28,5 +33,9 @@ export class SharedService {
 
   getLoginStatut(): Observable<any>{
     return this.isLogin.asObservable();
+  }
+
+  getInputValueChanged(): Observable<any>{
+    return this.inputValueChanged.asObservable();
   }
 }
