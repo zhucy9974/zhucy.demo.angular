@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
   }
 
   changedSearch(value){
-    this.search.emit(value);
+    this.search.emit(value); 
   }
 
   logout(){
