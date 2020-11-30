@@ -12,72 +12,50 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
+            <form (ngSubmit)="saveForm()" [formGroup]="userPageForm">
                 <div class="modal-body">
 
-                    <div class="form-group row mb-1">
+                    <div class="form-group row mb-0">
                         <label for="staticEmail"
                             class="col-sm-2 col-form-label">{{'userMgt.userPage_name'|translate}}</label>
-                        <div class="input-group col-sm-5 pr-1">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                    id="basic-addon1">{{'userMgt.userPage_firstName'|translate}}</span>
-                            </div>
-                            <input type="text" [readonly]="consultOnly"
-                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="firstName" [(ngModel)]="userToShow.firstName" [ngModelOptions]="{standalone: true}"
-                                required>
-                        </div>
-                        <div class="input-group col-sm-5 pl-1">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                    id="basic-addon1">{{'userMgt.userPage_lastName'|translate}}</span>
-                            </div>
-                            <input type="text" [readonly]="consultOnly"
-                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="lastName" [(ngModel)]="userToShow.lastName" [ngModelOptions]="{standalone: true}"
-                                required>
+                        <div class="input-group col-sm-5 pr-0">
+
+                            <app-input [fieldName]="'firstName'" [withPrepend]="true" [propField]="propFirstName"
+                                [labelStr]="'userMgt.userPage_firstName'|translate" [submitted]="submitted"
+                                [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
+                            </app-input>
 
                         </div>
-                    </div>
-                    <div class="form-group row mb-1">
-                        <label for="username"
-                            class="col-sm-2 col-form-label">{{'userMgt.userPage_username'|translate}}</label>
-                        <div class="col-sm-10">
-                            <input type="text" [readonly]="consultOnly"
-                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="username" [(ngModel)]="userToShow.username" [ngModelOptions]="{standalone: true}">
-                        </div>
-                    </div>
-                    <div class="form-group row mb-1">
-                        <label for="email"
-                            class="col-sm-2 col-form-label">{{'userMgt.userPage_email'|translate}}</label>
-                        <div class="col-sm-10">
-                            <input type="text" [readonly]="consultOnly"
-                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="email" [(ngModel)]="userToShow.email" [ngModelOptions]="{standalone: true}">
-                        </div>
-                    </div>
-                    <div class="form-group row mb-1">
-                        <label for="staticEmail"
-                            class="col-sm-2 col-form-label">{{'userMgt.userPage_phone'|translate}}</label>
-                        <div class="col-sm-10">
-                            <input type="text" [readonly]="consultOnly"
-                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="phone" [(ngModel)]="userToShow.phone" [ngModelOptions]="{standalone: true}">
-                        </div>
-                    </div>
-                    <div class="form-group row mb-1">
-                        <label for="staticEmail"
-                            class="col-sm-2 col-form-label">{{'userMgt.userPage_website'|translate}}</label>
-                        <div class="col-sm-10">
-                            <input type="text" [readonly]="consultOnly"
-                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="website" [(ngModel)]="userToShow.website" [ngModelOptions]="{standalone: true}">
-                        </div>
-                    </div>
+                        <div class="input-group col-sm-5 pl-0 pr-0">
 
 
+                            <app-input [fieldName]="'lastName'" [withPrepend]="true" [propField]="propLastName"
+                                [labelStr]="'userMgt.userPage_lastName'|translate" [submitted]="submitted"
+                                [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
+                            </app-input>
+
+                        </div>
+
+
+                    </div>
+
+                    <app-input [fieldName]="'username'" [propField]="propUsername"
+                        [labelStr]="'userMgt.userPage_username'|translate" [submitted]="submitted"
+                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
+                    </app-input>
+
+                    <app-input [fieldName]="'email'" [propField]="propEmail"
+                        [labelStr]="'userMgt.userPage_email'|translate" [submitted]="submitted"
+                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
+                    </app-input>
+
+                    <app-input [fieldName]="'phone'" [labelStr]="'userMgt.userPage_phone'|translate"
+                        [submitted]="submitted" [consultOnly]="consultOnly">
+                    </app-input>
+
+                    <app-input [fieldName]="'website'" [labelStr]="'userMgt.userPage_website'|translate"
+                        [submitted]="submitted" [consultOnly]="consultOnly">
+                    </app-input>
 
                     <!-- address info -->
                     <div class="form-group row mb-0">
@@ -91,42 +69,26 @@
                         </div>
                         <div class="col-sm-10" *ngIf="!consultOnly">
 
-                            <div class="input-group mb-1">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                        id="basic-addon1">{{'userMgt.userPage_addr_street'|translate}}</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Username"
-                                    aria-describedby="basic-addon1" [(ngModel)]="userToShow.address.street"
-                                    [ngModelOptions]="{standalone: true}">
-                            </div>
-                            <div class="input-group mb-1">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                        id="basic-addon1">{{'userMgt.userPage_addr_suite'|translate}}</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Username"
-                                    aria-describedby="basic-addon1" [(ngModel)]="userToShow.address.suite"
-                                    [ngModelOptions]="{standalone: true}">
-                            </div>
-                            <div class="input-group mb-1">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                        id="basic-addon1">{{'userMgt.userPage_addr_city'|translate}}</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Username"
-                                    aria-describedby="basic-addon1" [(ngModel)]="userToShow.address.city"
-                                    [ngModelOptions]="{standalone: true}">
-                            </div>
-                            <div class="input-group mb-1">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                        id="basic-addon1">{{'userMgt.userPage_addr_zipcode'|translate}}</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Username"
-                                    aria-describedby="basic-addon1" [(ngModel)]="userToShow.address.zipcode"
-                                    [ngModelOptions]="{standalone: true}">
-                            </div>
+                            <app-input [fieldName]="'address.street'" [withPrepend]="true"
+                                [labelStr]="'userMgt.userPage_addr_street'|translate" [submitted]="submitted"
+                                [consultOnly]="consultOnly">
+                            </app-input>
+
+                            <app-input [fieldName]="'address.suite'" [withPrepend]="true"
+                                [labelStr]="'userMgt.userPage_addr_suite'|translate" [submitted]="submitted"
+                                [consultOnly]="consultOnly">
+                            </app-input>
+
+                            <app-input [fieldName]="'address.city'" [withPrepend]="true"
+                                [labelStr]="'userMgt.userPage_addr_city'|translate" [submitted]="submitted"
+                                [consultOnly]="consultOnly">
+                            </app-input>
+
+                            <app-input [fieldName]="'address.zipcode'" [withPrepend]="true"
+                                [labelStr]="'userMgt.userPage_addr_zipcode'|translate" [submitted]="submitted"
+                                [consultOnly]="consultOnly">
+                            </app-input>
+
                         </div>
                     </div>
 
@@ -136,33 +98,20 @@
                             class="col-sm-2 col-form-label">{{'userMgt.userPage_co'|translate}}</label>
                         <div class="col-sm-10" *ngIf="!consultOnly">
 
-                            <div class="input-group mb-1">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                        id="basic-addon1">{{'userMgt.userPage_co_name'|translate}}</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Username"
-                                    aria-describedby="basic-addon1" [(ngModel)]="userToShow.company.name"
-                                    [ngModelOptions]="{standalone: true}">
-                            </div>
-                            <div class="input-group mb-1">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                        id="basic-addon1">{{'userMgt.userPage_co_catch_phrase'|translate}}</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Username"
-                                    aria-describedby="basic-addon1" [(ngModel)]="userToShow.company.catchPhrase"
-                                    [ngModelOptions]="{standalone: true}">
-                            </div>
-                            <div class="input-group mb-1">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                        id="basic-addon1">{{'userMgt.userPage_co_bs'|translate}}</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Username"
-                                    aria-describedby="basic-addon1" [(ngModel)]="userToShow.company.bs"
-                                    [ngModelOptions]="{standalone: true}">
-                            </div>
+                            <app-input [fieldName]="'company.name'" [withPrepend]="true"
+                                [labelStr]="'userMgt.userPage_co_name'|translate" [submitted]="submitted"
+                                [consultOnly]="consultOnly">
+                            </app-input>
+
+                            <app-input [fieldName]="'company.catchPhrase'" [withPrepend]="true"
+                                [labelStr]="'userMgt.userPage_co_catch_phrase'|translate" [submitted]="submitted"
+                                [consultOnly]="consultOnly">
+                            </app-input>
+
+                            <app-input [fieldName]="'company.bs'" [withPrepend]="true"
+                                [labelStr]="'userMgt.userPage_co_bs'|translate" [submitted]="submitted"
+                                [consultOnly]="consultOnly">
+                            </app-input>
 
                         </div>
                     </div>
@@ -183,8 +132,9 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" data-toggle="modal" data-target="#modalAddConfirmation" data-dismiss="modal"
-                        class="btn btn-primary btn-sm">Save</button>
+                    <button  id="btn_user_page_save" type="submit" data-toggle="modal" data-target="#modalAddConfirmation" data-dismiss="modal"
+                        class="invisible" >Save</button>
+                    <button class="btn btn-primary" type="submit">Submit form</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
@@ -207,8 +157,10 @@
                 Ara you sure to created the user?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdded"
-                    (click)="createUser()" data-dismiss="modal">Yes</button>
+                <button type="button" id="btn_add2" class="invisible" data-toggle="modal" data-target="#modalAdded"
+                data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    (click)="createUser()">Yes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
                     data-target="#userPageModal">Non</button>
             </div>

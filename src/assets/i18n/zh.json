@@ -1,4 +1,7 @@
 {
+    "formValite": {
+        "required": "必填"
+    },
     "navbar": {
         "title": "重阳之家",
         "home": "首页",
@@ -32,17 +35,17 @@
         "list_username": "用户名",
         "list_name": "名字",
         "list_email": "邮箱地址",
-        "list_website":"网址",
-        "list_city":"城市",
-        "list_company":"企业",
+        "list_website": "网址",
+        "list_city": "城市",
+        "list_company": "企业",
         "list_op": "操作",
         "list_op_consult": "查看用户信息",
         "list_op_modify": "修改用户信息",
         "list_op_delete": "删除用户",
-        "userPage_title_create":"添加新用户",
+        "userPage_title_create": "添加新用户",
         "userPage_name": "姓名",
-        "userPage_firstName":"名",
-        "userPage_lastName":"姓",
+        "userPage_firstName": "名",
+        "userPage_lastName": "姓",
         "userPage_username": "用户名",
         "userPage_email": "电子邮件",
         "userPage_phone": "电话",

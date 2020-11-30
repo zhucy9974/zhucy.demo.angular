@@ -1,4 +1,7 @@
 {
+    "formValite": {
+        "required": "Obligatoire"
+    },
     "navbar": {
         "title": "Chez Chongyang",
         "home": "Accuil",
@@ -32,17 +35,17 @@
         "list_username": "Username",
         "list_name": "Nom",
         "list_email": "E-mail",
-        "list_website":"Site web",
-        "list_city":"Ville",
-        "list_company":"Entreprise",
+        "list_website": "Site web",
+        "list_city": "Ville",
+        "list_company": "Entreprise",
         "list_op": "Opération",
         "list_op_consult": "Consulter l'information de l'utilisateur",
         "list_op_modify": "Modifier l'information de l'utilisateur",
         "list_op_delete": "Supprimer l'utilisateur",
-        "userPage_title_create":"Créer un nouvel utilisateur",
+        "userPage_title_create": "Créer un nouvel utilisateur",
         "userPage_name": "Nom",
-        "userPage_firstName":"Prénom",
-        "userPage_lastName":"Nom",
+        "userPage_firstName": "Prénom",
+        "userPage_lastName": "Nom",
         "userPage_username": "Username",
         "userPage_email": "E-mail",
         "userPage_phone": "Téléphone",
