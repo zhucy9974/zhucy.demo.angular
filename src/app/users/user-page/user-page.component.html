@@ -49,6 +49,13 @@
                                 id="username" [(ngModel)]="userToShow.username" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
+
+                    <custom-form-input [fieldName]="'username'" [submitted]="submitted" [consultOnly]="consultOnly"
+                    [placeholderStr]="'formValite.required'|translate"
+                    [labelStr]="'userMgt.userPage_username'|translate" (sendInputValue)="getInputValue($event)"
+                    [propField]="propUsername"></custom-form-input>
+
+
                     <div class="form-group row mb-1">
                         <label for="email"
                             class="col-sm-2 col-form-label">{{'userMgt.userPage_email'|translate}}</label>
