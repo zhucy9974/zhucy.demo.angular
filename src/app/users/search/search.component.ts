@@ -8,6 +8,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 })
 export class SearchComponent implements OnInit {
 
+  needMoreCriteria:boolean = false;
   criteria: string;
   @Output() search: EventEmitter<string> = new EventEmitter();
 
@@ -23,6 +24,10 @@ export class SearchComponent implements OnInit {
 
   public sendMessage(){
     //this.sharedService.sendMessage('test');
+  }
+
+  needMoreCriteriaFn(flag:boolean){
+    this.needMoreCriteria = flag;
   }
 
 

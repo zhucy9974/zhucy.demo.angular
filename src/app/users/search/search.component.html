@@ -1,14 +1,14 @@
 <!-- <input [(ngModel)]="criteria" (input)="sendCriteria();sendMessage();"> -->
 
-<div class="input-group">
+<div *ngIf="!needMoreCriteria" id="user_search" class="input-group input-group-sm">
     <div class="input-group-prepend">
         <span class="input-group-text">{{'userMgt.search_name'|translate}}</span>
     </div>
 
     <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
     <div class="input-group-append">
-        <button (click)="sendCriteria()" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top"
-            title="{{'userMgt.search_search'|translate}}">
+        <button (click)="sendCriteria()" class="btn btn-secondary btn-sm" data-toggle="tooltip"  data-container=".div-user-mgt" 
+            data-placement="top" title="{{'userMgt.search_search'|translate}}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -16,8 +16,8 @@
                 <path fill-rule="evenodd"
                     d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
             </svg>
-        </button>
-        <button (click)="criteria='';sendCriteria();" class="btn btn-outline-secondary" data-toggle="tooltip"
+        </button>&nbsp;
+        <button (click)="criteria='';sendCriteria();" class="btn btn-secondary btn-sm" data-toggle="tooltip"  data-container=".div-user-mgt" 
             data-placement="top" title="{{'userMgt.search_clear'|translate}}"><svg width="1em" height="1em"
                 viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -27,51 +27,92 @@
 
     </div>
 
-    <button type="button" class="btn btn-light ml-3">More search criteria
-        <span class="btn-link"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down"
-                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M3.204 5L8 10.481 12.796 5H3.204zm-.753.659l4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-            </svg></span>
-
+    <button type="button" class="btn btn-secondary btn-sm ml-3" (click)="needMoreCriteriaFn(true)">
+            More search criteria
+            <span>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                </svg>
+            </span>
     </button>
 
 </div>
 
-<div class="input-group">
-    <div class="input-group-prepend">
-        <span class="input-group-text">{{'userMgt.search_name'|translate}}</span>
+
+<div *ngIf="needMoreCriteria" id="user_search_more" class="row">
+    <div class="col-12">
+        <div class="row mb-1">
+            <div class="col-sm-4 pr-0 input-group input-group-sm ">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">{{'userMgt.search_name'|translate}}</span>
+                </div>
+                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+            </div>
+            <div class="col-sm-4 pr-0 pl-1 input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">{{'userMgt.list_username'|translate}}</span>
+                </div>
+                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-sm-4 pr-0 input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">{{'userMgt.list_email'|translate}}</span>
+                </div>
+                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+            </div>
+            <div class="col-sm-4 pr-0 pl-1 input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">{{'userMgt.list_city'|translate}}</span>
+                </div>
+                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+            </div>
+            <div class="col-sm-4 pr-0 pl-1 input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">{{'userMgt.list_company'|translate}}</span>
+                </div>
+                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 pr-0">
+                <div class="float-right">
+                    <button (click)="sendCriteria()" class="btn btn-secondary btn-sm mr-1" data-toggle="tooltip"
+                        data-placement="top" title="{{'userMgt.search_search'|translate}}">
+                            {{'userMgt.search_search'|translate}}
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                <path fill-rule="evenodd"
+                                    d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                            </svg>
+                    </button>
+                    <button (click)="criteria='';sendCriteria();" class="btn btn-secondary btn-sm " data-toggle="tooltip"
+                        data-placement="top" title="{{'userMgt.search_clear'|translate}}">
+                            {{'userMgt.search_clear'|translate}}
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
+                                </path>
+                            </svg>
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm ml-3" (click)="needMoreCriteriaFn(false)">
+                            Less search criteria
+                            <span>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up-fill"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                            </span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
-    <div class="input-group-append">
-        <button (click)="sendCriteria()" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top"
-            title="{{'userMgt.search_search'|translate}}">
-            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-                <path fill-rule="evenodd"
-                    d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-            </svg>
-        </button>
-        <button (click)="criteria='';sendCriteria();" class="btn btn-outline-secondary" data-toggle="tooltip"
-            data-placement="top" title="{{'userMgt.search_clear'|translate}}"><svg width="1em" height="1em"
-                viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
-                </path>
-            </svg></button>
-
-    </div>
-
-    <button type="button" class="btn btn-light ml-3">More search criteria
-        <span class="btn-link"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down"
-                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M3.204 5L8 10.481 12.796 5H3.204zm-.753.659l4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-            </svg></span>
-
-    </button>
-
 </div>
