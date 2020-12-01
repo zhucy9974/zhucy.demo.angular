@@ -18,7 +18,14 @@
                     <div class="form-group row mb-0">
                         <label for="staticEmail"
                             class="col-sm-2 col-form-label">{{'userMgt.userPage_name'|translate}}</label>
-                        <div class="input-group col-sm-10 pr-0">
+
+                        <div class="col-sm-10" *ngIf="consultOnly">
+                            <input type="text" [readonly]="consultOnly"
+                                [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
+                                id="fullAddresse" value="{{userToShow.firstName}} {{userToShow.lastName}}">
+                        </div>
+
+                        <div class="input-group col-sm-10 pr-0" *ngIf="!consultOnly">
 
                             <app-input [fieldName]="'firstName'" [inputValue]="userToShow.firstName"
                                 [withPrepend]="true" [propField]="propFirstName"
@@ -60,10 +67,10 @@
                         <label for="staticEmail"
                             class="col-sm-2 col-form-label">{{'userMgt.userPage_addr'|translate}}</label>
                         <div class="col-sm-10" *ngIf="consultOnly">
-                            <input type="text" [readonly]="consultOnly"
+                            <input type="text" [readonly]="consultOnly" class="mb-1"
                                 [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="fullAddresse" [(ngModel)]="userToShow.address.fullAddresse"
-                                [ngModelOptions]="{standalone: true}">
+                                id="fullAddresse"
+                                value="{{userToShow.address.fullAddresse}}">
                         </div>
                         <div class="col-sm-10" *ngIf="!consultOnly">
 
@@ -94,6 +101,10 @@
                     <div class="form-group row mb-0">
                         <label for="staticEmail"
                             class="col-sm-2 col-form-label">{{'userMgt.userPage_co'|translate}}</label>
+
+                        <div class="col-sm-10" *ngIf="consultOnly">
+                            <textarea class="form-control" id="company" rows="4">{{userToShow.company.allCompanyInfo}}</textarea>
+                        </div>
                         <div class="col-sm-10" *ngIf="!consultOnly">
 
                             <app-input [fieldName]="'company.name'" [inputValue]="userToShow.company.name"

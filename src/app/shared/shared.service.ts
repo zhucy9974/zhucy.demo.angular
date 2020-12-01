@@ -8,7 +8,7 @@ export class SharedService {
   private msg = new Subject<any>();
   private isLogin = new Subject<any>();
   private inputValueChanged = new Subject<any>();
-
+  
   constructor() { }
 
   sendMessage(message: string){

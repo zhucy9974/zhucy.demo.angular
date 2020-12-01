@@ -19,6 +19,7 @@ export class User {
   phone?: string;
   website?: string;
   company?: {
+    allCompanyInfo: string,
     name: string,
     catchPhrase: string,
     bs: string,
@@ -38,6 +39,7 @@ export class User {
       }
     };
     user.company = {
+      allCompanyInfo: null,
       name: null,
       catchPhrase: null,
       bs: null,

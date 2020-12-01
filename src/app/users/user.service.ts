@@ -6,6 +6,7 @@ import { interval, Observable, of } from "rxjs";
 import { map, tap, catchError } from "rxjs/operators";
 import { FormControl } from "@angular/forms";
 import * as $ from 'jquery';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class UserService {
   //url = 'https://jsonplaceholder.typicode.com/users';
   private userLogin: User;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private translateService:TranslateService) { }
 
   async get(): Promise<User[]> {
     const res = await this.http.get<User[]>(this.url).toPromise();
@@ -45,9 +46,16 @@ export class UserService {
     );
   }
 
-  transfererUser(user:User){
+  transfererUser(user: User) {
     user.address.fullAddresse = user.address.street + ' '
-          + user.address.zipcode + ' ' + user.address.city;
+      + user.address.zipcode + ' ' + user.address.city;
+    if (user.address.geo?.lat != null && user.address.geo?.lng != null) {
+      user.address.fullAddresse = user.address.fullAddresse + ' (' + user.address.geo.lat + ', ' + user.address.geo.lat + ')';
+    }
+
+    user.company.allCompanyInfo = this.translateService.instant('userMgt.userPage_co_name')+ ' : '+ user.company.name +'\n'+
+    this.translateService.instant('userMgt.userPage_co_catch_phrase')+ ' : '+ user.company.catchPhrase +'\n'+
+    this.translateService.instant('userMgt.userPage_co_bs')+ ' : '+ user.company.bs;
   }
 
   delete(index: number) {
@@ -91,14 +99,14 @@ export class UserService {
     const newIndex = this.users.length + 1;
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.http.post<User>(this.urlCreateUser, JSON.stringify(newUser), { headers: headers }).pipe(
-      tap((data:User)=>{
+      tap((data: User) => {
         console.log("POST call successful value returned in body",
-        data);
+          data);
         this.transfererUser(data);
         $("#btn_add2").click();
       })
       //catchError()
-    ); 
+    );
   }
 
   checkEmail(input: FormControl) {
