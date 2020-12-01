@@ -23,7 +23,7 @@ export class InputComponent implements OnInit {
   labelStr: string;
   @Input()
   withPrepend: boolean = false;
-
+  @Input()
   inputValue: string;
 
   @Output() inputValueChanged: EventEmitter<any> = new EventEmitter<any>();

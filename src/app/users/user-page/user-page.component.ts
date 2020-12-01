@@ -28,7 +28,7 @@ export class UserPageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private sharedService: SharedService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.propFirstName = new FormControl('', [
       Validators.required
     ]);
@@ -68,6 +68,7 @@ export class UserPageComponent implements OnInit {
       }
       
     });
+
   }
 
   saveForm() {

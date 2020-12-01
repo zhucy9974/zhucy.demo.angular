@@ -15,6 +15,11 @@ import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader"
 import { HttpClient } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AboutWebsiteComponent } from './about-website/about-website.component';
+import { AboutWebsiteModule } from './about-website/about-website.module';
+import { AboutMeComponent } from './about-me/about-me.component';
+import { AboutMeModule } from './about-me/about-me.module';
+import { WelcomeModule } from './welcome/welcome.module';
 
 //registerLocaleData(localeFr, 'fr-FR');
 
@@ -23,7 +28,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     Page404Component,
-    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -31,11 +35,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UsersModule,
     NavbarModule,
     LoginModule,
-    NgbModule
+    NgbModule,
+    AboutWebsiteModule,
+    AboutMeModule,
+    WelcomeModule
   ],
-  providers: [
-    /*{provide:LOCALE_ID, useValue: 'fr-FR'}*/
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

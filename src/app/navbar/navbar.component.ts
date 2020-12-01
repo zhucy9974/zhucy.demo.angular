@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { SharedService } from '../shared/shared.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-navbar',
@@ -46,5 +47,14 @@ export class NavbarComponent implements OnInit {
 
   changeLanguage(language:string){
     this.translateService.use(language);
+  }
+
+  activeItem(event){
+    $( ".nav-item-tochange" ).removeClass("active");
+    $( ".nav-item-tochange" ).each(function(index){
+      if(event.target.innerText==$(this).text()){
+        $(this).addClass("active");
+      }
+    });
   }
 }

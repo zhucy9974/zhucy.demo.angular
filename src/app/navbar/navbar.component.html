@@ -7,17 +7,17 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="welcome">{{'navbar.home'|translate}} <span class="sr-only">(current)</span></a>
+        <li class="nav-item nav-item-tochange active">
+          <a class="nav-link" (click)="activeItem($event)" routerLink="welcome">{{'navbar.home'|translate}}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="users" onclick="updateTooltip()">{{'navbar.userMgt'|translate}}</a>
+        <li class="nav-item nav-item-tochange ">
+          <a class="nav-link" (click)="activeItem($event)" routerLink="users" onclick="updateTooltip()">{{'navbar.userMgt'|translate}}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">{{'navbar.aboutMe'|translate}}</a>
+        <li class="nav-item nav-item-tochange ">
+          <a class="nav-link" (click)="activeItem($event)" routerLink="aboutMe" >{{'navbar.aboutMe'|translate}}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">{{'navbar.aboutTheWebSite'|translate}}</a>
+        <li class="nav-item nav-item-tochange ">
+          <a class="nav-link" (click)="activeItem($event)" routerLink="aboutWebsite" >{{'navbar.aboutTheWebSite'|translate}}</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
