@@ -21,7 +21,9 @@
         "password": "密码",
         "passwordRequis": "密码必填",
         "minLength6": "请填写至少6个字符",
-        "login": "登入",
+        "login": "登录",
+        "signIn": "登入",
+        "signUp": "注册",
         "enterEmail": "输入邮箱地址",
         "enterPassword": "输入密码"
     },

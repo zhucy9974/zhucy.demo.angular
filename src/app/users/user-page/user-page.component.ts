@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { User } from 'src/app/shared/user.model';
+import { User } from 'src/app/users/user.model';
 import { UserService } from '../user.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -67,6 +67,10 @@ export class UserPageComponent implements OnInit {
         this.userToShow[keys[0]][keys[1]][keys[2]][keys[3]]=value;
       }
       
+    });
+
+    this.userService.getSubmitFlag().subscribe((data:boolean)=> {
+      this.submitted = data;
     });
 
   }

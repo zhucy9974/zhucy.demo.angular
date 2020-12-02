@@ -26,6 +26,8 @@
         "passwordRequis": "Password requis",
         "minLength6": "Enter least 6 characters",
         "login": "Login",
+        "signIn": "Sign in",
+        "signUp": "Sign up",
         "enterEmail": "Enter email",
         "enterPassword": "Enter password"
     },

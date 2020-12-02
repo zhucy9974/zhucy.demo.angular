@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { UserService } from "./user.service";
-import { User } from '../shared/user.model';
+import { User } from './user.model';
 import { Observable, of, Subject, Subscription } from "rxjs";
 import { SharedService } from '../shared/shared.service';
 import { map, tap } from 'rxjs/operators';
@@ -142,6 +142,10 @@ export class UsersComponent implements OnInit, OnChanges {
   modifyUserInfo(id: number) {
     this.consultOnly = false;
     this.userToShow = this.getUserById(id);
+  }
+
+  resetSubmitFlag(){
+    this.userService.resetSubmitFlag();
   }
 
 

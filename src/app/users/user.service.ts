@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 //import axios from 'axios';
 import { HttpClient, HttpClientModule, HttpHeaders } from "@angular/common/http";
-import { User } from '../shared/user.model';
-import { interval, Observable, of } from "rxjs";
+import { User } from './user.model';
+import { interval, Observable, of, Subject } from "rxjs";
 import { map, tap, catchError } from "rxjs/operators";
 import { FormControl } from "@angular/forms";
 import * as $ from 'jquery';
@@ -15,6 +15,8 @@ export class UserService {
 
   users: User[];
   usersModifed: User[] = [];
+
+  private sendSubmitted = new Subject<boolean>();
 
   url = 'http://localhost:8080/demo/user/getUsers';
   url2 = 'http://localhost:8080/demo/user/findById?id=';
@@ -145,5 +147,11 @@ export class UserService {
       
     }*/
 
+    resetSubmitFlag(){
+      this.sendSubmitted.next(false);
+    }
 
+    getSubmitFlag():Observable<boolean>{
+      return this.sendSubmitted.asObservable();
+    }
 }

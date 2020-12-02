@@ -21,7 +21,9 @@
         "password": "Mot de passe",
         "passwordRequis": "Mot de passe obligatoire",
         "minLength6": "Saisissez au moins 6 caractères",
-        "login": "S'identifier",
+        "login": "Connection",
+        "signIn": "S'identifier",
+        "signUp": "S'inscrire",
         "enterEmail": "Saisissez l'email",
         "enterPassword": "Saisissez le mot de passe"
     },
