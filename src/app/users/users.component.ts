@@ -21,6 +21,8 @@ export class UsersComponent implements OnInit, OnChanges {
   @Input() criteria: string;
   @Input() search: string;
 
+  componentToShow: string = 'users';
+
   //façon async
   users: User[];
   users$: Observable<User[]> = of([]);
@@ -66,8 +68,8 @@ export class UsersComponent implements OnInit, OnChanges {
   }
 
   async userCreated(data: Observable<User>) {
-    const user:User = await data.toPromise();
-    const users:User[] = await this.users$.toPromise();
+    const user: User = await data.toPromise();
+    const users: User[] = await this.users$.toPromise();
     this.users$ = of(users);
   }
 
@@ -144,8 +146,24 @@ export class UsersComponent implements OnInit, OnChanges {
     this.userToShow = this.getUserById(id);
   }
 
-  resetSubmitFlag(){
+  resetSubmitFlag() {
     this.userService.resetSubmitFlag();
+  }
+
+  activeItem(event) {
+    $('.user-sider-bar a').each(function (index) {
+      $(this).removeClass('text-primary');
+      $(this).removeClass('text-secondary');
+      if ($(this).text() == event.target.innerText) {
+        $(this).addClass('text-primary');
+      } else {
+        $(this).addClass('text-secondary');
+      }
+    });
+  }
+
+  changeComponentToShow(val:string){
+    this.componentToShow = val;
   }
 
 

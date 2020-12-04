@@ -10,13 +10,16 @@ import { AboutMeComponent } from './about-me/about-me.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent
   },
   {
     path: 'users',
     component: UsersComponent
   }, {
+    path: '',
+    component: WelcomeComponent
+  },{
     path: 'welcome',
     component: WelcomeComponent
   }, {

@@ -2,10 +2,13 @@
     "formValite": {
         "required": "Required"
     },
+    "welcome":{
+        "sentence":"to Chongyang's workshop! :)"
+    },
     "navbar": {
         "title": "Chongyang's Workshop",
         "home": "Home",
-        "userMgt": "User management",
+        "userMgt": "User management (demo)",
         "aboutMe": "About me",
         "aboutTheWebSite": "About the website",
         "login": "Login",

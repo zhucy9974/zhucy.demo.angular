@@ -2,10 +2,13 @@
     "formValite": {
         "required": "Obligatoire"
     },
+    "welcome":{
+        "sentence":"Bienvenue à l'atelier de Chongyang! :)"
+    },
     "navbar": {
         "title": "Atelier de Chongyang",
         "home": "Accuil",
-        "userMgt": "Gestion d'utilisateur",
+        "userMgt": "Gestion d'utilisateur (demo)",
         "aboutMe": "À propos de moi",
         "aboutTheWebSite": "À propos du site web",
         "login": "S'identifier",

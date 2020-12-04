@@ -5,6 +5,8 @@ import {SharedModule} from "../shared/shared.module";
 import { SearchModule } from './search/search.module';
 import { FormsModule } from '@angular/forms';
 import { UserPageModule } from './user-page/user-page.module';
+import { GroupsModule } from './groups/groups.module';
+import { RolesModule } from './roles/roles.module';
 
 @NgModule({
     declarations: [UsersComponent],
@@ -16,7 +18,9 @@ import { UserPageModule } from './user-page/user-page.module';
       SharedModule,
       SearchModule,
       FormsModule,
-      UserPageModule
+      UserPageModule,
+      GroupsModule,
+      RolesModule
     ]
 })
 export class UsersModule { }

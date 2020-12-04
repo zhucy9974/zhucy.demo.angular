@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { SharedService } from 'src/app/shared/shared.service';
+import { UserSearch } from './user-search.model';
 
 @Component({
   selector: 'app-search',
@@ -10,6 +11,7 @@ export class SearchComponent implements OnInit {
 
   needMoreCriteria:boolean = false;
   criteria: string;
+  criterias: UserSearch;
   @Output() search: EventEmitter<string> = new EventEmitter();
 
   constructor(private sharedService:SharedService) { }

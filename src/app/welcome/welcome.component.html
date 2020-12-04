@@ -8,15 +8,15 @@
     <div class="col-3">
         <div class="shadow bg-white fixed-bottom position-absolute rounded p-4" style="left: -300px; bottom: 60px">
             <img src="assets/images/welcome-icon.jpg" style="width: 250px;" alt="welcome icon">
-            <h4><strong>Chongyang's workshop! :)</strong></h4>
+            <h4><strong>{{'welcome.sentence'|translate}}</strong></h4>
             <br>
-            <h5 class="text-secondary"><em>“好的软件的作用, 是让复杂的东西看起来简单。”<br>
-                    -- Grady Booch (UML创始人之一)</em></h5>
+            <h5 class="text-secondary"><em>"The best preparation for tomorrow is doing your best today."
+                <br>--H. Jackson Brown, Jr.</em></h5>
             <br>
             <div class="float-right">
-                <button class="btn btn-link"><strong>En</strong></button>
-                <button class="btn btn-link"><strong>Fr</strong></button>
-                <button class="btn btn-link"><strong>Cn</strong></button>
+                <button class="btn btn-link" (click)="changeLanguage('en')"><strong>En</strong></button>
+                <button class="btn btn-link" (click)="changeLanguage('fr')"><strong>Fr</strong></button>
+                <button class="btn btn-link" (click)="changeLanguage('zh')"><strong>Cn</strong></button>
 
             </div>
         </div>

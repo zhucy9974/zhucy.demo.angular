@@ -18,11 +18,11 @@ export class UserService {
 
   private sendSubmitted = new Subject<boolean>();
 
-  url = 'http://localhost:8080/demo/user/getUsers';
-  url2 = 'http://localhost:8080/demo/user/findById?id=';
+  url = 'http://213.44.249.81:8080/demo/user/getUsers';
+  url2 = 'http://213.44.249.81:8080/demo/user/findById?id=';
 
-  urlCreateUser = 'http://localhost:8080/demo/user/createUser';
-  urlDeleteUser = 'http://localhost:8080/demo/user/delete';
+  urlCreateUser = 'http://213.44.249.81:8080/demo/user/createUser';
+  urlDeleteUser = 'http://213.44.249.81:8080/demo/user/delete';
   //url = 'https://jsonplaceholder.typicode.com/users';
   private userLogin: User;
 
