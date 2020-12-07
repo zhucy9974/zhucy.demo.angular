@@ -7,6 +7,9 @@ import { map, tap } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import * as $ from 'jquery';
+import { CookieService } from 'ngx-cookie-service';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -30,9 +33,23 @@ export class UsersComponent implements OnInit, OnChanges {
   consultOnly: boolean = false;
   userIndexToDelete: number;
 
+  token: String = '';
+
   private isDead$ = new Subject();
 
-  constructor(private userService: UserService, private sharedService: SharedService, private modalService: NgbModal) { }
+  constructor(private userService: UserService,
+    private sharedService: SharedService,
+    private modalService: NgbModal,
+    private cookieService: CookieService,
+    private router: Router) {
+    
+    const username:string = sessionStorage.getItem('username');
+    if (username === null) {
+      console.info(username);
+      this.sharedService.sendFlagShowLogingRequisInfo(true);
+      this.router.navigate(['login']);
+    }
+  }
 
   /* façon async et await
   async ngOnInit() {
@@ -162,7 +179,7 @@ export class UsersComponent implements OnInit, OnChanges {
     });
   }
 
-  changeComponentToShow(val:string){
+  changeComponentToShow(val: string) {
     this.componentToShow = val;
   }
 

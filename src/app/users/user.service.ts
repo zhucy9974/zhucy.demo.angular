@@ -111,13 +111,14 @@ export class UserService {
     );
   }
 
+  /*
   checkEmail(input: FormControl) {
     return this.http.get<User>(this.url).pipe(
       map(user => {
         return user.email == input.value ? { emailNotExists: true } : null;
       })
     );
-  }
+  }*/
 
   getLoginUser() {
     return this.http.get<User>(this.url2 + '23').pipe(

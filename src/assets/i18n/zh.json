@@ -1,9 +1,12 @@
 {
+    "error": {
+        "401": "邮件地址或密码不正确，请重新输入。"
+    },
     "formValite": {
         "required": "必填"
     },
-    "welcome":{
-        "sentence":"欢迎来到重阳工作室! :)"
+    "welcome": {
+        "sentence": "欢迎来到重阳工作室! :)"
     },
     "navbar": {
         "title": "重阳工作室",
@@ -19,6 +22,7 @@
         "email": "电子邮箱地址",
         "securityInfo": "我们保证不会向其他人和机构分享您的信息。",
         "emailRequis": "电子邮箱地址必填",
+        "goodEmailRequis": "请输入正确的邮箱地址",
         "invalidChar": "无效字符 : '#'",
         "emailNotExist": "电子邮箱地址不存在",
         "password": "密码",

@@ -26,12 +26,14 @@
               <span *ngIf="propEmail.hasError('required')">
                 {{'loginPage.emailRequis'|translate}}
               </span>
-
+              <span *ngIf="propEmail.hasError('email')">
+                {{'loginPage.goodEmailRequis'|translate}}
+              </span>
               <span *ngIf="propEmail.hasError('invalidChar')">
                 {{'loginPage.invalidChar'|translate}}
               </span>
-              <span *ngIf="propEmail.hasError('emailNotExists')">
-                {{'loginPage.emailNotExist'|translate}}
+              <span *ngIf="propPass.hasError('error401')">
+                {{'error.401'|translate}}
               </span>
               <!--
               <div *ngIf="invalidCredentials" data-error-message>
@@ -45,12 +47,16 @@
               [ngClass]="{'is-invalid': (!this.propPass.valid)&&submitted, 'is-valid':this.propPass.valid&&submitted}"
               id="exampleInputPassword1" placeholder="{{'loginPage.enterPassword'|translate}}">
             <div *ngIf="loginForm.invalid&&submitted" class="invalid-feedback">
-              <div *ngIf="propPass.hasError('required')">
+              <span *ngIf="propPass.hasError('required')">
                 {{'loginPage.passwordRequis'|translate}}
-              </div>
-              <div *ngIf="propPass.hasError('minlength')">
+              </span>
+              <span *ngIf="propPass.hasError('minlength')">
                 {{'loginPage.minLength6'|translate}}
-              </div>
+              </span>
+              <span *ngIf="propPass.hasError('error401')">
+                {{'error.401'|translate}}
+              </span>
+              
             </div>
 
           </div>
@@ -61,6 +67,8 @@
               class="btn btn-primary">{{'loginPage.signIn'|translate}}</button>&nbsp;
             <button data-submit-button type="button" class="btn btn-primary"
               [disabled]='true'>{{'loginPage.signUp'|translate}}</button>
+              <span *ngIf="flagShowLogingRequisInfo">helle test</span>
+             
 
           </div>
 

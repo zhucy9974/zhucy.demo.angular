@@ -1,4 +1,7 @@
 {
+    "error": {
+        "401":"The email or the password is not correct, please re-enter them."
+    },
     "formValite": {
         "required": "Required"
     },
@@ -23,6 +26,7 @@
         "email": "Email address",
         "securityInfo": "We'll never share your email with anyone else.",
         "emailRequis": "Email requis",
+        "goodEmailRequis": "Please enter with the right email format.",
         "invalidChar": "Invalid char '#'",
         "emailNotExist": "Email not exist",
         "password": "Password",

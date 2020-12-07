@@ -1,7 +1,9 @@
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <a class="navbar-brand" routerLink="welcome"><strong>{{'navbar.title'|translate}}</strong></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+<div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" routerLink="welcome"
+      (click)="activeItem($event)"><strong>{{'navbar.title'|translate}}</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -11,33 +13,41 @@
           <a class="nav-link" (click)="activeItem($event)" routerLink="welcome">{{'navbar.home'|translate}}</a>
         </li>
         <li class="nav-item nav-item-tochange ">
-          <a class="nav-link" (click)="activeItem($event)" routerLink="users" onclick="updateTooltip()">{{'navbar.userMgt'|translate}}</a>
+          <a class="nav-link" (click)="activeItem($event)" routerLink="users"
+            onclick="updateTooltip()">{{'navbar.userMgt'|translate}}</a>
         </li>
         <li class="nav-item nav-item-tochange ">
-          <a class="nav-link" (click)="activeItem($event)" routerLink="aboutMe" >{{'navbar.aboutMe'|translate}}</a>
+          <a class="nav-link" (click)="activeItem($event)" routerLink="aboutMe">{{'navbar.aboutMe'|translate}}</a>
         </li>
         <li class="nav-item nav-item-tochange ">
-          <a class="nav-link" (click)="activeItem($event)" routerLink="aboutWebsite" >{{'navbar.aboutTheWebSite'|translate}}</a>
+          <a class="nav-link" (click)="activeItem($event)"
+            routerLink="aboutWebsite">{{'navbar.aboutTheWebSite'|translate}}</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             {{'navbar.changeLanguage'|translate}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="javascript:;" (click)="changeLanguage('en')" onclick="updateTooltip();">{{'navbar.languageEN'|translate}}</a>
-            <a class="dropdown-item" href="javascript:;" (click)="changeLanguage('fr')" onclick="updateTooltip();">{{'navbar.languageFR'|translate}}</a>
-            <a class="dropdown-item" href="javascript:;" (click)="changeLanguage('zh')" onclick="updateTooltip();">{{'navbar.languageZH'|translate}}</a>
+            <a class="dropdown-item" href="javascript:;" (click)="changeLanguage('en')"
+              onclick="updateTooltip();">{{'navbar.languageEN'|translate}}</a>
+            <a class="dropdown-item" href="javascript:;" (click)="changeLanguage('fr')"
+              onclick="updateTooltip();">{{'navbar.languageFR'|translate}}</a>
+            <a class="dropdown-item" href="javascript:;" (click)="changeLanguage('zh')"
+              onclick="updateTooltip();">{{'navbar.languageZH'|translate}}</a>
           </div>
         </li>
       </ul>
-      <span class="text-white" *ngIf="isLogin">
-        <strong>{{'navbar.hello'|translate}}</strong>  {{(user$|async)?.name}} | 
-        <a *ngIf="isLogin" (click)="logout()" href="javascript:;" class="text-primary"><strong>{{'navbar.logout'|translate}}</strong></a>
+      <span class="text-white" *ngIf="firstName!=null">
+        <strong>{{'navbar.hello'|translate}}</strong>
+        <!--{{(user$|async)?.name}}--> {{firstName}} |
+        <a (click)="logout()" href="javascript:;"
+          class="text-primary"><strong>{{'navbar.logout'|translate}}</strong></a>
       </span>
-      <span class="text-white" *ngIf="!isLogin">
+      <span class="text-white" *ngIf="firstName==null">
         <a *ngIf="!isLogin" routerLink="login" class="text-primary"><strong>{{'navbar.login'|translate}}</strong></a>
       </span>
     </div>
   </nav>
 
-
+</div>

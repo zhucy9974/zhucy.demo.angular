@@ -6,36 +6,49 @@ import { Subject, Observable } from 'rxjs';
 })
 export class SharedService {
   private msg = new Subject<any>();
-  private isLogin = new Subject<any>();
+  //private isLogin = new Subject<any>();
   private inputValueChanged = new Subject<any>();
-  
+  private showLogingRequisInfo = new Subject<boolean>();
+
   constructor() { }
 
-  sendMessage(message: string){
+  sendMessage(message: string) {
     this.msg.next(message);
   }
 
+  /*
   sendLoginStatut(message: boolean){
     this.isLogin.next(message);
+  }*/
+
+  sendFlagShowLogingRequisInfo(data: boolean) {
+    console.info(data);
+    this.showLogingRequisInfo.next(data);
   }
 
-  sendInputValueChanged(data:any){
+
+  sendInputValueChanged(data: any) {
     this.inputValueChanged.next(data);
   }
 
-  clearMessage(){
+  clearMessage() {
     this.msg.next();
   }
 
-  getMessage(): Observable<any>{
+  getMessage(): Observable<any> {
     return this.msg.asObservable();
   }
 
-  getLoginStatut(): Observable<any>{
-    return this.isLogin.asObservable();
+  getFlagShowLogingRequisInfo(): Observable<any> {
+    return this.showLogingRequisInfo.asObservable();
   }
 
-  getInputValueChanged(): Observable<any>{
+  /*
+  getLoginStatut(): Observable<any>{
+    return this.isLogin.asObservable();
+  }*/
+
+  getInputValueChanged(): Observable<any> {
     return this.inputValueChanged.asObservable();
   }
 }

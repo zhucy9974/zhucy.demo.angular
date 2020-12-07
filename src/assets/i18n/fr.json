@@ -1,9 +1,12 @@
 {
+    "error": {
+        "401": "L'addresse mail ou le mot de pass n'est pas correct, veuillez les resaisir."
+    },
     "formValite": {
         "required": "Obligatoire"
     },
-    "welcome":{
-        "sentence":"Bienvenue à l'atelier de Chongyang! :)"
+    "welcome": {
+        "sentence": "Bienvenue à l'atelier de Chongyang! :)"
     },
     "navbar": {
         "title": "Atelier de Chongyang",
@@ -19,6 +22,7 @@
         "email": "Adresse mail",
         "securityInfo": "Nous ne partagerons jamais votre e-mail avec les autres.",
         "emailRequis": "Email obligatoire",
+        "goodEmailRequis": "Veuillez saisir le bon format d'email.",
         "invalidChar": "Caractère invalide : '#'",
         "emailNotExist": "Email n'existe pas",
         "password": "Mot de passe",

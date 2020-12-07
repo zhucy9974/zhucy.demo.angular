@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   @Output() search: EventEmitter<string> = new EventEmitter();
   loginUserName:string;
   isLogin:boolean = false;
+  firstName:string;
 
   user$: Observable<User>;
   LoginUser:User;
@@ -28,11 +29,14 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.firstName = sessionStorage.getItem('firstName');
+
+    //code laisser pour l'exemple
+    /*
     this.user$ =  this.userService.getLoginUser();
     this.sharedService.getLoginStatut().subscribe(value => {
       this.isLogin = value;
-    });
+    });*/
 
   }
 
@@ -41,7 +45,9 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
-    this.sharedService.sendLoginStatut(false);
+    //this.sharedService.sendLoginStatut(false);
+    sessionStorage.clear();
+    this.firstName = null;
     this.router.navigate(['']);
   }
 

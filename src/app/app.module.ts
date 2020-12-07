@@ -20,6 +20,7 @@ import { AboutWebsiteModule } from './about-website/about-website.module';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { AboutMeModule } from './about-me/about-me.module';
 import { WelcomeModule } from './welcome/welcome.module';
+import { CookieService } from "ngx-cookie-service";
 
 //registerLocaleData(localeFr, 'fr-FR');
 
@@ -40,7 +41,7 @@ import { WelcomeModule } from './welcome/welcome.module';
     AboutMeModule,
     WelcomeModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
