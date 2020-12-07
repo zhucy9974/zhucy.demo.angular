@@ -13,20 +13,25 @@
         <ul class="user-sider-bar nav flex-column ">
           <li class="nav-item nav-item-tochange">
             <a class="nav-link text-primary" (click)="activeItem($event);changeComponentToShow('users')"
+            onclick="updateTooltip()"
               href="javascript:;">
               <strong>User list</strong>
             </a>
           </li>
           <li class="nav-item nav-item-tochange">
             <a class="nav-link text-secondary" (click)="activeItem($event);changeComponentToShow('groups')"
+            onclick="updateTooltip()"
               href="javascript:;">
-              <strong>Group list</strong>
+              <strong data-toggle="tooltip" data-placement="top"
+              title="{{'tooltip.comingSoon'|translate}}">Group list</strong>
             </a>
           </li>
           <li class="nav-item nav-item-tochange">
             <a class="nav-link text-secondary" (click)="activeItem($event);changeComponentToShow('roles')"
+            onclick="updateTooltip()"
               href="javascript:;">
-              <strong>Role list</strong>
+              <strong data-toggle="tooltip" data-placement="top"
+              title="{{'tooltip.comingSoon'|translate}}">Role list</strong>
             </a>
           </li>
         </ul>
@@ -46,9 +51,9 @@
         <div class="col-3 mb-1">
           <br>
           <div class="float-right">
-            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-              data-target="#modalSaveConfirmation" [disabled]="false"
-              [disabled]="true">{{'userMgt.save'|translate}}</button>&nbsp;
+            <span data-toggle="tooltip" data-container=".div-user-mgt" data-placement="top"
+              title="{{'tooltip.comingSoon'|translate}}">
+              <button type="button" class="btn btn-primary btn-sm">{{'userMgt.save'|translate}}</button></span>&nbsp;
             <button (click)="add();resetSubmitFlag()" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
               data-target="#userPageModal">{{'userMgt.createUser'|translate}}</button>
           </div>
@@ -233,7 +238,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal delete user confirmation-->
 <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -248,8 +253,7 @@
         Ara you sure to delete the user?
       </div>
       <div class="modal-footer">
-        <button type="button" id="btn_delete2" class="invisible" data-toggle="modal" data-target="#modalDeleted"
-          data-dismiss="modal">Yes2</button>
+        <button type="button" id="btn_delete2" class="invisible" data-dismiss="modal">Yes2</button>
         <button (click)="delete()" type="button" class="btn btn-primary">Yes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
       </div>
@@ -258,6 +262,7 @@
 </div>
 
 <!-- Modal saved -->
+<!--
 <div class="modal fade" id="modalDeleted" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -277,7 +282,7 @@
     </div>
   </div>
 </div>
-
+-->
 
 <app-user-page [consultOnly]="consultOnly" [userToShow]="userToShow" (onUserCreated)="userCreated($event)">
 </app-user-page>

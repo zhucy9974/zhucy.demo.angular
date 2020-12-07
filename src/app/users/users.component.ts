@@ -46,7 +46,7 @@ export class UsersComponent implements OnInit, OnChanges {
     const username:string = sessionStorage.getItem('username');
     if (username === null) {
       console.info(username);
-      this.sharedService.sendFlagShowLogingRequisInfo(true);
+      this.sharedService.sendShowMsgDiv({msgType:'info',msg:'Please login for going to the page which you want.'});
       this.router.navigate(['login']);
     }
   }

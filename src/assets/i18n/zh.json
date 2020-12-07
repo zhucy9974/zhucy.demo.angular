@@ -1,4 +1,11 @@
 {
+    "btn": {
+        "close": "关闭",
+        "save": "保存"
+    },
+    "tooltip": {
+        "comingSoon": "此功能将近期开放。"
+    },
     "error": {
         "401": "邮件地址或密码不正确，请重新输入。"
     },
@@ -38,6 +45,8 @@
         "search_name": "名字",
         "search_search": "查找",
         "search_clear": "清除",
+        "search_moreCriteria": "更多查找条件",
+        "search_lessCriteria": "更少查找条件",
         "save": "保存",
         "createUser": "新建用户",
         "list_editableInfo": "您可以直接修改本列数据并通过右上角的按钮进行保存。",

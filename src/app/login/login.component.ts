@@ -45,10 +45,6 @@ export class LoginComponent implements OnInit {
       password: this.propPass
     });
 
-    this.sharedService.getFlagShowLogingRequisInfo().subscribe((data:boolean)=>{
-      console.log(data);
-      this.flagShowLogingRequisInfo = data;
-    });
   }
 
   login() {

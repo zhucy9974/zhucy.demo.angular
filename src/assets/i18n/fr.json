@@ -1,4 +1,11 @@
 {
+    "btn": {
+        "close": "Fermer",
+        "save": "Sauvgarder"
+    },
+    "tooltip": {
+        "comingSoon":"La fonctionalité arrive bientôt."
+    },
     "error": {
         "401": "L'addresse mail ou le mot de pass n'est pas correct, veuillez les resaisir."
     },
@@ -38,6 +45,8 @@
         "search_name": "Nom",
         "search_search": "Rechercher",
         "search_clear": "Vider",
+        "search_moreCriteria": "Plus de critaires",
+        "search_lessCriteria": "Moins de critaires",
         "save": "Sauvgarder",
         "createUser": "Créer utilisateur",
         "list_editableInfo": "Vous pouvez directement modifier les données de cette colonne et les enregistrer via le bouton dans le coin supérieur droit.",

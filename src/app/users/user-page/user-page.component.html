@@ -143,8 +143,8 @@
                 <div class="modal-footer">
                     <button id="btn_user_page_save" type="submit" data-toggle="modal"
                         data-target="#modalAddConfirmation" data-dismiss="modal" class="invisible">Save</button>
-                    <button class="btn btn-primary" type="submit">Submit form</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button *ngIf="!consultOnly" class="btn btn-primary" type="submit">{{'btn.save'|translate}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{'btn.close'|translate}}</button>
                 </div>
             </form>
         </div>
@@ -163,11 +163,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                Ara you sure to created the user?
+                Are you sure to created the user?
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn_add2" class="invisible" data-toggle="modal" data-target="#modalAdded"
-                    data-dismiss="modal">Yes</button>
+                <button type="button" id="btn_add2" class="invisible" data-dismiss="modal">Yes</button>
                 <button type="button" class="btn btn-primary" data-toggle="modal" (click)="createUser()">Yes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
                     data-target="#userPageModal">Non</button>
@@ -177,6 +176,7 @@
 </div>
 
 <!-- Modal saved -->
+<!--
 <div class="modal fade" id="modalAdded" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -196,3 +196,4 @@
         </div>
     </div>
 </div>
+-->

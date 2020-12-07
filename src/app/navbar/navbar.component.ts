@@ -22,7 +22,9 @@ export class NavbarComponent implements OnInit {
   user$: Observable<User>;
   LoginUser: User;
 
-  showMsgDiv: boolean = true;
+  showMsgDiv: boolean = false;
+  msgDivType: string;
+  msgDivContent: string;
   constructor(private userService: UserService,
     private sharedService: SharedService,
     private router: Router,
@@ -34,10 +36,18 @@ export class NavbarComponent implements OnInit {
     this.sharedService.getFirstName().subscribe((data: string) => {
       this.firstName = data;
     });
-    if(this.firstName==null){
+    if (this.firstName == null) {
       this.firstName = sessionStorage.getItem('firstName');
     }
-    
+    this.sharedService.getShowMsgDiv().subscribe((data: any)=> {
+      this.showMsgDiv = true;
+      this.msgDivType = data['msgType'];
+      this.msgDivContent = data['msg'];
+      setTimeout(()=> {
+        this.showMsgDiv = false;
+      }, 3000);
+    });
+
 
     //code laisser pour l'exemple
     /*
@@ -64,6 +74,7 @@ export class NavbarComponent implements OnInit {
   }
 
   activeItem(event) {
+    this.showMsgDiv = false;
     $(".nav-item-tochange").removeClass("active");
     $(".nav-item-tochange").each(function (index) {
       if (event.target.innerText == $(this).text()) {

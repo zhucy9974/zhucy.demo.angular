@@ -7,6 +7,7 @@ import { map, tap, catchError } from "rxjs/operators";
 import { FormControl } from "@angular/forms";
 import * as $ from 'jquery';
 import { TranslateService } from '@ngx-translate/core';
+import { SharedService } from '../shared/shared.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class UserService {
   //url = 'https://jsonplaceholder.typicode.com/users';
   private userLogin: User;
 
-  constructor(private http: HttpClient, private translateService:TranslateService) { }
+  constructor(private http: HttpClient, private translateService: TranslateService, private sharedService: SharedService) { }
 
   async get(): Promise<User[]> {
     const res = await this.http.get<User[]>(this.url).toPromise();
@@ -55,9 +56,9 @@ export class UserService {
       user.address.fullAddresse = user.address.fullAddresse + ' (' + user.address.geo.lat + ', ' + user.address.geo.lat + ')';
     }
 
-    user.company.allCompanyInfo = this.translateService.instant('userMgt.userPage_co_name')+ ' : '+ user.company.name +'\n'+
-    this.translateService.instant('userMgt.userPage_co_catch_phrase')+ ' : '+ user.company.catchPhrase +'\n'+
-    this.translateService.instant('userMgt.userPage_co_bs')+ ' : '+ user.company.bs;
+    user.company.allCompanyInfo = this.translateService.instant('userMgt.userPage_co_name') + ' : ' + user.company.name + '\n' +
+      this.translateService.instant('userMgt.userPage_co_catch_phrase') + ' : ' + user.company.catchPhrase + '\n' +
+      this.translateService.instant('userMgt.userPage_co_bs') + ' : ' + user.company.bs;
   }
 
   delete(index: number) {
@@ -65,6 +66,7 @@ export class UserService {
       console.log("POST call successful value returned in body",
         val);
       this.users.splice(index, 1);
+      this.sharedService.sendShowMsgDiv({msgType:'success', msg:'The user is deleted successfully.'});
       $("#btn_delete2").click();
     });
 
@@ -105,6 +107,7 @@ export class UserService {
         console.log("POST call successful value returned in body",
           data);
         this.transfererUser(data);
+        this.sharedService.sendShowMsgDiv({msgType:'success', msg: 'The user is created successfully.'});
         $("#btn_add2").click();
       })
       //catchError()
@@ -148,11 +151,11 @@ export class UserService {
       
     }*/
 
-    resetSubmitFlag(){
-      this.sendSubmitted.next(false);
-    }
+  resetSubmitFlag() {
+    this.sendSubmitted.next(false);
+  }
 
-    getSubmitFlag():Observable<boolean>{
-      return this.sendSubmitted.asObservable();
-    }
+  getSubmitFlag(): Observable<boolean> {
+    return this.sendSubmitted.asObservable();
+  }
 }

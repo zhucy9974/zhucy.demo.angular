@@ -1,4 +1,11 @@
 {
+    "btn": {
+        "close":"Close",
+        "save":"Save"
+    },
+    "tooltip": {
+        "comingSoon":"The fonction is coming soon."
+    },
     "error": {
         "401":"The email or the password is not correct, please re-enter them."
     },
@@ -42,6 +49,8 @@
         "search_name": "Name",
         "search_search": "Search",
         "search_clear": "Clear",
+        "search_moreCriteria": "More criterias",
+        "search_lessCriteria": "Less criterias",
         "save": "Save",
         "createUser": "Create user",
         "list_editableInfo": "You can directly modify the data in this column and save it through the button in the upper right corner.",
