@@ -1,6 +1,6 @@
 <!-- <input [(ngModel)]="criteria" (input)="sendCriteria();sendMessage();"> -->
 
-<div *ngIf="!needMoreCriteria" id="user_search" class="input-group input-group-sm">
+<div [@visibility]="!needMoreCriteria"  id="user_search" class="input-group input-group-sm">
     <div class="input-group-prepend">
         <span class="input-group-text">{{'userMgt.search_name'|translate}}</span>
     </div>
@@ -41,7 +41,7 @@
 </div>
 
 
-<div *ngIf="needMoreCriteria" id="user_search_more" class="row">
+<div [@visibility]="needMoreCriteria" id="user_search_more" class="row">
     <div class="col-12">
         <div class="row mb-1">
             <div class="col-sm-4 pr-0 input-group input-group-sm ">

@@ -21,6 +21,7 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { AboutMeModule } from './about-me/about-me.module';
 import { WelcomeModule } from './welcome/welcome.module';
 import { CookieService } from "ngx-cookie-service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //registerLocaleData(localeFr, 'fr-FR');
 
@@ -32,6 +33,7 @@ import { CookieService } from "ngx-cookie-service";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     UsersModule,
     NavbarModule,
