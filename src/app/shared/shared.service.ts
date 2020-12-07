@@ -9,6 +9,7 @@ export class SharedService {
   //private isLogin = new Subject<any>();
   private inputValueChanged = new Subject<any>();
   private showLogingRequisInfo = new Subject<boolean>();
+  private firstName = new Subject<string>();
 
   constructor() { }
 
@@ -31,6 +32,10 @@ export class SharedService {
     this.inputValueChanged.next(data);
   }
 
+  sendFirstName(data:string){
+    this.firstName.next(data);
+  }
+
   clearMessage() {
     this.msg.next();
   }
@@ -41,6 +46,10 @@ export class SharedService {
 
   getFlagShowLogingRequisInfo(): Observable<any> {
     return this.showLogingRequisInfo.asObservable();
+  }
+
+  getFirstName():Observable<string>{
+    return this.firstName.asObservable();
   }
 
   /*

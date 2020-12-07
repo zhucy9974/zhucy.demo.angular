@@ -1,4 +1,4 @@
-<div>
+<div class="fixed-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <a class="navbar-brand" routerLink="welcome"
       (click)="activeItem($event)"><strong>{{'navbar.title'|translate}}</strong></a>
@@ -45,9 +45,18 @@
           class="text-primary"><strong>{{'navbar.logout'|translate}}</strong></a>
       </span>
       <span class="text-white" *ngIf="firstName==null">
-        <a *ngIf="!isLogin" routerLink="login" class="text-primary"><strong>{{'navbar.login'|translate}}</strong></a>
+        <a routerLink="login" class="text-primary"><strong>{{'navbar.login'|translate}}</strong></a>
       </span>
     </div>
   </nav>
-
+  <div *ngIf="showMsgDiv" class="col-3 alert alert-info" style="position: absolute;right: 0px;z-index: 9999;">
+    <a href="javascript:;" (click)="closeMsgDiv()">
+      <svg style="position: absolute;top: 1px;right: 1px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+      </svg>
+    </a>
+    <strong>信息!</strong> 请注意这个信息。
+  </div>
 </div>

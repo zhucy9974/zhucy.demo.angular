@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserService } from '../users/user.service';
 import { User } from '../users/user.model';
 import { Observable, of } from 'rxjs';
@@ -13,23 +13,31 @@ import * as $ from 'jquery';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  @Input() name:string = 'Chongyang1';
+  @Input() name: string = 'Chongyang1';
   @Output() search: EventEmitter<string> = new EventEmitter();
-  loginUserName:string;
-  isLogin:boolean = false;
-  firstName:string;
+  loginUserName: string;
+  isLogin: boolean = false;
+  firstName: string;
 
   user$: Observable<User>;
-  LoginUser:User;
-  constructor( private userService:UserService,
-    private sharedService:SharedService,
-    private router:Router,
-    private translateService:TranslateService) {
+  LoginUser: User;
+
+  showMsgDiv: boolean = true;
+  constructor(private userService: UserService,
+    private sharedService: SharedService,
+    private router: Router,
+    private translateService: TranslateService) {
     //setTimeout(()=>this.name='Chongyang2',2000);
   }
 
   ngOnInit() {
-    this.firstName = sessionStorage.getItem('firstName');
+    this.sharedService.getFirstName().subscribe((data: string) => {
+      this.firstName = data;
+    });
+    if(this.firstName==null){
+      this.firstName = sessionStorage.getItem('firstName');
+    }
+    
 
     //code laisser pour l'exemple
     /*
@@ -40,27 +48,32 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  changedSearch(value){
-    this.search.emit(value); 
+  changedSearch(value) {
+    this.search.emit(value);
   }
 
-  logout(){
+  logout() {
     //this.sharedService.sendLoginStatut(false);
     sessionStorage.clear();
     this.firstName = null;
     this.router.navigate(['']);
   }
 
-  changeLanguage(language:string){
+  changeLanguage(language: string) {
     this.translateService.use(language);
   }
 
-  activeItem(event){
-    $( ".nav-item-tochange" ).removeClass("active");
-    $( ".nav-item-tochange" ).each(function(index){
-      if(event.target.innerText==$(this).text()){
+  activeItem(event) {
+    $(".nav-item-tochange").removeClass("active");
+    $(".nav-item-tochange").each(function (index) {
+      if (event.target.innerText == $(this).text()) {
         $(this).addClass("active");
       }
     });
   }
+
+  closeMsgDiv() {
+    this.showMsgDiv = false;
+  }
+
 }

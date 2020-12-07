@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('token',token);
           sessionStorage.setItem('username',res['username']);
           sessionStorage.setItem('firstName',res['firstName']);
+          this.sharedService.sendFirstName(res['firstName']);
 
           //Code laissé pour l'example
           //this.cookieService.set('chongyangws.AuthToken', token, new Date(new Date().getTime() + (2 * 60 * 60 * 1000)));
