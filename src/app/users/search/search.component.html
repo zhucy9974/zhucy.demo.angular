@@ -54,7 +54,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">{{'userMgt.list_username'|translate}}</span>
                 </div>
-                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+                <input disabled="true" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
             </div>
         </div>
         <div class="row mb-1">
@@ -62,19 +62,19 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">{{'userMgt.list_email'|translate}}</span>
                 </div>
-                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+                <input  disabled="true"  (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
             </div>
             <div class="col-sm-4 pr-0 pl-1 input-group input-group-sm">
                 <div class="input-group-prepend">
                     <span class="input-group-text">{{'userMgt.list_city'|translate}}</span>
                 </div>
-                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+                <input  disabled="true"  (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
             </div>
             <div class="col-sm-4 pr-0 pl-1 input-group input-group-sm">
                 <div class="input-group-prepend">
                     <span class="input-group-text">{{'userMgt.list_company'|translate}}</span>
                 </div>
-                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+                <input  disabled="true"  (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
             </div>
         </div>
         <div class="row">

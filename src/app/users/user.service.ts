@@ -51,15 +51,15 @@ export class UserService {
   }
 
   transfererUser(user: User) {
-    user.address.fullAddresse = user.address.street + ' '
-      + user.address.zipcode + ' ' + user.address.city;
+    user.address.fullAddresse = (user.address.street==null?'':(user.address.street+ ' ')) 
+      + (user.address.zipcode==null?'':(user.address.zipcode+ ' '))  + (user.address.city==null?'':user.address.city);
     if (user.address.geo?.lat != null && user.address.geo?.lng != null) {
-      user.address.fullAddresse = user.address.fullAddresse + ' (' + user.address.geo.lat + ', ' + user.address.geo.lat + ')';
+      user.address.fullAddresse = user.address.fullAddresse + ' (' + user.address.geo.lat + ', ' + user.address.geo.lng + ')';
     }
 
-    user.company.allCompanyInfo = this.translateService.instant('userMgt.userPage_co_name') + ' : ' + user.company.name + '\n' +
-      this.translateService.instant('userMgt.userPage_co_catch_phrase') + ' : ' + user.company.catchPhrase + '\n' +
-      this.translateService.instant('userMgt.userPage_co_bs') + ' : ' + user.company.bs;
+    user.company.allCompanyInfo = this.translateService.instant('userMgt.userPage_co_name') + ' : ' + (user.company.name==null?'':user.company.name) + '\n' +
+      this.translateService.instant('userMgt.userPage_co_catch_phrase') + ' : ' + (user.company.catchPhrase==null?'':user.company.catchPhrase) + '\n' +
+      this.translateService.instant('userMgt.userPage_co_bs') + ' : ' + (user.company.bs==null?'':user.company.bs);
   }
 
   delete(index: number) {
