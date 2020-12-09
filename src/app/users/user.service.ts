@@ -23,6 +23,7 @@ export class UserService {
   url2 = 'http://213.44.249.81:8080/demo/user/findById?id=';
 
   urlCreateUser = 'http://213.44.249.81:8080/demo/user/createUser';
+  urlUpdateUser = 'http://213.44.249.81:8080/demo/user/patch';
   urlDeleteUser = 'http://213.44.249.81:8080/demo/user/delete';
   //url = 'https://jsonplaceholder.typicode.com/users';
   private userLogin: User;
@@ -113,6 +114,20 @@ export class UserService {
       //catchError()
     );
   }
+
+
+  updateUser(user: User): Observable<User> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.post<User>(this.urlUpdateUser, JSON.stringify(user), { headers: headers }).pipe(
+      tap((data: User) => {
+        this.transfererUser(data);
+        this.sharedService.sendShowMsgDiv({msgType:'success', msg: 'The user is modified successfully.'});
+        $("#btn_add2").click();
+      })
+      //catchError()
+    );
+  }
+  
 
   /*
   checkEmail(input: FormControl) {

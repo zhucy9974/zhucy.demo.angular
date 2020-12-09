@@ -42,6 +42,10 @@
         "enterPassword": "输入密码"
     },
     "userMgt": {
+        "sidebar_title":"用户管理",
+        "sidebar_userList":"用户列表",
+        "sidebar_groupList":"群组列表",
+        "sidebar_roleList":"角色列表",
         "search_name": "名字",
         "search_search": "查找",
         "search_clear": "清除",
@@ -60,6 +64,8 @@
         "list_op_consult": "查看用户信息",
         "list_op_modify": "修改用户信息",
         "list_op_delete": "删除用户",
+        "list_op_confirm_del":"您确定删除这个用户吗?",
+        "list_op_confirm_title_del":"删除用户",
         "userPage_title_create": "添加新用户",
         "userPage_name": "姓名",
         "userPage_firstName": "名",
@@ -76,6 +82,10 @@
         "userPage_co": "公司",
         "userPage_co_name": "名称",
         "userPage_co_catch_phrase": "企业信条",
-        "userPage_co_bs": "业务"
+        "userPage_co_bs": "业务",
+        "userPage_confirm_create":"您确定创建这个用户吗?",
+        "userPage_confirm_mdf":"您确定修改这个用户吗?",
+        "userPage_confirm_title_create":"创建用户",
+        "userPage_confirm_title_mdf":"修改用户"
     }
 }

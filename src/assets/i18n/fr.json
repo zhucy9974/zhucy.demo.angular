@@ -42,6 +42,10 @@
         "enterPassword": "Saisissez le mot de passe"
     },
     "userMgt": {
+        "sidebar_title":"Gestion d'utilisateur",
+        "sidebar_userList":"Liste des utilisateurs",
+        "sidebar_groupList":"Liste des groupes",
+        "sidebar_roleList":"Liste des rôles",
         "search_name": "Nom",
         "search_search": "Rechercher",
         "search_clear": "Vider",
@@ -60,6 +64,8 @@
         "list_op_consult": "Consulter l'information de l'utilisateur",
         "list_op_modify": "Modifier l'information de l'utilisateur",
         "list_op_delete": "Supprimer l'utilisateur",
+        "list_op_confirm_del":"Etes-vous sûr de supprimer l'utilisateur?",
+        "list_op_confirm_title_del":"Supprimer utilisateur",
         "userPage_title_create": "Créer un nouvel utilisateur",
         "userPage_name": "Nom",
         "userPage_firstName": "Prénom",
@@ -76,6 +82,10 @@
         "userPage_co": "Entreprise",
         "userPage_co_name": "Nom",
         "userPage_co_catch_phrase": "Catch phrase",
-        "userPage_co_bs": "Entreprise"
+        "userPage_co_bs": "Entreprise",
+        "userPage_confirm_create":"Etes-vous sûr de créer l'utilisateur?",
+        "userPage_confirm_mdf":"Etes-vous sûr de modifier l'utilisateur?",
+        "userPage_confirm_title_create":"Créer utilisateur",
+        "userPage_confirm_title_mdf":"Modifier utilisateur"
     }
 }

@@ -46,6 +46,10 @@
         "enterPassword": "Enter password"
     },
     "userMgt": {
+        "sidebar_title":"User management",
+        "sidebar_userList":"User list",
+        "sidebar_groupList":"Group list",
+        "sidebar_roleList":"Role list",
         "search_name": "Name",
         "search_search": "Search",
         "search_clear": "Clear",
@@ -64,6 +68,8 @@
         "list_op_consult": "Consult the user's information",
         "list_op_modify": "Modify the user's information",
         "list_op_delete": "Delete the user",
+        "list_op_confirm_del":"Are you sure to delete the user?",
+        "list_op_confirm_title_del":"Delete user",
         "userPage_title_create": "Create a new user",
         "userPage_name": "Name",
         "userPage_firstName": "First name",
@@ -80,6 +86,11 @@
         "userPage_co": "Company",
         "userPage_co_name": "Name",
         "userPage_co_catch_phrase": "Catch phrase",
-        "userPage_co_bs": "Business"
+        "userPage_co_bs": "Business",
+        "userPage_confirm_create":"Are you sure to create the user?",
+        "userPage_confirm_mdf":"Are you sure to modify the user?",
+        "userPage_confirm_title_create":"Create user",
+        "userPage_confirm_title_mdf":"Modify user"
+        
     }
 }

@@ -69,8 +69,7 @@
                         <div class="col-sm-10" *ngIf="consultOnly">
                             <input type="text" [readonly]="consultOnly" class="mb-1"
                                 [ngClass]="{'form-control-plaintext':consultOnly,'form-control':!consultOnly}"
-                                id="fullAddresse"
-                                value="{{userToShow.address.fullAddresse}}">
+                                id="fullAddresse" value="{{userToShow.address.fullAddresse}}">
                         </div>
                         <div class="col-sm-10" *ngIf="!consultOnly">
 
@@ -103,7 +102,8 @@
                             class="col-sm-2 col-form-label form-control-sm">{{'userMgt.userPage_co'|translate}}</label>
 
                         <div class="col-sm-10" *ngIf="consultOnly">
-                            <textarea class="form-control" id="company" rows="4">{{userToShow.company.allCompanyInfo}}</textarea>
+                            <textarea class="form-control" id="company"
+                                rows="4">{{userToShow.company.allCompanyInfo}}</textarea>
                         </div>
                         <div class="col-sm-10" *ngIf="!consultOnly">
 
@@ -144,7 +144,8 @@
                     <button id="btn_user_page_save" type="submit" data-toggle="modal"
                         data-target="#modalAddConfirmation" data-dismiss="modal" class="invisible">Save</button>
                     <button *ngIf="!consultOnly" class="btn btn-primary" type="submit">{{'btn.save'|translate}}</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{'btn.close'|translate}}</button>
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">{{'btn.close'|translate}}</button>
                 </div>
             </form>
         </div>
@@ -157,17 +158,28 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create user</h5>
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <span *ngIf="userToShow?.id==null">{{'userMgt.userPage_confirm_title_create'|translate}}</span>
+                    <span *ngIf="userToShow?.id!=null">{{'userMgt.userPage_confirm_title_mdf'|translate}}</span>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure to created the user?
+                <span *ngIf="userToShow?.id==null">
+                    {{'userMgt.userPage_confirm_create'|translate}}
+                </span>
+                <span *ngIf="userToShow?.id!=null">
+                    {{'userMgt.userPage_confirm_mdf'|translate}}
+                </span>
             </div>
             <div class="modal-footer">
                 <button type="button" id="btn_add2" class="invisible" data-dismiss="modal">Yes</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" (click)="createUser()">Yes</button>
+                <button *ngIf="userToShow?.id==null" type="button" class="btn btn-primary" data-toggle="modal"
+                    (click)="createUser()">Yes</button>
+                <button *ngIf="userToShow?.id!=null" type="button" class="btn btn-primary" data-toggle="modal"
+                    (click)="updateUser()">Yes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
                     data-target="#userPageModal">Non</button>
             </div>

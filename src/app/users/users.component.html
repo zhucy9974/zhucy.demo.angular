@@ -1,5 +1,5 @@
 <div class="div-user-mgt row">
-  <div class="col-2 bg-light">
+  <div class="col-2 bg-light pr-0">
 
     <nav class="sidebar sticky-left" style="min-height: 750px;" aria-label="Main navigation">
       <div class="sidebar-sticky">
@@ -7,7 +7,7 @@
 
         <div class="border-bottom pb-2 mb-2">
           <span class="text-secondary">
-            <h4><strong>User management</strong></h4>
+            <h4><strong>{{'userMgt.sidebar_title'|translate}}</strong></h4>
           </span>
         </div>
         <ul class="user-sider-bar nav flex-column ">
@@ -15,7 +15,7 @@
             <a class="nav-link text-primary" (click)="activeItem($event);changeComponentToShow('users')"
             onclick="updateTooltip()"
               href="javascript:;">
-              <strong>User list</strong>
+              <strong>{{'userMgt.sidebar_userList'|translate}}</strong>
             </a>
           </li>
           <li class="nav-item nav-item-tochange">
@@ -23,7 +23,7 @@
             onclick="updateTooltip()"
               href="javascript:;">
               <strong data-toggle="tooltip" data-placement="top"
-              title="{{'tooltip.comingSoon'|translate}}">Group list</strong>
+              title="{{'tooltip.comingSoon'|translate}}">{{'userMgt.sidebar_groupList'|translate}}</strong>
             </a>
           </li>
           <li class="nav-item nav-item-tochange">
@@ -31,7 +31,7 @@
             onclick="updateTooltip()"
               href="javascript:;">
               <strong data-toggle="tooltip" data-placement="top"
-              title="{{'tooltip.comingSoon'|translate}}">Role list</strong>
+              title="{{'tooltip.comingSoon'|translate}}">{{'userMgt.sidebar_roleList'|translate}}</strong>
             </a>
           </li>
         </ul>
@@ -244,13 +244,13 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete the user</h5>
+        <h5 class="modal-title" id="exampleModalLabel"> {{'userMgt.list_op_confirm_title_del'|translate}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Ara you sure to delete the user?
+        {{'userMgt.list_op_confirm_del'|translate}}
       </div>
       <div class="modal-footer">
         <button type="button" id="btn_delete2" class="invisible" data-dismiss="modal">Yes2</button>

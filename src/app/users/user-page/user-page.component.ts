@@ -87,4 +87,10 @@ export class UserPageComponent implements OnInit {
     this.onUserCreated.emit(users$);
   }
 
+  updateUser() {
+    console.info("modified user");
+    const users$ = this.userService.updateUser(this.userToShow);
+    this.onUserCreated.emit(users$);
+  }
+
 }
