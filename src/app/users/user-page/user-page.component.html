@@ -49,7 +49,7 @@
 
                     <app-input [fieldName]="'email'" [propField]="propEmail" [inputValue]="userToShow.email"
                         [labelStr]="'userMgt.userPage_email'|translate" [submitted]="submitted"
-                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
+                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.requiredAndEmail'|translate">
                     </app-input>
 
                     <app-input [fieldName]="'phone'" [inputValue]="userToShow.phone"
@@ -103,7 +103,7 @@
 
                         <div class="col-sm-10" *ngIf="consultOnly">
                             <textarea class="form-control" id="company"
-                                rows="4">{{userToShow.company.allCompanyInfo}}</textarea>
+                                rows="4" disabled="true">{{userToShow.company.allCompanyInfo}}</textarea>
                         </div>
                         <div class="col-sm-10" *ngIf="!consultOnly">
 

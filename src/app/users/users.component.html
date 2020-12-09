@@ -151,7 +151,7 @@
                     </button>
 
                     <button class="btn btn-link" data-toggle="modal" data-target="#userPageModal"
-                      (click)="resetSubmitFlag();modifyUserInfo(user.id);">
+                      (click)="resetSubmitFlag();modifyUserInfo(user.id);" [disabled]="user.status==0">
                       <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
                         title="{{'userMgt.list_op_modify'|translate}}">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-font"
@@ -164,7 +164,7 @@
                       </span>
                     </button>
                     <button (click)="toDelete(i);" class="btn btn-link" data-toggle="modal"
-                      data-target="#deleteConfirmation">
+                      data-target="#deleteConfirmation"  [disabled]="user.status==0">
                       <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
                         title="{{'userMgt.list_op_delete'|translate}}">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-excel"

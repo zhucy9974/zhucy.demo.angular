@@ -10,7 +10,8 @@
         "401":"The email or the password is not correct, please re-enter them."
     },
     "formValite": {
-        "required": "Required"
+        "required": "Required",
+        "requiredAndEmail": "Required and right email format required"
     },
     "welcome":{
         "sentence":"to Chongyang's workshop! :)"

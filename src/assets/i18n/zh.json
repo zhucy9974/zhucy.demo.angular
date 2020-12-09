@@ -10,7 +10,8 @@
         "401": "邮件地址或密码不正确，请重新输入。"
     },
     "formValite": {
-        "required": "必填"
+        "required": "必填",
+        "requiredAndEmail": "必填, 并请输入正确的邮箱地址"
     },
     "welcome": {
         "sentence": "欢迎来到重阳工作室! :)"

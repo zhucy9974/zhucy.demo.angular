@@ -10,7 +10,8 @@
         "401": "L'addresse mail ou le mot de pass n'est pas correct, veuillez les resaisir."
     },
     "formValite": {
-        "required": "Obligatoire"
+        "required": "Obligatoire",
+        "requiredAndEmail": "Obligatoire et veuillez saisir le bon format d'email."
     },
     "welcome": {
         "sentence": "Bienvenue à l'atelier de Chongyang! :)"
