@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-userMgt-roles',
-  templateUrl: '../../about-me/about-me.component.html',
+  templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.scss']
 })
 export class RolesComponent implements OnInit {

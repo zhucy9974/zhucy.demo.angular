@@ -1,0 +1,18 @@
+.about-me-bg {
+    background-image: url(../../assets/images/about-me-bg5.jpg);
+    //filter:blur(3px);
+    background-size: cover;
+    height: 350px;
+}
+
+.col-head{
+    font-weight: bold;
+    width: 120px;
+    vertical-align: top;
+}
+
+.more-detail{
+    position: relative;
+    top: -20px;
+    right: -20px;
+}

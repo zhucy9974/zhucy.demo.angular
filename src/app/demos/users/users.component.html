@@ -7,15 +7,15 @@
 
         <div class="border-bottom pb-2 mb-2">
           <span class="text-primary">
-            <h4><strong>{{'userMgt.sidebar_title'|translate}}</strong></h4>
+            <h5><strong>{{'userMgt.sidebar_title'|translate}}</strong></h5>
           </span>
         </div>
-        <ul class="user-sider-bar nav flex-column ">
+        <ul class="user-sider-bar nav flex-column mb-3">
           <li class="nav-item nav-item-tochange">
             <a class="nav-link text-primary" (click)="activeItem($event);changeComponentToShow('users')"
             onclick="updateTooltip()"
               href="javascript:;">
-              <strong>{{'userMgt.sidebar_userList'|translate}}</strong>
+              <strong>- {{'userMgt.sidebar_userList'|translate}}</strong>
             </a>
           </li>
           <li class="nav-item nav-item-tochange">
@@ -23,7 +23,7 @@
             onclick="updateTooltip()"
               href="javascript:;">
               <strong data-toggle="tooltip" data-placement="top"
-              title="{{'tooltip.comingSoon'|translate}}">{{'userMgt.sidebar_groupList'|translate}}</strong>
+              title="{{'tooltip.comingSoon'|translate}}">- {{'userMgt.sidebar_groupList'|translate}}</strong>
             </a>
           </li>
           <li class="nav-item nav-item-tochange">
@@ -31,10 +31,20 @@
             onclick="updateTooltip()"
               href="javascript:;">
               <strong data-toggle="tooltip" data-placement="top"
-              title="{{'tooltip.comingSoon'|translate}}">{{'userMgt.sidebar_roleList'|translate}}</strong>
+              title="{{'tooltip.comingSoon'|translate}}">- {{'userMgt.sidebar_roleList'|translate}}</strong>
             </a>
           </li>
         </ul>
+        <div class="border-bottom pb-2 mb-2">
+          <span class="text-secondary">
+            <h4><strong>Client management</strong></h4>
+          </span>
+        </div>
+        <div class="border-bottom pb-2 mb-2">
+          <span class="text-secondary">
+            <h4><strong>Product management</strong></h4>
+          </span>
+        </div>
       </div>
     </nav>
   </div>

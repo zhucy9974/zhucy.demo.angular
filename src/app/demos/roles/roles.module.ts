@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RolesComponent } from './roles.component';
+import { UnderConstructionModule } from 'src/app/shared/under-construction/under-construction.module';
 
 
 
@@ -8,7 +9,8 @@ import { RolesComponent } from './roles.component';
   declarations: [RolesComponent],
   exports: [RolesComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    UnderConstructionModule
   ]
 })
 export class RolesModule { }
