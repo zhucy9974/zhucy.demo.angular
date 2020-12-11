@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit, ViewChild, TemplateRef } from '@an
 import { UserService } from "./user.service";
 import { User } from './user.model';
 import { Observable, of, Subject, Subscription } from "rxjs";
-import { SharedService } from '../shared/shared.service';
+import { SharedService } from '../../shared/shared.service';
 import { map, tap } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 

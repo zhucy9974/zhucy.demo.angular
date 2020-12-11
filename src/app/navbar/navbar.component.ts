@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UserService } from '../users/user.service';
-import { User } from '../users/user.model';
+import { UserService } from '../demos/users/user.service';
+import { User } from '../demos/users/user.model';
 import { Observable, of } from 'rxjs';
 import { SharedService } from '../shared/shared.service';
 import { Router } from '@angular/router';

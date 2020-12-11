@@ -7,7 +7,7 @@ import { map, tap, catchError } from "rxjs/operators";
 import { FormControl } from "@angular/forms";
 import * as $ from 'jquery';
 import { TranslateService } from '@ngx-translate/core';
-import { SharedService } from '../shared/shared.service';
+import { SharedService } from '../../shared/shared.service';
 
 @Injectable({
   providedIn: 'root'
