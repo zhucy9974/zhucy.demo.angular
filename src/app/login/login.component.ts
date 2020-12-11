@@ -51,6 +51,8 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
 
     this.invalidCredentials = true;
+    this.propPass.updateValueAndValidity();
+    this.propEmail.updateValueAndValidity();
     if (this.loginForm.valid) {
       const httpOption = {
         headers: new HttpHeaders({
