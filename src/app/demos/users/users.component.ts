@@ -70,6 +70,12 @@ export class UsersComponent implements OnInit, OnChanges {
     });
   }
 
+  ngAfterViewChecked(){
+    const hMainDiv = document.documentElement.clientHeight;
+    const hNavbar = parseInt($('#navbar_div').css('height'));
+    $('#users_main_div').css('height',hMainDiv-hNavbar);
+  }
+
   ngOnChanges(v1) {
     //console.info(message:)
   }

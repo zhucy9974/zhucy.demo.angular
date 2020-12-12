@@ -13,10 +13,10 @@ export class AboutMeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(){
+  ngAfterViewChecked(){
     const hMainDiv = document.documentElement.clientHeight;
     const hNavbar = parseInt($('#navbar_div').css('height'));
-    $('#main_div').css('height',hMainDiv-hNavbar);
+    $('#about_me_main_div').css('height',hMainDiv-hNavbar);
   }
 
 }
