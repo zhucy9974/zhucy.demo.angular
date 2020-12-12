@@ -1,9 +1,10 @@
 <div class="div-user-mgt row">
   <div class="col-2 bg-light pr-0 mt-0">
 
-    <nav class="sidebar sticky-left" style="min-height: 750px;" aria-label="Main navigation">
+    <nav class="sidebar sticky-left" aria-label="Main navigation">
       <div class="sidebar-sticky">
-        <img src="assets/images/user-mgt-logo.png" class="img-fluid w-75 mt-3 mb-3" alt="Responsive image" style="opacity: 0.8;">
+        <img src="assets/images/user-mgt-logo.png" class="img-fluid w-75 mt-3 mb-3" alt="Responsive image"
+          style="opacity: 0.8;">
 
         <div class="border-bottom pb-2 mb-2">
           <span class="text-primary">
@@ -13,193 +14,192 @@
         <ul class="user-sider-bar nav flex-column mb-3">
           <li class="nav-item nav-item-tochange">
             <a class="nav-link text-primary" (click)="activeItem($event);changeComponentToShow('users')"
-            onclick="updateTooltip()"
-              href="javascript:;">
+              onclick="updateTooltip()" href="javascript:;">
               <strong>- {{'userMgt.sidebar_userList'|translate}}</strong>
             </a>
           </li>
           <li class="nav-item nav-item-tochange">
             <a class="nav-link text-secondary" (click)="activeItem($event);changeComponentToShow('groups')"
-            onclick="updateTooltip()"
-              href="javascript:;">
-              <strong data-toggle="tooltip" data-placement="top"
-              title="{{'tooltip.comingSoon'|translate}}">- {{'userMgt.sidebar_groupList'|translate}}</strong>
+              onclick="updateTooltip()" href="javascript:;">
+              <strong data-toggle="tooltip" data-placement="top" title="{{'tooltip.comingSoon'|translate}}">-
+                {{'userMgt.sidebar_groupList'|translate}}</strong>
             </a>
           </li>
           <li class="nav-item nav-item-tochange">
             <a class="nav-link text-secondary" (click)="activeItem($event);changeComponentToShow('roles')"
-            onclick="updateTooltip()"
-              href="javascript:;">
-              <strong data-toggle="tooltip" data-placement="top"
-              title="{{'tooltip.comingSoon'|translate}}">- {{'userMgt.sidebar_roleList'|translate}}</strong>
+              onclick="updateTooltip()" href="javascript:;">
+              <strong data-toggle="tooltip" data-placement="top" title="{{'tooltip.comingSoon'|translate}}">-
+                {{'userMgt.sidebar_roleList'|translate}}</strong>
             </a>
           </li>
         </ul>
         <div class="border-bottom pb-2 mb-2">
           <span class="text-secondary">
-            <h4><strong>Client management</strong></h4>
+            <h5><strong>Client management</strong></h5>
           </span>
         </div>
         <div class="border-bottom pb-2 mb-2">
           <span class="text-secondary">
-            <h4><strong>Product management</strong></h4>
+            <h5><strong>Product management</strong></h5>
           </span>
         </div>
       </div>
     </nav>
   </div>
   <div class="col-10" id="user_layout">
-    <div *ngIf="componentToShow=='users'">
-      <div class="row">
+    <div id="main_div" style="overflow: auto;height: 600px;">
+      <div *ngIf="componentToShow=='users'">
+        <div class="row">
 
-        <div class="float-left col-9">
-          <br>
-          <app-search></app-search>
-          <br>
-        </div>
-
-        <div class="col-3 mb-1">
-          <br>
-          <div class="float-right">
-            <span data-toggle="tooltip" data-container=".div-user-mgt" data-placement="top"
-              title="{{'tooltip.comingSoon'|translate}}">
-              <button type="button" class="btn btn-primary btn-sm">{{'userMgt.save'|translate}}</button></span>&nbsp;
-            <button (click)="add();resetSubmitFlag()" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-              data-target="#userPageModal">{{'userMgt.createUser'|translate}}</button>
+          <div class="float-left col-9">
+            <br>
+            <app-search></app-search>
+            <br>
           </div>
-          <br>
+
+          <div class="col-3 mb-1">
+            <br>
+            <div class="float-right">
+              <span data-toggle="tooltip" data-container=".div-user-mgt" data-placement="top"
+                title="{{'tooltip.comingSoon'|translate}}">
+                <button type="button" class="btn btn-primary btn-sm">{{'userMgt.save'|translate}}</button></span>&nbsp;
+              <button (click)="add();resetSubmitFlag()" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                data-target="#userPageModal">{{'userMgt.createUser'|translate}}</button>
+            </div>
+            <br>
+          </div>
+
         </div>
 
-      </div>
-
-      <div class="row">
-        <div class="col-12 pl-0">
-          <div class="mr-3 ml-0">
-            <table class="table table-striped table-sm ml-3 bg-white">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">
-                    {{'userMgt.list_name'|translate}}
-                  </th>
-                  <th scope="col">
-                    {{'userMgt.list_username'|translate}}
-                  </th>
-                  <th scope="col">{{'userMgt.list_email'|translate}}&nbsp;
-                    <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
-                      title="{{'userMgt.list_editableInfo'|translate}}">
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle btn-link"
-                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                        <path
-                          d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
-                        <circle cx="8" cy="4.5" r="1" />
-                      </svg>
-                    </span>
-                  </th>
-                  <th scope="col">
-                    {{'userMgt.list_website'|translate}}&nbsp;
-                    <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
-                      title="{{'userMgt.list_editableInfo'|translate}}">
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle btn-link"
-                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                        <path
-                          d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
-                        <circle cx="8" cy="4.5" r="1" />
-                      </svg>
-                    </span>
-                  </th>
-                  <th scope="col">{{'userMgt.list_city'|translate}}</th>
-                  <th scope="col">
-                    {{'userMgt.list_company'|translate}}
-                  </th>
-                  <th scope="col" class="pl-3" style="width: 140px;">{{'userMgt.list_op'|translate}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let user of users$ | async | filter:search; trackBy: trackByUserId;let i = index;">
-                  <th scope="row">
-                    {{i+1}}
-                  </th>
-                  <td>
-                    {{user.name}}
-                  </td>
-                  <td>
-                    {{user.username}}
-                  </td>
-                  <td contenteditable (keyup)="dataChanged(user.id,'email',$event);"
-                    [ngClass]="{'text-warning':isDataModified(user.id,'email')}">
-                    {{user.email}}
-                  </td>
-                  <td contenteditable (keyup)="dataChanged(user.id,'website',$event);"
-                    [ngClass]="{'text-warning':isDataModified(user.id,'website')}">
-                    {{user.website}}
-                  </td>
-                  <td>
-                    {{user.address?.city}}
-                  </td>
-                  <td>
-                    {{user.company?.name}}
-                  </td>
-                  <td>
-
-                    <button class="btn btn-link" data-toggle="modal" data-target="#userPageModal"
-                      (click)="showUserDetail(user.id)">
+        <div class="row">
+          <div class="col-12 pl-0">
+            <div class="mr-3 ml-0">
+              <table class="table table-striped table-sm ml-3 bg-white">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">
+                      {{'userMgt.list_name'|translate}}
+                    </th>
+                    <th scope="col">
+                      {{'userMgt.list_username'|translate}}
+                    </th>
+                    <th scope="col">{{'userMgt.list_email'|translate}}&nbsp;
                       <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
-                        title="{{'userMgt.list_op_consult'|translate}}">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-text"
+                        title="{{'userMgt.list_editableInfo'|translate}}">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle btn-link"
                           fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
-                          <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z" />
                           <path fill-rule="evenodd"
-                            d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-                        </svg></span>
-                    </button>
-
-                    <button class="btn btn-link" data-toggle="modal" data-target="#userPageModal"
-                      (click)="resetSubmitFlag();modifyUserInfo(user.id);" [disabled]="user.status==0">
-                      <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
-                        title="{{'userMgt.list_op_modify'|translate}}">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-font"
-                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                           <path
-                            d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
-                          <path
-                            d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3zm1.443 3H5.057L5 8h.5c.18-1.096.356-1.192 1.694-1.235l.293-.01v5.09c0 .47-.1.582-.898.655v.5H9.41v-.5c-.803-.073-.903-.184-.903-.654V6.755l.298.01c1.338.043 1.514.14 1.694 1.235h.5l-.057-2z" />
+                            d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                          <circle cx="8" cy="4.5" r="1" />
                         </svg>
                       </span>
-                    </button>
-                    <button (click)="toDelete(i);" class="btn btn-link" data-toggle="modal"
-                      data-target="#deleteConfirmation"  [disabled]="user.status==0">
+                    </th>
+                    <th scope="col">
+                      {{'userMgt.list_website'|translate}}&nbsp;
                       <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
-                        title="{{'userMgt.list_op_delete'|translate}}">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-excel"
+                        title="{{'userMgt.list_editableInfo'|translate}}">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle btn-link"
                           fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
-                          <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z" />
                           <path fill-rule="evenodd"
-                            d="M5.18 6.616a.5.5 0 0 1 .704.064L8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 0 1 .064-.704z" />
+                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                          <path
+                            d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                          <circle cx="8" cy="4.5" r="1" />
                         </svg>
                       </span>
-                    </button>
+                    </th>
+                    <th scope="col">{{'userMgt.list_city'|translate}}</th>
+                    <th scope="col">
+                      {{'userMgt.list_company'|translate}}
+                    </th>
+                    <th scope="col" class="pl-3" style="width: 140px;">{{'userMgt.list_op'|translate}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users$ | async | filter:search; trackBy: trackByUserId;let i = index;">
+                    <th scope="row">
+                      {{i+1}}
+                    </th>
+                    <td>
+                      {{user.name}}
+                    </td>
+                    <td>
+                      {{user.username}}
+                    </td>
+                    <td contenteditable (keyup)="dataChanged(user.id,'email',$event);"
+                      [ngClass]="{'text-warning':isDataModified(user.id,'email')}">
+                      {{user.email}}
+                    </td>
+                    <td contenteditable (keyup)="dataChanged(user.id,'website',$event);"
+                      [ngClass]="{'text-warning':isDataModified(user.id,'website')}">
+                      {{user.website}}
+                    </td>
+                    <td>
+                      {{user.address?.city}}
+                    </td>
+                    <td>
+                      {{user.company?.name}}
+                    </td>
+                    <td>
 
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                      <button class="btn btn-link" data-toggle="modal" data-target="#userPageModal"
+                        (click)="showUserDetail(user.id)">
+                        <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
+                          title="{{'userMgt.list_op_consult'|translate}}">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-text"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
+                            <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z" />
+                            <path fill-rule="evenodd"
+                              d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                          </svg></span>
+                      </button>
+
+                      <button class="btn btn-link" data-toggle="modal" data-target="#userPageModal"
+                        (click)="resetSubmitFlag();modifyUserInfo(user.id);" [disabled]="user.status==0">
+                        <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
+                          title="{{'userMgt.list_op_modify'|translate}}">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-font"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
+                            <path
+                              d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3zm1.443 3H5.057L5 8h.5c.18-1.096.356-1.192 1.694-1.235l.293-.01v5.09c0 .47-.1.582-.898.655v.5H9.41v-.5c-.803-.073-.903-.184-.903-.654V6.755l.298.01c1.338.043 1.514.14 1.694 1.235h.5l-.057-2z" />
+                          </svg>
+                        </span>
+                      </button>
+                      <button (click)="toDelete(i);" class="btn btn-link" data-toggle="modal"
+                        data-target="#deleteConfirmation" [disabled]="user.status==0">
+                        <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
+                          title="{{'userMgt.list_op_delete'|translate}}">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-excel"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
+                            <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z" />
+                            <path fill-rule="evenodd"
+                              d="M5.18 6.616a.5.5 0 0 1 .704.064L8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 0 1 .064-.704z" />
+                          </svg>
+                        </span>
+                      </button>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
+
+      <app-userMgt-roles *ngIf="componentToShow=='roles'"></app-userMgt-roles>
+      <app-userMgt-groups *ngIf="componentToShow=='groups'"></app-userMgt-groups>
     </div>
-
-    <app-userMgt-roles *ngIf="componentToShow=='roles'"></app-userMgt-roles>
-    <app-userMgt-groups *ngIf="componentToShow=='groups'"></app-userMgt-groups>
   </div>
 </div>
 
