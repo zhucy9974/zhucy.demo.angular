@@ -16,8 +16,6 @@ export class UserPageComponent implements OnInit {
   @Input() consultOnly: boolean;
   @Input() userToShow: User;
 
-  @Output() onUserCreated: EventEmitter<Observable<User>> = new EventEmitter<Observable<User>>();
-
   submitted: boolean = false;
 
   userPageForm: FormGroup;
@@ -50,26 +48,26 @@ export class UserPageComponent implements OnInit {
       email: this.propEmail
     });
 
-    this.sharedService.getInputValueChanged().subscribe((data:any) => {
-      const key:string = data['key'];
-      const keys:string[] = key.split('.');
-      const value:string = data['value'];
-      if(keys.length==1){
-        this.userToShow[key]=value;
+    this.sharedService.getInputValueChanged().subscribe((data: any) => {
+      const key: string = data['key'];
+      const keys: string[] = key.split('.');
+      const value: string = data['value'];
+      if (keys.length == 1) {
+        this.userToShow[key] = value;
       }
-      if(keys.length==2){
-        this.userToShow[keys[0]][keys[1]]=value;
+      if (keys.length == 2) {
+        this.userToShow[keys[0]][keys[1]] = value;
       }
-      if(keys.length==3){
-        this.userToShow[keys[0]][keys[1]][keys[2]]=value;
+      if (keys.length == 3) {
+        this.userToShow[keys[0]][keys[1]][keys[2]] = value;
       }
-      if(keys.length==4){
-        this.userToShow[keys[0]][keys[1]][keys[2]][keys[3]]=value;
+      if (keys.length == 4) {
+        this.userToShow[keys[0]][keys[1]][keys[2]][keys[3]] = value;
       }
-      
+
     });
 
-    this.userService.getSubmitFlag().subscribe((data:boolean)=> {
+    this.userService.getSubmitFlag().subscribe((data: boolean) => {
       this.submitted = data;
     });
 
@@ -77,19 +75,28 @@ export class UserPageComponent implements OnInit {
 
   saveForm() {
     this.submitted = true;
-    if(this.userPageForm.valid){
+    if (this.userPageForm.valid) {
       $('#btn_user_page_save').click();
     }
   }
 
   createUser() {
-    const users$ = this.userService.createUser(this.userToShow);
-    this.onUserCreated.emit(users$);
+    this.userService.createUser(this.userToShow).subscribe(data => {
+      console.log("POST call successful value returned in body",
+        data);
+      this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The user is created successfully.' });
+      $("#btn_add2").click();
+      this.userService.sendCreateOrUpdateUserRes(true);
+    }
+    );
   }
 
   updateUser() {
-    const users$ = this.userService.updateUser(this.userToShow);
-    this.onUserCreated.emit(users$);
+    this.userService.updateUser(this.userToShow).subscribe(res=>{
+      this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The user is modified successfully.' });
+      $("#btn_add2").click();
+      this.userService.sendCreateOrUpdateUserRes(true);
+    });
   }
 
 }

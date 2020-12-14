@@ -24,6 +24,7 @@ export class UserService {
 
   private sendSubmitted = new Subject<boolean>();
   private criterias = new Subject<UserSearchCriterias>();
+  private createOrUpdateUserRes = new Subject<boolean>();
 
   users: User[];
   usersModifed: User[] = [];
@@ -58,42 +59,20 @@ export class UserService {
       this.translateService.instant('userMgt.userPage_co_bs') + ' : ' + (user.company.bs == null ? '' : user.company.bs);
   }
 
-  delete(index: number) {
-    this.http.post(this.urlDeleteUser, { id: this.users[index].id }, { responseType: 'text' }).subscribe((val: string) => {
-      console.log("POST call successful value returned in body",
-        val);
-      this.users.splice(index, 1);
-      this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The user is deleted successfully.' });
-      $("#btn_delete2").click();
-    });
+  delete(index: number):Observable<any> {
+    return this.http.post(this.urlDeleteUser, { id: this.users[index].id }, { responseType: 'text' });
 
   }
 
   createUser(newUser: User): Observable<User> {
-    const newIndex = this.users.length + 1;
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post<User>(this.urlCreateUser, JSON.stringify(newUser), { headers: headers }).pipe(
-      tap((data: User) => {
-        console.log("POST call successful value returned in body",
-          data);
-        this.transfererUser(data);
-        this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The user is created successfully.' });
-        $("#btn_add2").click();
-      })
-    );
+    return this.http.post<User>(this.urlCreateUser, JSON.stringify(newUser), { headers: headers });
   }
 
 
   updateUser(user: User): Observable<User> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post<User>(this.urlUpdateUser, JSON.stringify(user), { headers: headers }).pipe(
-      tap((data: User) => {
-        this.transfererUser(data);
-        this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The user is modified successfully.' });
-        $("#btn_add2").click();
-      })
-
-    );
+    return this.http.post<User>(this.urlUpdateUser, JSON.stringify(user), { headers: headers });
   }
 
 
@@ -114,5 +93,13 @@ export class UserService {
   }
   getCriterias(): Observable<UserSearchCriterias> {
     return this.criterias.asObservable();
+  }
+
+  sendCreateOrUpdateUserRes(res:boolean){
+    this.createOrUpdateUserRes.next(res);
+  }
+
+  getCreateOrUpdateUserRes():Observable<any>{
+    return this.createOrUpdateUserRes.asObservable();
   }
 }

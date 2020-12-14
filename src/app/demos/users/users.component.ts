@@ -17,7 +17,7 @@ import { UserSearchCriterias } from './search/user-search-criterias.model';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit{
+export class UsersComponent implements OnInit {
 
   componentToShow: string = 'users';
 
@@ -53,6 +53,10 @@ export class UsersComponent implements OnInit{
       this.loadUserListPage(this.userService.get$(1, data));
     }
     );
+    this.userService.getCreateOrUpdateUserRes().subscribe(res => {
+      if (res)
+        this.loadUserListPage(this.userService.get$(this.pageNav.currentPage, this.criterias));
+    });
   }
 
   private loadUserListPage(page: Observable<Page>) {
@@ -91,7 +95,13 @@ export class UsersComponent implements OnInit{
   }
 
   delete() {
-    this.userService.delete(this.userIndexToDelete);
+    this.userService.delete(this.userIndexToDelete).subscribe((val: string) => {
+      console.log("POST call successful value returned in body",
+        val);
+      this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The user is deleted successfully.' });
+      this.loadUserListPage(this.userService.get$(this.pageNav.currentPage, this.criterias));
+      $("#btn_delete2").click();
+    });
   }
 
   dataChanged(id: number, attr: string, event) {
@@ -180,7 +190,7 @@ export class UsersComponent implements OnInit{
   }
 
   getUsers(event) {
-    this.loadUserListPage(this.userService.get$( parseInt(event.target.innerText),this.criterias));
+    this.loadUserListPage(this.userService.get$(parseInt(event.target.innerText), this.criterias));
   }
 
   getPageLot(forNext: boolean) {
