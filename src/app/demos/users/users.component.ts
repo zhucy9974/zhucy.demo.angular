@@ -88,6 +88,7 @@ export class UsersComponent implements OnInit, OnChanges {
     const hMainDiv = document.documentElement.clientHeight;
     const hNavbar = parseInt($('#navbar_div').css('height'));
     $('#users_main_div').css('height', hMainDiv - hNavbar);
+    $('#list_div').css('min-height', hMainDiv - hNavbar - 129);
   }
 
   ngOnChanges(v1) {
