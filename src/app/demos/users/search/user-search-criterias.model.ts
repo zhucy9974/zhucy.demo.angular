@@ -5,4 +5,5 @@ export class UserSearchCriterias{
     email: string;
     city: string;
     companyName: string;
+    orderBy: string = 'username';
 }

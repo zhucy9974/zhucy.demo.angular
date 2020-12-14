@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
   users: User[];
 
   pageNav: Page;
-  criterias: UserSearchCriterias;
+  criterias: UserSearchCriterias = new UserSearchCriterias();
 
   users$: Observable<User[]> = of([]);
   userToShow: User = null;
@@ -47,7 +47,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadUserListPage(this.userService.get$(1, null));
+    this.loadUserListPage(this.userService.get$(1, this.criterias));
     this.userService.getCriterias().subscribe(data => {
       this.criterias = data;
       this.loadUserListPage(this.userService.get$(1, data));

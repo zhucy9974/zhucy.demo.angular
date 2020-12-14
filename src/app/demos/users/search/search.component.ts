@@ -24,6 +24,13 @@ import { UserService } from '../user.service';
 })
 export class SearchComponent implements OnInit {
 
+  fieldsForOrder = {
+    username: 'userMgt.search_username',
+    firstName: 'userMgt.search_firstName',
+    city: 'userMgt.list_city',
+    companyName: 'userMgt.list_company'
+  };
+
   needMoreCriteria: boolean = false;
   criterias: UserSearchCriterias = new UserSearchCriterias();
 
@@ -32,11 +39,11 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitSearch(){
+  submitSearch() {
     this.userService.sendCriterias(this.criterias);
   }
 
-  clearCriterias(){
+  clearCriterias() {
     this.criterias = new UserSearchCriterias();
     this.userService.sendCriterias(this.criterias);
   }

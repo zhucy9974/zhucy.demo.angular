@@ -148,7 +148,7 @@
 
                       <button class="btn btn-link" data-toggle="modal" data-target="#userPageModal"
                         (click)="showUserDetail(user.id)">
-                        <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
+                        <span data-toggle="tooltip" data-placement="bottom" data-container=".div-user-mgt"
                           title="{{'userMgt.list_op_consult'|translate}}">
                           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-text"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -162,7 +162,7 @@
 
                       <button class="btn btn-link" data-toggle="modal" data-target="#userPageModal"
                         (click)="resetSubmitFlag();modifyUserInfo(user.id);" [disabled]="user.status==0">
-                        <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
+                        <span data-toggle="tooltip" data-placement="bottom" data-container=".div-user-mgt"
                           title="{{'userMgt.list_op_modify'|translate}}">
                           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-font"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -175,7 +175,7 @@
                       </button>
                       <button (click)="toDelete(i);" class="btn btn-link" data-toggle="modal"
                         data-target="#deleteConfirmation" [disabled]="user.status==0">
-                        <span data-toggle="tooltip" data-placement="top" data-container=".div-user-mgt"
+                        <span data-toggle="tooltip" data-placement="bottom" data-container=".div-user-mgt"
                           title="{{'userMgt.list_op_delete'|translate}}">
                           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-excel"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">

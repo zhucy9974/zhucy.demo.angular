@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilterPipe } from './filter.pipe';
-import {HttpClientModule, HttpClient} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { JsonToMapPipe } from './tools/json-to-map.pipe';
+import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { RouterModule } from "@angular/router";
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
 /*
 export function createTranslateLoader(http:HttpClient){
@@ -17,23 +17,23 @@ export function httpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [FilterPipe],
+  declarations: [FilterPipe, JsonToMapPipe],
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
     TranslateModule.forRoot({
       loader: {
-        provide:TranslateLoader,
+        provide: TranslateLoader,
         useFactory: httpLoaderFactory,
         deps: [HttpClient]
       }
     })
   ],
-  exports: [FilterPipe,
-  RouterModule,
-  TranslateModule]
+  exports: [FilterPipe, JsonToMapPipe,
+    RouterModule,
+    TranslateModule]
 })
-export class SharedModule { 
-  
+export class SharedModule {
+
 }
