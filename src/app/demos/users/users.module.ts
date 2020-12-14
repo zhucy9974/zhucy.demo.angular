@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { UserPageModule } from './user-page/user-page.module';
 import { GroupsModule } from '../groups/groups.module';
 import { RolesModule } from '../roles/roles.module';
-import { UnderConstructionModule } from 'src/app/shared/under-construction/under-construction.module';
 
 @NgModule({
     declarations: [UsersComponent],

@@ -3,15 +3,12 @@ import { UserService } from "./user.service";
 import { User } from './user.model';
 import { Observable, of, Subject, Subscription } from "rxjs";
 import { SharedService } from '../../shared/shared.service';
-import { map, tap } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import * as $ from 'jquery';
 import { CookieService } from 'ngx-cookie-service';
-import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { Page } from 'src/app/shared/page.model';
-import { PAGE_SIZE, PAGE_NAV_SIZE } from '../../app.constants';
 import { UserSearchCriterias } from './search/user-search-criterias.model';
 
 
@@ -20,16 +17,10 @@ import { UserSearchCriterias } from './search/user-search-criterias.model';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit, OnChanges {
-  @ViewChild('modalDeleted')
-  public modalDeleted: TemplateRef<any>;
-
-  @Input() criteria: string;
-  @Input() search: string;
+export class UsersComponent implements OnInit{
 
   componentToShow: string = 'users';
 
-  //façon async
   users: User[];
 
   pageNav: Page;
@@ -46,30 +37,15 @@ export class UsersComponent implements OnInit, OnChanges {
 
   constructor(private userService: UserService,
     private sharedService: SharedService,
-    private modalService: NgbModal,
-    private cookieService: CookieService,
     private router: Router) {
 
     const username: string = sessionStorage.getItem('username');
     if (username === null) {
-      console.info(username);
       this.sharedService.sendShowMsgDiv({ msgType: 'info', msg: 'Please login for going to the page which you want.' });
       this.router.navigate(['login']);
     }
   }
 
-  /* façon async et await
-  async ngOnInit() {
-    this.users = await this.userService.get();
-  }*/
-
-  //façon observable1
-  /*
-  ngOnInit():void {
-    this.userService.get$().subscribe(res => this.users=res);
-  }*/
-
-  //façon observable2. l'avantage, il va desuscript automatiquement
   ngOnInit(): void {
     this.loadUserListPage(this.userService.get$(1, null));
     this.userService.getCriterias().subscribe(data => {
@@ -77,11 +53,6 @@ export class UsersComponent implements OnInit, OnChanges {
       this.loadUserListPage(this.userService.get$(1, data));
     }
     );
-
-    //ancienne façon de recherche (rapide, mais c'est )
-    this.sharedService.getMessage().subscribe(value => {
-      this.search = value;
-    });
   }
 
   private loadUserListPage(page: Observable<Page>) {
@@ -96,11 +67,6 @@ export class UsersComponent implements OnInit, OnChanges {
     const hMainDiv = document.documentElement.clientHeight;
     const hNavbar = parseInt($('#navbar_div').css('height'));
     $('#users_main_div').css('height', hMainDiv - hNavbar);
-    //$('#list_div').css('min-height', hMainDiv - hNavbar - 129);
-  }
-
-  ngOnChanges(v1) {
-    //console.info(message:)
   }
 
   trackByUserId(user: any): string {
@@ -116,6 +82,7 @@ export class UsersComponent implements OnInit, OnChanges {
   async userCreated(data: Observable<User>) {
     const user: User = await data.toPromise();
     const users: User[] = await this.users$.toPromise();
+    users.push(user);
     this.users$ = of(users);
   }
 
@@ -213,7 +180,6 @@ export class UsersComponent implements OnInit, OnChanges {
   }
 
   getUsers(event) {
-    console.info(this.criterias);
     this.loadUserListPage(this.userService.get$( parseInt(event.target.innerText),this.criterias));
   }
 

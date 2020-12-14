@@ -17,28 +17,18 @@ import { UserSearchCriterias } from './search/user-search-criterias.model';
 })
 export class UserService {
 
-  users: User[];
-  usersModifed: User[] = [];
-
-  private sendSubmitted = new Subject<boolean>();
-  private criterias = new Subject<UserSearchCriterias>();
-
-
-
   url = BACKEND_SERVER_BASE_URL +'user/get';
   urlCreateUser = BACKEND_SERVER_BASE_URL +'user/post';
   urlUpdateUser = BACKEND_SERVER_BASE_URL +'user/patch';
   urlDeleteUser = BACKEND_SERVER_BASE_URL +'user/delete';
-  //url = 'https://jsonplaceholder.typicode.com/users';
-  private userLogin: User;
+
+  private sendSubmitted = new Subject<boolean>();
+  private criterias = new Subject<UserSearchCriterias>();
+
+  users: User[];
+  usersModifed: User[] = [];
 
   constructor(private http: HttpClient, private translateService: TranslateService, private sharedService: SharedService) { }
-
-  async get(): Promise<User[]> {
-    const res = await this.http.get<User[]>(this.url).toPromise();
-    this.users = await res;
-    return res;
-  }
 
   get$(page: number, criterias:UserSearchCriterias): Observable<Page> {
     return this.transfererUserListPage(
@@ -54,17 +44,6 @@ export class UserService {
       this.users = page.elements;
       return page;
     }));
-  }
-
-  transfererUserList(userList$: Observable<User[]>) {
-    return userList$.pipe(
-      map(users => {
-        users.map((user: User) => {
-          this.transfererUser(user);
-        });
-        return users;
-      })
-    );
   }
 
   transfererUser(user: User) {
@@ -90,33 +69,6 @@ export class UserService {
 
   }
 
-  add1(): any[] {
-    const newIndex = this.users.length + 1;
-    //pas bien
-    //this.users.push({name: 'Test${newIndex}', age: 15, id: newIndex});
-
-    //bien, commenté, car le type de la liste user est changé
-    //this.users = [...this.users, {name: 'Test${newIndex}', email: 15, id: newIndex}];
-    return this.users;
-  }
-
-  add(): Observable<User[]> {
-    const newIndex = this.users.length + 1;
-    //pas bien
-    //this.users.push({name: 'Test${newIndex}', age: 15, id: newIndex});
-
-    //bien
-    //this.users = [...this.users, {name: 'Test${newIndex}', email: 15, id: newIndex}];
-
-    const user = new User();
-    user.id = newIndex;
-    //user.name = 'Chongyang';
-    user.email = 'zhucy@gmail.com';
-    user.address = { street: 'Happy', zipcode: '74000', city: 'Annecy' };
-    this.users = [...this.users, user];
-    return this.transfererUserList(of(this.users));
-  }
-
   createUser(newUser: User): Observable<User> {
     const newIndex = this.users.length + 1;
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
@@ -128,7 +80,6 @@ export class UserService {
         this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The user is created successfully.' });
         $("#btn_add2").click();
       })
-      //catchError()
     );
   }
 
@@ -141,48 +92,14 @@ export class UserService {
         this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The user is modified successfully.' });
         $("#btn_add2").click();
       })
-      //catchError()
+
     );
   }
 
-
-  /*
-  checkEmail(input: FormControl) {
-    return this.http.get<User>(this.url).pipe(
-      map(user => {
-        return user.email == input.value ? { emailNotExists: true } : null;
-      })
-    );
-  }*/
-
-  /*
-  getLoginUser() {
-    return this.http.get<User>(this.url2 + '23').pipe(
-      map(user => {
-        return user;
-      })
-    );
-  }*/
 
   getUsers() {
     return this.users;
   }
-  /*
-    loadUserByEmail2(email: string):Observable<User>{
-      const users = this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
-      users.forEach
-      var user1:User = null;
-      users.forEach(user => {
-      
-        if(email==user.email){
-          console.info('test');
-          user1 =  user;
-        }
-      });
-  
-      return user1;
-      
-    }*/
 
   resetSubmitFlag() {
     this.sendSubmitted.next(false);
@@ -191,7 +108,6 @@ export class UserService {
   getSubmitFlag(): Observable<boolean> {
     return this.sendSubmitted.asObservable();
   }
-
 
   sendCriterias(criterias: UserSearchCriterias){
     this.criterias.next(criterias);
