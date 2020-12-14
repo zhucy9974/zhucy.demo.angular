@@ -9,7 +9,8 @@ import * as $ from 'jquery';
 import { TranslateService } from '@ngx-translate/core';
 import { SharedService } from '../../shared/shared.service';
 import { Page } from 'src/app/shared/page.model';
-import { PAGE_SIZE, PAGE_NAV_SIZE } from '../../app.constants';
+import { PAGE_SIZE, PAGE_NAV_SIZE, BACKEND_SERVER_BASE_URL } from '../../app.constants';
+import { UserSearchCriterias } from './search/user-search-criterias.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,13 +21,14 @@ export class UserService {
   usersModifed: User[] = [];
 
   private sendSubmitted = new Subject<boolean>();
+  private criterias = new Subject<UserSearchCriterias>();
 
-  url = 'http://213.44.249.81:8080/demo/user/getUsers';
-  url2 = 'http://213.44.249.81:8080/demo/user/findById?id=';
 
-  urlCreateUser = 'http://213.44.249.81:8080/demo/user/createUser';
-  urlUpdateUser = 'http://213.44.249.81:8080/demo/user/patch';
-  urlDeleteUser = 'http://213.44.249.81:8080/demo/user/delete';
+
+  url = BACKEND_SERVER_BASE_URL +'user/get';
+  urlCreateUser = BACKEND_SERVER_BASE_URL +'user/post';
+  urlUpdateUser = BACKEND_SERVER_BASE_URL +'user/patch';
+  urlDeleteUser = BACKEND_SERVER_BASE_URL +'user/delete';
   //url = 'https://jsonplaceholder.typicode.com/users';
   private userLogin: User;
 
@@ -38,10 +40,10 @@ export class UserService {
     return res;
   }
 
-  get$(page: number): Observable<Page> {
+  get$(page: number, criterias:UserSearchCriterias): Observable<Page> {
     return this.transfererUserListPage(
       this.http.post<Page>(
-        this.url, { page: page, pageSize: PAGE_SIZE }
+        this.url, { page: page, pageSize: PAGE_SIZE, criterias:criterias }
       )
     );
   }
@@ -153,13 +155,14 @@ export class UserService {
     );
   }*/
 
+  /*
   getLoginUser() {
     return this.http.get<User>(this.url2 + '23').pipe(
       map(user => {
         return user;
       })
     );
-  }
+  }*/
 
   getUsers() {
     return this.users;
@@ -187,5 +190,13 @@ export class UserService {
 
   getSubmitFlag(): Observable<boolean> {
     return this.sendSubmitted.asObservable();
+  }
+
+
+  sendCriterias(criterias: UserSearchCriterias){
+    this.criterias.next(criterias);
+  }
+  getCriterias(): Observable<UserSearchCriterias> {
+    return this.criterias.asObservable();
   }
 }

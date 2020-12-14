@@ -12,6 +12,7 @@ import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { Page } from 'src/app/shared/page.model';
 import { PAGE_SIZE, PAGE_NAV_SIZE } from '../../app.constants';
+import { UserSearchCriterias } from './search/user-search-criterias.model';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class UsersComponent implements OnInit, OnChanges {
   users: User[];
 
   pageNav: Page;
+  criterias: UserSearchCriterias;
 
   users$: Observable<User[]> = of([]);
   userToShow: User = null;
@@ -69,8 +71,14 @@ export class UsersComponent implements OnInit, OnChanges {
 
   //façon observable2. l'avantage, il va desuscript automatiquement
   ngOnInit(): void {
-    this.loadUserListPage(this.userService.get$(1));
+    this.loadUserListPage(this.userService.get$(1, null));
+    this.userService.getCriterias().subscribe(data => {
+      this.criterias = data;
+      this.loadUserListPage(this.userService.get$(1, data));
+    }
+    );
 
+    //ancienne façon de recherche (rapide, mais c'est )
     this.sharedService.getMessage().subscribe(value => {
       this.search = value;
     });
@@ -88,7 +96,7 @@ export class UsersComponent implements OnInit, OnChanges {
     const hMainDiv = document.documentElement.clientHeight;
     const hNavbar = parseInt($('#navbar_div').css('height'));
     $('#users_main_div').css('height', hMainDiv - hNavbar);
-    $('#list_div').css('min-height', hMainDiv - hNavbar - 129);
+    //$('#list_div').css('min-height', hMainDiv - hNavbar - 129);
   }
 
   ngOnChanges(v1) {
@@ -205,11 +213,12 @@ export class UsersComponent implements OnInit, OnChanges {
   }
 
   getUsers(event) {
-    this.loadUserListPage(this.userService.get$(event.target.innerText));
+    console.info(this.criterias);
+    this.loadUserListPage(this.userService.get$( parseInt(event.target.innerText),this.criterias));
   }
 
   getPageLot(forNext: boolean) {
-    this.loadUserListPage(this.userService.get$(this.sharedService.getPageNumByChangePageLot(this.pageNav, forNext)));
+    this.loadUserListPage(this.userService.get$(this.sharedService.getPageNumByChangePageLot(this.pageNav, forNext), this.criterias));
   }
 
 }

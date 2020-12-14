@@ -2,12 +2,12 @@
 
 <div [@visibility]="!needMoreCriteria"  id="user_search" class="input-group input-group-sm">
     <div class="input-group-prepend">
-        <span class="input-group-text">{{'userMgt.search_name'|translate}}</span>
+        <span class="input-group-text">{{'userMgt.list_username'|translate}}</span>
     </div>
 
-    <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+    <input [(ngModel)]="criterias.username" (keyup)="($event.which===13)?submitSearch():0" class="form-control">
     <div class="input-group-append">
-        <button (click)="sendCriteria()" class="btn btn-secondary btn-sm" data-toggle="tooltip"  data-container=".div-user-mgt" 
+        <button (click)="submitSearch()" class="btn btn-secondary btn-sm" data-toggle="tooltip"  data-container=".div-user-mgt" 
             data-placement="top" title="{{'userMgt.search_search'|translate}}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
@@ -17,7 +17,7 @@
                     d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
             </svg>
         </button>&nbsp;
-        <button (click)="criteria='';sendCriteria();" class="btn btn-secondary btn-sm" data-toggle="tooltip"  data-container=".div-user-mgt" 
+        <button (click)="clearCriterias()" class="btn btn-secondary btn-sm" data-toggle="tooltip"  data-container=".div-user-mgt" 
             data-placement="top" title="{{'userMgt.search_clear'|translate}}"><svg width="1em" height="1em"
                 viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -48,13 +48,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">{{'userMgt.search_name'|translate}}</span>
                 </div>
-                <input [(ngModel)]="criteria" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+                <input [(ngModel)]="criterias.firstName" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
             </div>
             <div class="col-sm-4 pr-0 pl-1 input-group input-group-sm">
                 <div class="input-group-prepend">
                     <span class="input-group-text">{{'userMgt.list_username'|translate}}</span>
                 </div>
-                <input disabled="true" (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+                <input [(ngModel)]="criterias.username"  (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
             </div>
         </div>
         <div class="row mb-1">
@@ -62,25 +62,25 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">{{'userMgt.list_email'|translate}}</span>
                 </div>
-                <input  disabled="true"  (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+                <input  [(ngModel)]="criterias.email"   (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
             </div>
             <div class="col-sm-4 pr-0 pl-1 input-group input-group-sm">
                 <div class="input-group-prepend">
                     <span class="input-group-text">{{'userMgt.list_city'|translate}}</span>
                 </div>
-                <input  disabled="true"  (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+                <input  [(ngModel)]="criterias.city"   (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
             </div>
             <div class="col-sm-4 pr-0 pl-1 input-group input-group-sm">
                 <div class="input-group-prepend">
                     <span class="input-group-text">{{'userMgt.list_company'|translate}}</span>
                 </div>
-                <input  disabled="true"  (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
+                <input  [(ngModel)]="criterias.companyName"   (keyup)="($event.which===13)?sendCriteria():0" class="form-control">
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 pr-0">
                 <div class="float-right">
-                    <button (click)="sendCriteria()" class="btn btn-secondary btn-sm mr-1">
+                    <button (click)="submitSearch()" class="btn btn-secondary btn-sm mr-1">
                             {{'userMgt.search_search'|translate}}
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +90,7 @@
                                     d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
                             </svg>
                     </button>
-                    <button (click)="criteria='';sendCriteria();" class="btn btn-secondary btn-sm ">
+                    <button (click)="clearCriterias();" class="btn btn-secondary btn-sm ">
                             {{'userMgt.search_clear'|translate}}
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"
                                 xmlns="http://www.w3.org/2000/svg">

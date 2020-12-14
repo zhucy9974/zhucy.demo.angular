@@ -1,4 +1,4 @@
-export class UserSearch{
+export class UserSearchCriterias{
     firstName: string;
     lastName: string;
     username: string;
