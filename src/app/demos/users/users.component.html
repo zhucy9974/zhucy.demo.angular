@@ -10,29 +10,30 @@
           <span class="text-primary">
             <h5><strong>{{'userMgt.sidebar_title'|translate}}</strong></h5>
           </span>
+          <ul class="user-sider-bar nav flex-column">
+            <li class="nav-item nav-item-tochange">
+              <a class="nav-link text-primary pt-0 pb-0" (click)="activeItem($event);changeComponentToShow('users')"
+                onclick="updateTooltip()" href="javascript:;">
+                <strong>- {{'userMgt.sidebar_userList'|translate}}</strong>
+              </a>
+            </li>
+            <li class="nav-item nav-item-tochange">
+              <a class="nav-link text-secondary  pt-0 pb-0" (click)="activeItem($event);changeComponentToShow('groups')"
+                onclick="updateTooltip()" href="javascript:;">
+                <strong data-toggle="tooltip" data-placement="top" title="{{'tooltip.comingSoon'|translate}}">-
+                  {{'userMgt.sidebar_groupList'|translate}}</strong>
+              </a>
+            </li>
+            <li class="nav-item nav-item-tochange">
+              <a class="nav-link text-secondary  pt-0 pb-0" (click)="activeItem($event);changeComponentToShow('roles')"
+                onclick="updateTooltip()" href="javascript:;">
+                <strong data-toggle="tooltip" data-placement="top" title="{{'tooltip.comingSoon'|translate}}">-
+                  {{'userMgt.sidebar_roleList'|translate}}</strong>
+              </a>
+            </li>
+          </ul>
         </div>
-        <ul class="user-sider-bar nav flex-column mb-3">
-          <li class="nav-item nav-item-tochange">
-            <a class="nav-link text-primary" (click)="activeItem($event);changeComponentToShow('users')"
-              onclick="updateTooltip()" href="javascript:;">
-              <strong>- {{'userMgt.sidebar_userList'|translate}}</strong>
-            </a>
-          </li>
-          <li class="nav-item nav-item-tochange">
-            <a class="nav-link text-secondary" (click)="activeItem($event);changeComponentToShow('groups')"
-              onclick="updateTooltip()" href="javascript:;">
-              <strong data-toggle="tooltip" data-placement="top" title="{{'tooltip.comingSoon'|translate}}">-
-                {{'userMgt.sidebar_groupList'|translate}}</strong>
-            </a>
-          </li>
-          <li class="nav-item nav-item-tochange">
-            <a class="nav-link text-secondary" (click)="activeItem($event);changeComponentToShow('roles')"
-              onclick="updateTooltip()" href="javascript:;">
-              <strong data-toggle="tooltip" data-placement="top" title="{{'tooltip.comingSoon'|translate}}">-
-                {{'userMgt.sidebar_roleList'|translate}}</strong>
-            </a>
-          </li>
-        </ul>
+
         <div class="border-bottom pb-2 mb-2">
           <span class="text-secondary">
             <h5><strong>Client management</strong></h5>
@@ -49,7 +50,7 @@
   <div class="col-10 pl-0 pr-0" id="user_layout">
     <div id="users_main_div" style="overflow: auto;">
       <div *ngIf="componentToShow=='users'">
-        
+
         <div class="row mr-0 ml-0">
 
           <div class="float-left col-9">
@@ -192,16 +193,25 @@
                 </tbody>
               </table>
             </div>
+            <div class="float-right">
+              <ul class="pagination pagination-sm">
+                <li class="page-item" [ngClass]="{'disabled':!pageNav?.hasLastPageLot}"><a class="page-link" href="javascript:;" (click)="getPageLot(false)">Previous</a>
+                </li>
+                <li *ngFor="let i of pageNav?.pagesOfNav" class="page-item" [ngClass]="{'active':i == pageNav?.currentPage}">
+                  <a class="page-link" href="javascript:;" (click)="getUsers($event)">{{i}}</a>
+                </li>
+                <li class="page-item" [ngClass]="{'disabled':!pageNav?.hasNextPageLot}"><a class="page-link" href="javascript:;"
+                    (click)="getPageLot(true)">Next</a></li>
+              </ul>
+            </div>
           </div>
-          
-
         </div>
       </div>
 
-    
+
       <app-userMgt-roles *ngIf="componentToShow=='roles'"></app-userMgt-roles>
       <app-userMgt-groups *ngIf="componentToShow=='groups'"></app-userMgt-groups>
-      
+
     </div>
   </div>
 </div>

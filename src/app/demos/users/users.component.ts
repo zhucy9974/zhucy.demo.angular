@@ -10,6 +10,8 @@ import * as $ from 'jquery';
 import { CookieService } from 'ngx-cookie-service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { Page } from 'src/app/shared/page.model';
+import { PAGE_SIZE, PAGE_NAV_SIZE } from '../../app.constants';
 
 
 @Component({
@@ -28,6 +30,9 @@ export class UsersComponent implements OnInit, OnChanges {
 
   //façon async
   users: User[];
+
+  pageNav: Page;
+
   users$: Observable<User[]> = of([]);
   userToShow: User = null;
   consultOnly: boolean = false;
@@ -42,11 +47,11 @@ export class UsersComponent implements OnInit, OnChanges {
     private modalService: NgbModal,
     private cookieService: CookieService,
     private router: Router) {
-    
-    const username:string = sessionStorage.getItem('username');
+
+    const username: string = sessionStorage.getItem('username');
     if (username === null) {
       console.info(username);
-      this.sharedService.sendShowMsgDiv({msgType:'info',msg:'Please login for going to the page which you want.'});
+      this.sharedService.sendShowMsgDiv({ msgType: 'info', msg: 'Please login for going to the page which you want.' });
       this.router.navigate(['login']);
     }
   }
@@ -64,16 +69,25 @@ export class UsersComponent implements OnInit, OnChanges {
 
   //façon observable2. l'avantage, il va desuscript automatiquement
   ngOnInit(): void {
-    this.users$ = this.userService.get$();
+    this.loadUserListPage(this.userService.get$(1));
+
     this.sharedService.getMessage().subscribe(value => {
       this.search = value;
     });
   }
 
-  ngAfterViewChecked(){
+  private loadUserListPage(page: Observable<Page>) {
+    page.subscribe((page: Page) => {
+      this.users$ = of(page.elements);
+      this.pageNav = this.sharedService.loadPageNavInfo(page);
+
+    });
+  }
+
+  ngAfterViewChecked() {
     const hMainDiv = document.documentElement.clientHeight;
     const hNavbar = parseInt($('#navbar_div').css('height'));
-    $('#users_main_div').css('height',hMainDiv-hNavbar);
+    $('#users_main_div').css('height', hMainDiv - hNavbar);
   }
 
   ngOnChanges(v1) {
@@ -189,5 +203,12 @@ export class UsersComponent implements OnInit, OnChanges {
     this.componentToShow = val;
   }
 
+  getUsers(event) {
+    this.loadUserListPage(this.userService.get$(event.target.innerText));
+  }
+
+  getPageLot(forNext: boolean) {
+    this.loadUserListPage(this.userService.get$(this.sharedService.getPageNumByChangePageLot(this.pageNav, forNext)));
+  }
 
 }
