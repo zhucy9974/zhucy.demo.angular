@@ -10,7 +10,7 @@ import {
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-search',
+  selector: 'app-demo-user-search',
   templateUrl: './search.component.html',
   animations: [
     trigger('visibility', [

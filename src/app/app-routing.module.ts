@@ -6,6 +6,7 @@ import { Page404Component } from "./page404/page404.component";
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutWebsiteComponent } from './about-website/about-website.component';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { DemosComponent } from './demos/demos.component';
 
 
 const routes: Routes = [
@@ -14,8 +15,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'users',
-    component: UsersComponent
+    path: 'demos',
+    component: DemosComponent
   }, {
     path: '',
     component: WelcomeComponent

@@ -3,23 +3,18 @@ import { UserService } from "./user.service";
 import { User } from './user.model';
 import { Observable, of, Subject, Subscription } from "rxjs";
 import { SharedService } from '../../shared/shared.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 import * as $ from 'jquery';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { Page } from 'src/app/shared/page.model';
 import { UserSearchCriterias } from './search/user-search-criterias.model';
 
 
 @Component({
-  selector: 'app-users',
+  selector: 'app-demo-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
-  componentToShow: string = 'users';
 
   users: User[];
 
@@ -38,12 +33,7 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService,
     private sharedService: SharedService,
     private router: Router) {
-
-    const username: string = sessionStorage.getItem('username');
-    if (username === null) {
-      this.sharedService.sendShowMsgDiv({ msgType: 'info', msg: 'Please login for going to the page which you want.' });
-      this.router.navigate(['login']);
-    }
+    this.sharedService.checkLoginStatus();
   }
 
   ngOnInit(): void {
@@ -171,22 +161,6 @@ export class UsersComponent implements OnInit {
 
   resetSubmitFlag() {
     this.userService.resetSubmitFlag();
-  }
-
-  activeItem(event) {
-    $('.user-sider-bar a').each(function (index) {
-      $(this).removeClass('text-primary');
-      $(this).removeClass('text-secondary');
-      if ($(this).text() == event.target.innerText) {
-        $(this).addClass('text-primary');
-      } else {
-        $(this).addClass('text-secondary');
-      }
-    });
-  }
-
-  changeComponentToShow(val: string) {
-    this.componentToShow = val;
   }
 
   getUsers(event) {

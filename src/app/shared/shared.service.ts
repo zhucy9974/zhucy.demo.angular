@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Page } from './page.model';
 import { PAGE_NAV_SIZE } from '../app.constants';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class SharedService {
   private showMsgDiv = new Subject<any>();
   private firstName = new Subject<string>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   sendShowMsgDiv(data: any) {
     this.showMsgDiv.next(data);
@@ -43,7 +44,7 @@ export class SharedService {
     return this.inputValueChanged.asObservable();
   }
 
-  loadPageNavInfo(pageNav: Page):Page {
+  loadPageNavInfo(pageNav: Page): Page {
 
     pageNav.pagesOfNav = [];
     pageNav.currentPageLot = Math.ceil(pageNav.currentPage / PAGE_NAV_SIZE);
@@ -76,8 +77,8 @@ export class SharedService {
     return pageNav;
   }
 
-  getPageNumByChangePageLot(pageNav: Page, forNext: boolean):number {
-    var pageNum:number;
+  getPageNumByChangePageLot(pageNav: Page, forNext: boolean): number {
+    var pageNum: number;
     if (forNext) {
       pageNum = pageNav.currentPageLot * PAGE_NAV_SIZE + 1;
     } else {
@@ -85,4 +86,14 @@ export class SharedService {
     }
     return pageNum;
   }
+
+  checkLoginStatus() {
+    const username: string = sessionStorage.getItem('username');
+    if (username === null) {
+      this.sendShowMsgDiv({ msgType: 'info', msg: 'Please login for going to the page which you want.' });
+      this.router.navigate(['login']);
+    }
+  }
+
+
 }

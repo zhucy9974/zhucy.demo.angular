@@ -22,6 +22,8 @@ import { AboutMeModule } from './about-me/about-me.module';
 import { WelcomeModule } from './welcome/welcome.module';
 import { CookieService } from "ngx-cookie-service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DemosComponent } from './demos/demos.component';
+import { DemosModule } from './demos/demos.module';
 
 //registerLocaleData(localeFr, 'fr-FR');
 
@@ -35,7 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    UsersModule,
+    DemosModule,
     NavbarModule,
     LoginModule,
     NgbModule,
