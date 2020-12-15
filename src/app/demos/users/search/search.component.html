@@ -12,7 +12,7 @@
     <select class="custom-select" [(ngModel)]="criterias.orderBy">
         <option *ngFor="let entry of fieldsForOrder|jsonToMap" value="{{entry.key}}">{{entry.value|translate}}</option>
     </select>
-    <div class="input-group-append">
+    <div class="input-group-append ml-1">
         <button (click)="submitSearch()" class="btn btn-secondary btn-sm" data-toggle="tooltip"
             data-container=".div-user-mgt" data-placement="top" title="{{'userMgt.search_search'|translate}}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
