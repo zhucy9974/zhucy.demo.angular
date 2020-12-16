@@ -1,16 +1,24 @@
 {
-    "title":{
-        "clientMgt":"Gestion des clients",
-        "productMgt":"Gestion des produits"
+    "locale": "fr",
+    "field": {
+        "groupName": "Nom de groupe",
+        "shortDesc": "Description courte",
+        "longDesc": "Description longue",
+        "dateCreate": "Date de création",
+        "op": "Opération"
+    },
+    "title": {
+        "clientMgt": "Gestion des clients",
+        "productMgt": "Gestion des produits"
     },
     "btn": {
         "close": "Fermer",
         "save": "Sauvgarder",
-        "next":"Suivant",
-        "previous":"Présédent"
+        "next": "Suivant",
+        "previous": "Présédent"
     },
     "tooltip": {
-        "comingSoon":"La fonctionalité arrive bientôt."
+        "comingSoon": "La fonctionalité arrive bientôt."
     },
     "error": {
         "401": "L'addresse mail ou le mot de pass n'est pas correct, veuillez les resaisir."
@@ -49,10 +57,10 @@
         "enterPassword": "Saisissez le mot de passe"
     },
     "userMgt": {
-        "sidebar_title":"Gestion des utilisateurs",
-        "sidebar_userList":"Liste des utilisateurs",
-        "sidebar_groupList":"Liste des groupes",
-        "sidebar_roleList":"Liste des rôles",
+        "sidebar_title": "Gestion des utilisateurs",
+        "sidebar_userList": "Liste des utilisateurs",
+        "sidebar_groupList": "Liste des groupes",
+        "sidebar_roleList": "Liste des rôles",
         "search_username": "Username",
         "search_firstName": "Prénom",
         "search_lastName": "Nom",
@@ -74,8 +82,8 @@
         "list_op_consult": "Consulter l'information de l'utilisateur",
         "list_op_modify": "Modifier l'information de l'utilisateur",
         "list_op_delete": "Supprimer l'utilisateur",
-        "list_op_confirm_del":"Etes-vous sûr de supprimer l'utilisateur?",
-        "list_op_confirm_title_del":"Supprimer utilisateur",
+        "list_op_confirm_del": "Etes-vous sûr de supprimer l'utilisateur?",
+        "list_op_confirm_title_del": "Supprimer utilisateur",
         "userPage_title_create": "Créer un nouvel utilisateur",
         "userPage_name": "Nom",
         "userPage_firstName": "Prénom",
@@ -93,9 +101,9 @@
         "userPage_co_name": "Nom",
         "userPage_co_catch_phrase": "Catch phrase",
         "userPage_co_bs": "Entreprise",
-        "userPage_confirm_create":"Etes-vous sûr de créer l'utilisateur?",
-        "userPage_confirm_mdf":"Etes-vous sûr de modifier l'utilisateur?",
-        "userPage_confirm_title_create":"Créer utilisateur",
-        "userPage_confirm_title_mdf":"Modifier utilisateur"
+        "userPage_confirm_create": "Etes-vous sûr de créer l'utilisateur?",
+        "userPage_confirm_mdf": "Etes-vous sûr de modifier l'utilisateur?",
+        "userPage_confirm_title_create": "Créer utilisateur",
+        "userPage_confirm_title_mdf": "Modifier utilisateur"
     }
 }

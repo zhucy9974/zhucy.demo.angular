@@ -30,6 +30,9 @@
                             <th scope="col">
                                 {{'field.shortDesc'|translate}}
                             </th>
+                            <th scope="col">
+                                {{'field.dateCreate'|translate}}
+                            </th>
 
                             <th scope="col" class="pl-3" style="width: 140px;">
                                 {{'field.op'|translate}}</th>
@@ -44,7 +47,10 @@
                                 {{entity.name}}
                             </td>
                             <td>
-                                {{entity.shortDesc}
+                                {{entity.shortDesc}}
+                            </td>
+                            <td scope="col">
+                                {{entity.dateCreate| localDate:'medium':('locale'|translate)}}
                             </td>
                             
                             <td>

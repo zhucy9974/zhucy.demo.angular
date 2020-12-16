@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import * as $ from 'jquery';
 import { NavbarService } from './navbar.service';
+import { registerLocaleData, getLocaleId } from '@angular/common';
+
 
 @Component({
   selector: 'app-navbar',
@@ -82,6 +84,7 @@ export class NavbarComponent implements OnInit {
 
   changeLanguage(language: string) {
     this.translateService.use(language);
+    this.sharedService.sendLocaleChanged(language);
   }
 
   activeItem(event) {

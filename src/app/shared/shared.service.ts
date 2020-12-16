@@ -9,6 +9,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SharedService {
+  private localeChanged = new Subject<any>();
   private inputValueChanged = new Subject<any>();
   private showMsgDiv = new Subject<any>();
   private firstName = new Subject<string>();
@@ -100,5 +101,12 @@ export class SharedService {
     return new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   }
 
+  sendLocaleChanged(locale:string){
+    this.localeChanged.next(locale);
+  }
+
+  getLocaleChanged():Observable<string>{
+    return this.localeChanged.asObservable();
+  }
 
 }

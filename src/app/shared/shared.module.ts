@@ -6,6 +6,7 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LocalDatePipe } from './tools/local-date.pipe';
 
 /*
 export function createTranslateLoader(http:HttpClient){
@@ -17,7 +18,7 @@ export function httpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [FilterPipe, JsonToMapPipe],
+  declarations: [FilterPipe, JsonToMapPipe, LocalDatePipe],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -30,7 +31,7 @@ export function httpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  exports: [FilterPipe, JsonToMapPipe,
+  exports: [FilterPipe, JsonToMapPipe, LocalDatePipe,
     RouterModule,
     TranslateModule]
 })
