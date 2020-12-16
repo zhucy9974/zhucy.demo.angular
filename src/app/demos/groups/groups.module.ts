@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GroupsComponent } from './groups.component';
-import { UnderConstructionModule } from 'src/app/shared/under-construction/under-construction.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { SearchComponent } from './search/search.component';
-
-
+import { SearchModule } from './search/search.module';
+import { GroupPageModule } from './group-page/group-page.module';
 
 @NgModule({
-  declarations: [GroupsComponent, SearchComponent],
+  declarations: [GroupsComponent],
   exports: [GroupsComponent],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    SearchModule,
+    GroupPageModule
   ]
 })
 export class GroupsModule { }

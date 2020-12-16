@@ -1,7 +1,13 @@
 {
+    "title":{
+        "clientMgt":"Client management",
+        "productMgt":"Product management"
+    },
     "btn": {
         "close":"Close",
-        "save":"Save"
+        "save":"Save",
+        "next":"Next",
+        "previous":"Previous"
     },
     "tooltip": {
         "comingSoon":"The fonction is coming soon."

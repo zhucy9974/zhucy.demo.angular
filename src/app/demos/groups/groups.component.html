@@ -10,10 +10,6 @@
         <div class="col-3 mb-1">
             <br>
             <div class="float-right">
-                <span data-toggle="tooltip" data-container=".div-demo-main" data-placement="top"
-                    title="{{'tooltip.comingSoon'|translate}}">
-                    <button type="button"
-                        class="btn btn-primary btn-sm">{{'userMgt.save'|translate}}</button></span>&nbsp;
                 <button (click)="add();resetSubmitFlag()" type="button" class="btn btn-primary btn-sm"
                     data-toggle="modal" data-target="#entityPageModal">{{'userMgt.createUser'|translate}}</button>
             </div>
@@ -29,14 +25,14 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">
-                                {{'userMgt.list_name'|translate}}
+                                {{'field.groupName'|translate}}
                             </th>
                             <th scope="col">
-                                {{'userMgt.list_username'|translate}}
+                                {{'field.shortDesc'|translate}}
                             </th>
 
                             <th scope="col" class="pl-3" style="width: 140px;">
-                                {{'userMgt.list_op'|translate}}</th>
+                                {{'field.op'|translate}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,7 +44,7 @@
                                 {{entity.name}}
                             </td>
                             <td>
-                                {{entity.username}}
+                                {{entity.shortDesc}
                             </td>
                             
                             <td>
@@ -196,3 +192,7 @@
         </div>
     </div>
 </div>
+
+
+<app-demo-group-page [consultOnly]="consultOnly" [entityToShow]="entityToShow">
+</app-demo-group-page>

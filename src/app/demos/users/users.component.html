@@ -150,13 +150,13 @@
       <div class="float-right">
         <ul class="pagination pagination-sm">
           <li class="page-item" [ngClass]="{'disabled':!pageNav?.hasLastPageLot}"><a class="page-link"
-              href="javascript:;" (click)="getPageLot(false)">Previous</a>
+              href="javascript:;" (click)="getPageLot(false)">{{'btn.previous'|translate}}</a>
           </li>
           <li *ngFor="let i of pageNav?.pagesOfNav" class="page-item" [ngClass]="{'active':i == pageNav?.currentPage}">
             <a class="page-link" href="javascript:;" (click)="getUsers($event)">{{i}}</a>
           </li>
           <li class="page-item" [ngClass]="{'disabled':!pageNav?.hasNextPageLot}"><a class="page-link"
-              href="javascript:;" (click)="getPageLot(true)">Next</a></li>
+              href="javascript:;" (click)="getPageLot(true)">{{'btn.next'|translate}}</a></li>
         </ul>
       </div>
     </div>
@@ -231,5 +231,5 @@
   </div>
 </div>
 
-<app-user-page [consultOnly]="consultOnly" [userToShow]="userToShow" (onUserCreated)="userCreated($event)">
+<app-user-page [consultOnly]="consultOnly" [userToShow]="userToShow">
 </app-user-page>

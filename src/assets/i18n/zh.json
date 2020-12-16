@@ -1,7 +1,13 @@
 {
+    "title":{
+        "clientMgt":"客户管理",
+        "productMgt":"产品管理"
+    },
     "btn": {
         "close": "关闭",
-        "save": "保存"
+        "save": "保存",
+        "next":"下一页",
+        "previous":"上一页"
     },
     "tooltip": {
         "comingSoon": "此功能将近期开放。"

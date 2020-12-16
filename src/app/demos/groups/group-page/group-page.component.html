@@ -1,0 +1,79 @@
+<div *ngIf="entityToShow!=null" class="modal fade" id="entityPageModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><span *ngIf="entityToShow.id!=null"><span
+                            *ngIf="!consultOnly">Modify
+                        </span>{{entityToShow.name}}'s info</span>
+                    <span *ngIf="entityToShow.id==null">{{'entityMgt.entityPage_title_create'|translate}}</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form (ngSubmit)="saveForm()" [formGroup]="entityPageForm">
+                <div class="modal-body">
+
+                    <app-input [fieldName]="'name'" [propField]="propName" [inputValue]="entityToShow.name"
+                        [labelStr]="'entityMgt.entityPage_entityname'|translate" [submitted]="submitted"
+                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
+                    </app-input>
+
+                    <app-input [fieldName]="'shortDesc'" [propField]="propShortDesc" [inputValue]="entityToShow.shortDesc"
+                        [labelStr]="'entityMgt.entityPage_email'|translate" [submitted]="submitted"
+                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.requiredAndEmail'|translate">
+                    </app-input>
+
+                    <app-input [fieldName]="'longDesc'" [inputValue]="entityToShow.longDesc"
+                        [labelStr]="'entityMgt.entityPage_phone'|translate" [submitted]="submitted"
+                        [consultOnly]="consultOnly">
+                    </app-input>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_group_page_save" type="submit" data-toggle="modal"
+                        data-target="#modalAddConfirmation" data-dismiss="modal" class="invisible">Save</button>
+                    <button *ngIf="!consultOnly" class="btn btn-primary" type="submit">{{'btn.save'|translate}}</button>
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">{{'btn.close'|translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAddConfirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <span *ngIf="entityToShow?.id==null">{{'entityMgt.entityPage_confirm_title_create'|translate}}</span>
+                    <span *ngIf="entityToShow?.id!=null">{{'entityMgt.entityPage_confirm_title_mdf'|translate}}</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span *ngIf="entityToShow?.id==null">
+                    {{'entityMgt.entityPage_confirm_create'|translate}}
+                </span>
+                <span *ngIf="entityToShow?.id!=null">
+                    {{'entityMgt.entityPage_confirm_mdf'|translate}}
+                </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_add2" class="invisible" data-dismiss="modal">Yes</button>
+                <button *ngIf="entityToShow?.id==null" type="button" class="btn btn-primary" data-toggle="modal"
+                    (click)="createEntity()">Yes</button>
+                <button *ngIf="entityToShow?.id!=null" type="button" class="btn btn-primary" data-toggle="modal"
+                    (click)="updateEntity()">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+                    data-target="#entityPageModal">Non</button>
+            </div>
+        </div>
+    </div>
+</div>

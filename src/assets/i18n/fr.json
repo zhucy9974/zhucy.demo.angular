@@ -1,7 +1,13 @@
 {
+    "title":{
+        "clientMgt":"Gestion des clients",
+        "productMgt":"Gestion des produits"
+    },
     "btn": {
         "close": "Fermer",
-        "save": "Sauvgarder"
+        "save": "Sauvgarder",
+        "next":"Suivant",
+        "previous":"Présédent"
     },
     "tooltip": {
         "comingSoon":"La fonctionalité arrive bientôt."
@@ -43,7 +49,7 @@
         "enterPassword": "Saisissez le mot de passe"
     },
     "userMgt": {
-        "sidebar_title":"Gestion d'utilisateur",
+        "sidebar_title":"Gestion des utilisateurs",
         "sidebar_userList":"Liste des utilisateurs",
         "sidebar_groupList":"Liste des groupes",
         "sidebar_roleList":"Liste des rôles",

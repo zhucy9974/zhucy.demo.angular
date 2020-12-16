@@ -12,14 +12,14 @@
         <li class="nav-item nav-item-tochange active">
           <a class="nav-link" (click)="activeItem($event)" routerLink="welcome">{{'navbar.home'|translate}}</a>
         </li>
-        <li class="nav-item nav-item-tochange ">
+        <li id="navbar_demos" class="nav-item nav-item-tochange ">
           <a class="nav-link" (click)="activeItem($event)" routerLink="demos"
             onclick="updateTooltip()">{{'navbar.userMgt'|translate}}</a>
         </li>
-        <li class="nav-item nav-item-tochange ">
+        <li id="navbar_aboutMe" class="nav-item nav-item-tochange ">
           <a class="nav-link" (click)="activeItem($event)" routerLink="aboutMe">{{'navbar.aboutMe'|translate}}</a>
         </li>
-        <li class="nav-item nav-item-tochange ">
+        <li id="navbar_aboutWebsite" class="nav-item nav-item-tochange ">
           <a class="nav-link" (click)="activeItem($event)"
             routerLink="aboutWebsite">{{'navbar.aboutTheWebSite'|translate}}</a>
         </li>

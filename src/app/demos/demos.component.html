@@ -1,60 +1,68 @@
 <div class="div-demo-main row">
     <div class="col-2 bg-light">
-  
-      <nav class="sidebar sticky-left" aria-label="Main navigation">
-        <div class="sidebar-sticky">
-          <img src="assets/images/user-mgt-logo.png" class="img-fluid w-75 mt-3 mb-3" alt="Responsive image"
-            style="opacity: 0.8;">
-  
-          <div class="border-bottom pb-2 mb-2">
-            <span class="text-primary">
-              <h5><strong>{{'userMgt.sidebar_title'|translate}}</strong></h5>
-            </span>
-            <ul class="user-sider-bar nav flex-column">
-              <li class="nav-item nav-item-tochange">
-                <a class="nav-link text-primary pt-0 pb-0" (click)="activeItem($event);changeComponentToShow('users')"
-                  onclick="updateTooltip()" href="javascript:;">
-                  <strong>- {{'userMgt.sidebar_userList'|translate}}</strong>
-                </a>
-              </li>
-              <li class="nav-item nav-item-tochange">
-                <a class="nav-link text-secondary  pt-0 pb-0" (click)="activeItem($event);changeComponentToShow('groups')"
-                  onclick="updateTooltip()" href="javascript:;">
-                  <strong data-toggle="tooltip" data-placement="top" title="{{'tooltip.comingSoon'|translate}}">-
-                    {{'userMgt.sidebar_groupList'|translate}}</strong>
-                </a>
-              </li>
-              <li class="nav-item nav-item-tochange">
-                <a class="nav-link text-secondary  pt-0 pb-0" (click)="activeItem($event);changeComponentToShow('roles')"
-                  onclick="updateTooltip()" href="javascript:;">
-                  <strong data-toggle="tooltip" data-placement="top" title="{{'tooltip.comingSoon'|translate}}">-
-                    {{'userMgt.sidebar_roleList'|translate}}</strong>
-                </a>
-              </li>
-            </ul>
-          </div>
-  
-          <div class="border-bottom pb-2 mb-2">
-            <span class="text-secondary">
-              <h5><strong>Client management</strong></h5>
-            </span>
-          </div>
-          <div class="border-bottom pb-2 mb-2">
-            <span class="text-secondary">
-              <h5><strong>Product management</strong></h5>
-            </span>
-          </div>
-        </div>
-      </nav>
+
+        <nav class="sidebar sticky-left" aria-label="Main navigation">
+            <div class="sidebar-sticky">
+                <div class="border-bottom pb-2 mb-2">
+                    <img src="assets/images/user-mgt-logo.png" class="img-fluid w-75 ml-4 mt-4 mb-4"
+                        alt="Responsive image" style="opacity: 0.1;">
+                </div>
+                <div class="border-bottom pb-2 mb-2">
+                    <span class="text-primary">
+                        <h5><strong>{{'userMgt.sidebar_title'|translate}}</strong></h5>
+                    </span>
+                    <ul class="demos-sider-bar nav flex-column">
+                        <li class="nav-item nav-item-tochange">
+                            <a class="nav-link text-primary pt-0 pb-0 sub-title-text"
+                                (click)="activeItem($event);changeComponentToShow('users')" onclick="updateTooltip()"
+                                href="javascript:;">
+                                <img src="assets/images/user-list-icon.png" class="img-fluid sub-title-img"
+                                    alt="Responsive image">&nbsp;
+                                {{'userMgt.sidebar_userList'|translate}}
+                            </a>
+                        </li>
+                        <li class="nav-item nav-item-tochange">
+                            <a class="nav-link text-secondary  pt-0 pb-0 sub-title-text"
+                                (click)="activeItem($event);changeComponentToShow('groups')" onclick="updateTooltip()"
+                                href="javascript:;">
+                                <img src="assets/images/group-list-icon.png" class="img-fluid sub-title-img"
+                                    alt="Responsive image">&nbsp;
+                                {{'userMgt.sidebar_groupList'|translate}}
+                            </a>
+                        </li>
+                        <li class="nav-item nav-item-tochange">
+                            <a class="nav-link text-secondary  pt-0 pb-0 sub-title-text"
+                                (click)="activeItem($event);changeComponentToShow('roles')" onclick="updateTooltip()"
+                                href="javascript:;">
+                                <img src="assets/images/role-list-icon.png" class="img-fluid sub-title-img"
+                                    alt="Responsive image">&nbsp;
+                                {{'userMgt.sidebar_roleList'|translate}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border-bottom pb-2 mb-2">
+                    <span class="text-muted">
+                        <h5><strong> {{'title.clientMgt'|translate}}</strong></h5>
+                    </span>
+                </div>
+                <div class="border-bottom pb-2 mb-2">
+                    <span class="text-muted">
+                        <h5><strong>{{'title.productMgt'|translate}}</strong></h5>
+                    </span>
+                </div>
+            </div>
+        </nav>
     </div>
     <div class="col-10 pl-0 pr-0" id="user_layout">
-      <div id="users_main_div" style="overflow: auto;">
-        
-  
-        <app-demo-users *ngIf="componentToShow=='users'"></app-demo-users>
-        <app-userMgt-roles *ngIf="componentToShow=='roles'"></app-userMgt-roles>
-        <app-demo-groups *ngIf="componentToShow=='groups'"></app-demo-groups>
-  
-      </div>
+        <div id="users_main_div" style="overflow: auto;">
+
+
+            <app-demo-users *ngIf="componentToShow=='users'"></app-demo-users>
+            <app-userMgt-roles *ngIf="componentToShow=='roles'"></app-userMgt-roles>
+            <app-demo-groups *ngIf="componentToShow=='groups'"></app-demo-groups>
+
+        </div>
     </div>
-  </div>
+</div>

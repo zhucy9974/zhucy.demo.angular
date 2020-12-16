@@ -65,14 +65,12 @@ export class UserService {
   }
 
   createUser(newUser: User): Observable<User> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post<User>(this.urlCreateUser, JSON.stringify(newUser), { headers: headers });
+    return this.http.post<User>(this.urlCreateUser, JSON.stringify(newUser), { headers: this.sharedService.getJsonHttpHeader() });
   }
 
 
   updateUser(user: User): Observable<User> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post<User>(this.urlUpdateUser, JSON.stringify(user), { headers: headers });
+    return this.http.post<User>(this.urlUpdateUser, JSON.stringify(user), { headers: this.sharedService.getJsonHttpHeader() });
   }
 
 

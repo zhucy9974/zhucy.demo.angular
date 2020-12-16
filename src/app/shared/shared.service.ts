@@ -3,6 +3,7 @@ import { Subject, Observable } from 'rxjs';
 import { Page } from './page.model';
 import { PAGE_NAV_SIZE } from '../app.constants';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -93,6 +94,10 @@ export class SharedService {
       this.sendShowMsgDiv({ msgType: 'info', msg: 'Please login for going to the page which you want.' });
       this.router.navigate(['login']);
     }
+  }
+
+  getJsonHttpHeader():HttpHeaders{
+    return new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   }
 
 

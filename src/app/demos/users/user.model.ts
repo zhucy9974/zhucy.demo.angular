@@ -1,6 +1,6 @@
-export class User {
-  id: number;
-  status: number;
+import { BaseEntityModel } from 'src/app/shared/base-entity.model';
+
+export class User extends BaseEntityModel {
   name: string;
   firstName: string;
   lastName: string;

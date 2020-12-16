@@ -6,6 +6,7 @@ import { SharedService } from '../shared/shared.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import * as $ from 'jquery';
+import { NavbarService } from './navbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -28,7 +29,8 @@ export class NavbarComponent implements OnInit {
   constructor(private userService: UserService,
     private sharedService: SharedService,
     private router: Router,
-    private translateService: TranslateService) {
+    private translateService: TranslateService,
+    private navbarService: NavbarService) {
     //setTimeout(()=>this.name='Chongyang2',2000);
   }
 
@@ -39,24 +41,33 @@ export class NavbarComponent implements OnInit {
     if (this.firstName == null) {
       this.firstName = sessionStorage.getItem('firstName');
     }
-    this.sharedService.getShowMsgDiv().subscribe((data: any)=> {
+    this.sharedService.getShowMsgDiv().subscribe((data: any) => {
       this.showMsgDiv = true;
       this.msgDivType = data['msgType'];
       this.msgDivContent = data['msg'];
-      setTimeout(()=> {
+      setTimeout(() => {
         this.showMsgDiv = false;
       }, 3000);
     });
 
-
-    //code laisser pour l'exemple
-    /*
-    this.user$ =  this.userService.getLoginUser();
-    this.sharedService.getLoginStatut().subscribe(value => {
-      this.isLogin = value;
-    });*/
+    this.navbarService.getCurrentItem().subscribe((itemId: string) => {
+      $(".nav-item-tochange").removeClass("active");
+      $("#navbar_" + itemId).addClass("active");
+    });
 
   }
+
+
+
+
+  //code laisser pour l'exemple
+  /*
+  this.user$ =  this.userService.getLoginUser();
+  this.sharedService.getLoginStatut().subscribe(value => {
+    this.isLogin = value;
+  });*/
+
+
 
   changedSearch(value) {
     this.search.emit(value);

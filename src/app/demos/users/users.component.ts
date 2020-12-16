@@ -73,12 +73,13 @@ export class UsersComponent implements OnInit {
     //this.users$ = this.userService.add();
   }
 
+  /*
   async userCreated(data: Observable<User>) {
     const user: User = await data.toPromise();
     const users: User[] = await this.users$.toPromise();
     users.push(user);
     this.users$ = of(users);
-  }
+  }*/
 
   toDelete(index: number) {
     this.userIndexToDelete = index;
