@@ -5,7 +5,7 @@ import { UserService } from "../demos/users/user.service";
 import { Router } from "@angular/router";
 import { SharedService } from '../shared/shared.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BACKEND_SERVER_BASE_URL } from '../app.constants';
+import { AppConfigService } from '../app.config.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   invalidCredentials = false;
   flagShowLogingRequisInfo = false;
 
-  url = BACKEND_SERVER_BASE_URL + 'auth/login';
+  url = AppConfigService.settings?.apiUrl + 'auth/login';
 
   constructor(private formBuilder: FormBuilder,
     private sharedService: SharedService,

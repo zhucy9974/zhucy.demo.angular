@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PAGE_SIZE, PAGE_NAV_SIZE, BACKEND_SERVER_BASE_URL } from '../../app.constants';
+import { PAGE_SIZE, PAGE_NAV_SIZE } from '../../app.constants';
 import { Subject, Observable } from 'rxjs';
 import { GroupSearchCriterias } from './search/group-search-criterias.model';
 import { Group } from './group.model';

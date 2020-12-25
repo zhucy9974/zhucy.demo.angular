@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 //import axios from 'axios';
 import { HttpClient, HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { User } from './user.model';
@@ -9,18 +9,19 @@ import * as $ from 'jquery';
 import { TranslateService } from '@ngx-translate/core';
 import { SharedService } from '../../shared/shared.service';
 import { Page } from 'src/app/shared/page.model';
-import { PAGE_SIZE, PAGE_NAV_SIZE, BACKEND_SERVER_BASE_URL } from '../../app.constants';
+import { PAGE_SIZE } from '../../app.constants';
 import { UserSearchCriterias } from './search/user-search-criterias.model';
+import { AppConfigService } from 'src/app/app.config.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService{
 
-  url = BACKEND_SERVER_BASE_URL +'user/get';
-  urlCreateUser = BACKEND_SERVER_BASE_URL +'user/post';
-  urlUpdateUser = BACKEND_SERVER_BASE_URL +'user/patch';
-  urlDeleteUser = BACKEND_SERVER_BASE_URL +'user/delete';
+  url: string;
+  urlCreateUser: string;
+  urlUpdateUser: string;
+  urlDeleteUser: string;
 
   private sendSubmitted = new Subject<boolean>();
   private criterias = new Subject<UserSearchCriterias>();
@@ -29,12 +30,18 @@ export class UserService {
   users: User[];
   usersModifed: User[] = [];
 
-  constructor(private http: HttpClient, private translateService: TranslateService, private sharedService: SharedService) { }
+  constructor(private http: HttpClient, private translateService: TranslateService, private sharedService: SharedService) {
+    this.url = AppConfigService.settings?.apiUrl + 'user/get';
+    this.urlCreateUser = AppConfigService.settings?.apiUrl + 'user/post';
+    this.urlUpdateUser = AppConfigService.settings?.apiUrl + 'user/patch';
+    this.urlDeleteUser = AppConfigService.settings?.apiUrl + 'user/delete';
+  }
 
-  get$(page: number, criterias:UserSearchCriterias): Observable<Page> {
+
+  get$(page: number, criterias: UserSearchCriterias): Observable<Page> {
     return this.transfererUserListPage(
       this.http.post<Page>(
-        this.url, { page: page, pageSize: PAGE_SIZE, criterias:criterias }
+        this.url, { page: page, pageSize: PAGE_SIZE, criterias: criterias }
       )
     );
   }
@@ -59,7 +66,7 @@ export class UserService {
       this.translateService.instant('userMgt.userPage_co_bs') + ' : ' + (user.company.bs == null ? '' : user.company.bs);
   }
 
-  delete(index: number):Observable<any> {
+  delete(index: number): Observable<any> {
     return this.http.post(this.urlDeleteUser, { id: this.users[index].id }, { responseType: 'text' });
 
   }
@@ -86,18 +93,18 @@ export class UserService {
     return this.sendSubmitted.asObservable();
   }
 
-  sendCriterias(criterias: UserSearchCriterias){
+  sendCriterias(criterias: UserSearchCriterias) {
     this.criterias.next(criterias);
   }
   getCriterias(): Observable<UserSearchCriterias> {
     return this.criterias.asObservable();
   }
 
-  sendCreateOrUpdateUserRes(res:boolean){
+  sendCreateOrUpdateUserRes(res: boolean) {
     this.createOrUpdateUserRes.next(res);
   }
 
-  getCreateOrUpdateUserRes():Observable<any>{
+  getCreateOrUpdateUserRes(): Observable<any> {
     return this.createOrUpdateUserRes.asObservable();
   }
 }

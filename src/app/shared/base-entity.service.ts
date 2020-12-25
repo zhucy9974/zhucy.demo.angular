@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { Group } from '../demos/groups/group.model';
 import { BaseEntityModel } from './base-entity.model';
-import { BACKEND_SERVER_BASE_URL, PAGE_SIZE } from '../app.constants';
+import { PAGE_SIZE } from '../app.constants';
 import { Page } from './page.model';
+import { AppConfigService } from '../app.config.service';
 
 export abstract class BaseEntityService<T extends BaseEntityModel, E>  {
 
@@ -20,10 +21,10 @@ export abstract class BaseEntityService<T extends BaseEntityModel, E>  {
   entities: T[];
 
   constructor(entityType:string) {
-    this.urlGet = BACKEND_SERVER_BASE_URL + entityType + '/get';
-    this.urlCreate = BACKEND_SERVER_BASE_URL + entityType + '/post';
-    this.urlUpdate = BACKEND_SERVER_BASE_URL + entityType + '/patch';
-    this.urlDelete = BACKEND_SERVER_BASE_URL + entityType + '/delete';
+    this.urlGet = AppConfigService.settings?.apiUrl + entityType + '/get';
+    this.urlCreate = AppConfigService.settings?.apiUrl + entityType + '/post';
+    this.urlUpdate = AppConfigService.settings?.apiUrl + entityType + '/patch';
+    this.urlDelete = AppConfigService.settings?.apiUrl + entityType + '/delete';
   }
 
   abstract getHttp(): HttpClient;

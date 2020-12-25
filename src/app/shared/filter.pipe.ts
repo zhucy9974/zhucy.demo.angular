@@ -13,6 +13,7 @@ export class FilterPipe implements PipeTransform {
       return users;
     }
     return users.filter(user => {
+      console.info(user);
       return user.name.toLowerCase().includes(criteria.toLowerCase());
     });
   }
