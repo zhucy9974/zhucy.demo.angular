@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Page } from 'src/app/shared/page.model';
 import { GroupSearchCriterias } from './search/group-search-criterias.model';
 import { of, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-demo-groups',
@@ -16,15 +18,13 @@ export class GroupsComponent implements OnInit {
 
   entityType: string = 'groups';
 
-  entities: Group[];
-
   pageNav: Page;
   criterias: GroupSearchCriterias = new GroupSearchCriterias();
 
   entities$: Observable<Group[]> = of([]);
   entityToShow: Group = null;
   consultOnly: boolean = false;
-  entityIndexToDelete: number;
+  idOfentityToDelete: number;
 
   token: String = '';
 
@@ -78,12 +78,12 @@ export class GroupsComponent implements OnInit {
     this.entities$ = of(entities);
   }
 
-  toDelete(index: number) {
-    this.entityIndexToDelete = index;
+  toDelete(id: number) {
+    this.idOfentityToDelete = id;
   }
 
   delete() {
-    this.groupService.delete(this.entityIndexToDelete).subscribe((val: string) => {
+    this.groupService.delete(this.idOfentityToDelete).subscribe((val: string) => {
       console.log("POST call successful value returned in body",
         val);
       this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The group is deleted successfully.' });
@@ -92,24 +92,25 @@ export class GroupsComponent implements OnInit {
     });
   }
 
-  private getEntityById(id: number) {
-    let entity1: Group = null;
-    this.groupService.entities.forEach((entity: Group) => {
+  private async loadEntityById(id: number) {
+    const entities:Group[] = await this.entities$.toPromise();
+    entities.forEach((entity: Group) => {
       if (entity.id == id) {
-        entity1 = entity;
+        this.entityToShow = entity;
       }
     });
-    return entity1;
+
   }
 
   showEntityDetail(id: number) {
     this.consultOnly = true;
-    this.entityToShow = this.getEntityById(id);
+    console.info(id);
+    this.loadEntityById(id);
   }
 
   modifyEntityInfo(id: number) {
     this.consultOnly = false;
-    this.entityToShow = this.getEntityById(id);
+    this.loadEntityById(id);
   }
 
   resetSubmitFlag() {

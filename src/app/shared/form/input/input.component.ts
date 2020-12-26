@@ -10,6 +10,8 @@ import { SharedService } from '../../shared.service';
 export class InputComponent implements OnInit {
 
   @Input()
+  type: string;
+  @Input()
   fieldName: string;
   @Input()
   propField: FormControl;

@@ -36,8 +36,8 @@ export abstract class BaseEntityService<T extends BaseEntityModel, E>  {
     );
   }
 
-  delete(index: number): Observable<any> {
-    return this.getHttp().post(this.urlDelete, { id: this.entities[index].id }, { responseType: 'text' });
+  delete(id: number): Observable<any> {
+    return this.getHttp().post(this.urlDelete, { id: id }, { responseType: 'text' });
   }
 
   create(newEntity: Group): Observable<Group> {

@@ -5,20 +5,43 @@
         "shortDesc": "Description courte",
         "longDesc": "Description longue",
         "dateCreate": "Date de création",
-        "op": "Opération"
+        "op": "Opération",
+
+        "yourName":"Votre nom",
+        "yourEmail":"Votre email",
+        "message":"Message"
     },
     "title": {
         "clientMgt": "Gestion des clients",
-        "productMgt": "Gestion des produits"
+        "productMgt": "Gestion des produits",
+
+        "popup_create": "Créer un nouveau groupe",
+
+        "confirm_modify": "Modifier {{entityType}}",
+        "confirm_delete": "Supprimer {{entityType}}",
+        "confirm_create": "Créer {{entityType}}", 
+
+        
+        "leaveMsg":"Laisser a message"
+    },
+    "content":{
+        "confirm_modify": "Are you sure to modify the {{entityType}}?",
+        "confirm_delete": "Are you sure to delete the {{entityType}}?",
+        "confirm_create": "Are you sure to create the {{entityType}}?"
     },
     "btn": {
         "close": "Fermer",
         "save": "Sauvgarder",
         "next": "Suivant",
-        "previous": "Présédent"
+        "previous": "Présédent",
+        "createGroup":"Créer groupe",
+        "send":"Envoyer"
     },
     "tooltip": {
-        "comingSoon": "La fonctionalité arrive bientôt."
+        "comingSoon": "La fonctionalité arrive bientôt.",
+        "consultEntity": "Consulter l'information du groupe",
+        "modifyEntity": "Modifier l'information du groupe",
+        "deleteEntity": "Supprimer le groupe"
     },
     "error": {
         "401": "L'addresse mail ou le mot de pass n'est pas correct, veuillez les resaisir."
@@ -29,6 +52,12 @@
     },
     "welcome": {
         "sentence": "Bienvenue à l'atelier de Chongyang! :)"
+    },
+    "aboutWebsite":{
+        "aboutWebsite":"À propos du site web",
+        "content1":"L'objectif de ce site web est de monter mes compétences.",
+        "content2":"Les données utilisées dans les démos ne sont pas des vraies informations personnelles.",
+        "techUsed":"Technologies utilisées"
     },
     "navbar": {
         "title": "Atelier de Chongyang",
@@ -54,7 +83,8 @@
         "signIn": "S'identifier",
         "signUp": "S'inscrire",
         "enterEmail": "Saisissez l'email",
-        "enterPassword": "Saisissez le mot de passe"
+        "enterPassword": "Saisissez le mot de passe",
+        "msgForTester": "Vous pouvez utiliser ce compte pour tester, e-mail: admin@chongyangws.com, mot de passe: 12345678"
     },
     "userMgt": {
         "sidebar_title": "Gestion des utilisateurs",

@@ -5,20 +5,43 @@
         "shortDesc": "Short description",
         "longDesc": "Long description",
         "dateCreate": "Date of creation",
-        "op":"Operation"
+        "op":"Operation",
+
+
+        "yourName":"Your name",
+        "yourEmail":"Your email",
+        "message":"Message"
     },
     "title": {
         "clientMgt": "Client management",
-        "productMgt": "Product management"
+        "productMgt": "Product management",
+
+        "popup_create": "Create a new group",
+
+        "confirm_modify": "Modify {{entityType}}",
+        "confirm_delete": "Delete {{entityType}}",
+        "confirm_create": "Create {{entityType}}",
+
+        "leaveMsg":"Leave a message"
+    },
+    "content":{
+        "confirm_modify": "Are you sure to modify the {{entityType}}?",
+        "confirm_delete": "Are you sure to delete the {{entityType}}?",
+        "confirm_create": "Are you sure to create the {{entityType}}?"
     },
     "btn": {
         "close": "Close",
         "save": "Save",
         "next": "Next",
-        "previous": "Previous"
+        "previous": "Previous",
+        "createGroup":"Create group",
+        "send":"Send"
     },
     "tooltip": {
-        "comingSoon": "The fonction is coming soon."
+        "comingSoon": "The fonction is coming soon.",
+        "consultEntity": "Consult the group's information",
+        "modifyEntity": "Modify the group's information",
+        "deleteEntity": "Delete the group"
     },
     "error": {
         "401": "The email or the password is not correct, please re-enter them."
@@ -29,6 +52,12 @@
     },
     "welcome": {
         "sentence": "to Chongyang's workshop! :)"
+    },
+    "aboutWebsite":{
+        "aboutWebsite":"About the website",
+        "content1":"The purpose of this site is to improve my skills.",
+        "content2":"The data used in the demos is not real personal informations.",
+        "techUsed":"Technologies used"
     },
     "navbar": {
         "title": "Chongyang's Workshop",
@@ -58,7 +87,8 @@
         "signIn": "Sign in",
         "signUp": "Sign up",
         "enterEmail": "Enter email",
-        "enterPassword": "Enter password"
+        "enterPassword": "Enter password",
+        "msgForTester": "You can use this account for testing, email: admin@chongyangws.com, password: 12345678"
     },
     "userMgt": {
         "sidebar_title": "User management",

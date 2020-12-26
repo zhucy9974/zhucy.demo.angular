@@ -1,4 +1,4 @@
-<div *ngIf="entityToShow!=null" class="modal fade" id="entityPageModal" tabindex="-1" role="dialog"
+<div *ngIf="entityToShow!=null" class="modal fade" id="groupPageModal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -6,7 +6,7 @@
                 <h5 class="modal-title" id="exampleModalLabel"><span *ngIf="entityToShow.id!=null"><span
                             *ngIf="!consultOnly">Modify
                         </span>{{entityToShow.name}}'s info</span>
-                    <span *ngIf="entityToShow.id==null">{{'entityMgt.entityPage_title_create'|translate}}</span>
+                    <span *ngIf="entityToShow.id==null">{{'title.popup_create'|translate}}</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -15,18 +15,18 @@
             <form (ngSubmit)="saveForm()" [formGroup]="entityPageForm">
                 <div class="modal-body">
 
-                    <app-input [fieldName]="'name'" [propField]="propName" [inputValue]="entityToShow.name"
-                        [labelStr]="'entityMgt.entityPage_entityname'|translate" [submitted]="submitted"
+                    <app-input [type]="'input'" [fieldName]="'name'" [propField]="propName" [inputValue]="entityToShow.name"
+                        [labelStr]="'field.groupName'|translate" [submitted]="submitted"
                         [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
                     </app-input>
 
-                    <app-input [fieldName]="'shortDesc'" [propField]="propShortDesc" [inputValue]="entityToShow.shortDesc"
-                        [labelStr]="'entityMgt.entityPage_email'|translate" [submitted]="submitted"
-                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.requiredAndEmail'|translate">
+                    <app-input [type]="'input'" [fieldName]="'shortDesc'" [propField]="propShortDesc" [inputValue]="entityToShow.shortDesc"
+                        [labelStr]="'field.shortDesc'|translate" [submitted]="submitted"
+                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
                     </app-input>
 
-                    <app-input [fieldName]="'longDesc'" [inputValue]="entityToShow.longDesc"
-                        [labelStr]="'entityMgt.entityPage_phone'|translate" [submitted]="submitted"
+                    <app-input [type]="'textarea'" [fieldName]="'longDesc'" [inputValue]="entityToShow.longDesc"
+                        [labelStr]="'field.longDesc'|translate" [submitted]="submitted"
                         [consultOnly]="consultOnly">
                     </app-input>
 
@@ -50,8 +50,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    <span *ngIf="entityToShow?.id==null">{{'entityMgt.entityPage_confirm_title_create'|translate}}</span>
-                    <span *ngIf="entityToShow?.id!=null">{{'entityMgt.entityPage_confirm_title_mdf'|translate}}</span>
+                    <span *ngIf="entityToShow?.id==null">{{'title.confirm_create'|translate:'{entityType:"group"}'}}</span>
+                    <span *ngIf="entityToShow?.id!=null">{{'title.confirm_modify'|translate:'{entityType:"group"}'}}</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -59,10 +59,10 @@
             </div>
             <div class="modal-body">
                 <span *ngIf="entityToShow?.id==null">
-                    {{'entityMgt.entityPage_confirm_create'|translate}}
+                    {{'content.confirm_create'|translate:'{entityType:"group"}'}}
                 </span>
                 <span *ngIf="entityToShow?.id!=null">
-                    {{'entityMgt.entityPage_confirm_mdf'|translate}}
+                    {{'content.confirm_modify'|translate:'{entityType:"group"}'}}
                 </span>
             </div>
             <div class="modal-footer">

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AboutWebsiteComponent } from './about-website.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -10,7 +11,8 @@ import { AboutWebsiteComponent } from './about-website.component';
     AboutWebsiteComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class AboutWebsiteModule { }

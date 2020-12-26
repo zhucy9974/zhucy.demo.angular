@@ -42,6 +42,7 @@
             <input type="password" [formControl]="propPass" data-password class="form-control"
               [ngClass]="{'is-invalid': (!this.propPass.valid)&&submitted, 'is-valid':this.propPass.valid&&submitted}"
               id="exampleInputPassword1" placeholder="{{'loginPage.enterPassword'|translate}}">
+              <small id="emailHelp" class="form-text text-muted">{{'loginPage.msgForTester'|translate}}</small>
             <div *ngIf="loginForm.invalid&&submitted" class="invalid-feedback">
               <span *ngIf="propPass.hasError('required')">
                 {{'loginPage.passwordRequis'|translate}}
@@ -54,6 +55,7 @@
               </span>
               
             </div>
+            
 
           </div>
 

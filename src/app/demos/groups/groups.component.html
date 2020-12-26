@@ -11,7 +11,7 @@
             <br>
             <div class="float-right">
                 <button (click)="add();resetSubmitFlag()" type="button" class="btn btn-primary btn-sm"
-                    data-toggle="modal" data-target="#entityPageModal">{{'userMgt.createUser'|translate}}</button>
+                    data-toggle="modal" data-target="#groupPageModal">{{'btn.createGroup'|translate}}</button>
             </div>
             <br>
         </div>
@@ -55,11 +55,11 @@
                             
                             <td>
 
-                                <button class="btn btn-link" data-toggle="modal" data-target="#entityPageModal"
+                                <button class="btn btn-link" data-toggle="modal" data-target="#groupPageModal"
                                     (click)="showEntityDetail(entity.id)">
                                     <span data-toggle="tooltip" data-placement="bottom"
                                         data-container=".div-demo-main"
-                                        title="{{'userMgt.list_op_consult'|translate}}">
+                                        title="{{'tooltip.consultEntity'|translate}}">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16"
                                             class="bi bi-file-earmark-text" fill="currentColor"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -71,12 +71,12 @@
                                         </svg></span>
                                 </button>
 
-                                <button class="btn btn-link" data-toggle="modal" data-target="#entityPageModal"
+                                <button class="btn btn-link" data-toggle="modal" data-target="#groupPageModal"
                                     (click)="resetSubmitFlag();modifyEntityInfo(entity.id);"
                                     [disabled]="entity.status==0">
                                     <span data-toggle="tooltip" data-placement="bottom"
                                         data-container=".div-demo-main"
-                                        title="{{'userMgt.list_op_modify'|translate}}">
+                                        title="{{'tooltip.modifyEntity'|translate}}">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16"
                                             class="bi bi-file-earmark-font" fill="currentColor"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -87,11 +87,11 @@
                                         </svg>
                                     </span>
                                 </button>
-                                <button (click)="toDelete(i);" class="btn btn-link" data-toggle="modal"
+                                <button (click)="toDelete(entity.id);" class="btn btn-link" data-toggle="modal"
                                     data-target="#deleteConfirmation" [disabled]="entity.status==0">
                                     <span data-toggle="tooltip" data-placement="bottom"
                                         data-container=".div-demo-main"
-                                        title="{{'userMgt.list_op_delete'|translate}}">
+                                        title="{{'tooltip.deleteEntity'|translate}}">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16"
                                             class="bi bi-file-earmark-excel" fill="currentColor"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -182,13 +182,13 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> {{'userMgt.list_op_confirm_title_del'|translate}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel"> {{'title.confirm_delete'|translate:'{entityType:"group"}'}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                {{'userMgt.list_op_confirm_del'|translate}}
+                {{'content.confirm_delete'|translate:'{entityType:"group"}'}}
             </div>
             <div class="modal-footer">
                 <button type="button" id="btn_delete2" class="invisible" data-dismiss="modal">Yes2</button>

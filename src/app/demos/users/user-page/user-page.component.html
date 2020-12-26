@@ -27,13 +27,13 @@
 
                         <div class="input-group col-sm-10 pr-0" *ngIf="!consultOnly">
 
-                            <app-input [fieldName]="'firstName'" [inputValue]="userToShow.firstName"
+                            <app-input [type]="'input'" [fieldName]="'firstName'" [inputValue]="userToShow.firstName"
                                 [withPrepend]="true" [propField]="propFirstName"
                                 [labelStr]="'userMgt.userPage_firstName'|translate" [submitted]="submitted"
                                 [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
                             </app-input>
                             &nbsp;
-                            <app-input [fieldName]="'lastName'" [inputValue]="userToShow.lastName" [withPrepend]="true"
+                            <app-input [type]="'input'"  [fieldName]="'lastName'" [inputValue]="userToShow.lastName" [withPrepend]="true"
                                 [propField]="propLastName" [labelStr]="'userMgt.userPage_lastName'|translate"
                                 [submitted]="submitted" [consultOnly]="consultOnly"
                                 [placeholderStr]="'formValite.required'|translate">
@@ -42,22 +42,22 @@
                         </div>
                     </div>
 
-                    <app-input [fieldName]="'username'" [propField]="propUsername" [inputValue]="userToShow.username"
+                    <app-input [type]="'input'"  [fieldName]="'username'" [propField]="propUsername" [inputValue]="userToShow.username"
                         [labelStr]="'userMgt.userPage_username'|translate" [submitted]="submitted"
                         [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
                     </app-input>
 
-                    <app-input [fieldName]="'email'" [propField]="propEmail" [inputValue]="userToShow.email"
+                    <app-input [type]="'input'"  [fieldName]="'email'" [propField]="propEmail" [inputValue]="userToShow.email"
                         [labelStr]="'userMgt.userPage_email'|translate" [submitted]="submitted"
                         [consultOnly]="consultOnly" [placeholderStr]="'formValite.requiredAndEmail'|translate">
                     </app-input>
 
-                    <app-input [fieldName]="'phone'" [inputValue]="userToShow.phone"
+                    <app-input [type]="'input'"  [fieldName]="'phone'" [inputValue]="userToShow.phone"
                         [labelStr]="'userMgt.userPage_phone'|translate" [submitted]="submitted"
                         [consultOnly]="consultOnly">
                     </app-input>
 
-                    <app-input [fieldName]="'website'" [inputValue]="userToShow.website"
+                    <app-input [type]="'input'"  [fieldName]="'website'" [inputValue]="userToShow.website"
                         [labelStr]="'userMgt.userPage_website'|translate" [submitted]="submitted"
                         [consultOnly]="consultOnly">
                     </app-input>
@@ -73,22 +73,22 @@
                         </div>
                         <div class="col-sm-10" *ngIf="!consultOnly">
 
-                            <app-input [fieldName]="'address.street'" [inputValue]="userToShow.address.street"
+                            <app-input [type]="'input'"  [fieldName]="'address.street'" [inputValue]="userToShow.address.street"
                                 [withPrepend]="true" [labelStr]="'userMgt.userPage_addr_street'|translate"
                                 [submitted]="submitted" [consultOnly]="consultOnly">
                             </app-input>
 
-                            <app-input [fieldName]="'address.suite'" [inputValue]="userToShow.address.suite"
+                            <app-input [type]="'input'"  [fieldName]="'address.suite'" [inputValue]="userToShow.address.suite"
                                 [withPrepend]="true" [labelStr]="'userMgt.userPage_addr_suite'|translate"
                                 [submitted]="submitted" [consultOnly]="consultOnly">
                             </app-input>
 
-                            <app-input [fieldName]="'address.city'" [inputValue]="userToShow.address.city"
+                            <app-input [type]="'input'"  [fieldName]="'address.city'" [inputValue]="userToShow.address.city"
                                 [withPrepend]="true" [labelStr]="'userMgt.userPage_addr_city'|translate"
                                 [submitted]="submitted" [consultOnly]="consultOnly">
                             </app-input>
 
-                            <app-input [fieldName]="'address.zipcode'" [inputValue]="userToShow.address.zipcode"
+                            <app-input [type]="'input'"  [fieldName]="'address.zipcode'" [inputValue]="userToShow.address.zipcode"
                                 [withPrepend]="true" [labelStr]="'userMgt.userPage_addr_zipcode'|translate"
                                 [submitted]="submitted" [consultOnly]="consultOnly">
                             </app-input>
@@ -107,17 +107,17 @@
                         </div>
                         <div class="col-sm-10" *ngIf="!consultOnly">
 
-                            <app-input [fieldName]="'company.name'" [inputValue]="userToShow.company.name"
+                            <app-input [type]="'input'"  [fieldName]="'company.name'" [inputValue]="userToShow.company.name"
                                 [withPrepend]="true" [labelStr]="'userMgt.userPage_co_name'|translate"
                                 [submitted]="submitted" [consultOnly]="consultOnly">
                             </app-input>
 
-                            <app-input [fieldName]="'company.catchPhrase'" [inputValue]="userToShow.company.catchPhrase"
+                            <app-input [type]="'input'"  [fieldName]="'company.catchPhrase'" [inputValue]="userToShow.company.catchPhrase"
                                 [withPrepend]="true" [labelStr]="'userMgt.userPage_co_catch_phrase'|translate"
                                 [submitted]="submitted" [consultOnly]="consultOnly">
                             </app-input>
 
-                            <app-input [fieldName]="'company.bs'" [inputValue]="userToShow.company.bs"
+                            <app-input [type]="'input'"  [fieldName]="'company.bs'" [inputValue]="userToShow.company.bs"
                                 [withPrepend]="true" [labelStr]="'userMgt.userPage_co_bs'|translate"
                                 [submitted]="submitted" [consultOnly]="consultOnly">
                             </app-input>

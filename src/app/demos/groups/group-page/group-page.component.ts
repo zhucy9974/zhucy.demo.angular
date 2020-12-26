@@ -80,14 +80,14 @@ export class GroupPageComponent implements OnInit {
     );
   }
 
-  
+
   updateEntity() {
-    /*
-    this.groupService.updateEntity(this.entityToShow).subscribe(res => {
+
+    this.groupService.update(this.entityToShow).subscribe(res => {
       this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The group is modified successfully.' });
       $("#btn_add2").click();
       this.groupService.sendCreateOrUpdateEntityRes(true);
-    });*/
+    });
   }
 
 }

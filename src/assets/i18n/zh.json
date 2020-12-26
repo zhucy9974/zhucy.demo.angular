@@ -5,20 +5,43 @@
         "shortDesc": "简短描述",
         "longDesc": "详细描述",
         "dateCreate": "创建时间",
-        "op": "操作"
+        "op": "操作",
+
+        "yourName":"您的名字",
+        "yourEmail":"您的邮件地址",
+        "message":"消息"
     },
     "title": {
         "clientMgt": "客户管理",
-        "productMgt": "产品管理"
+        "productMgt": "产品管理",
+
+        "popup_create": "创建新组",
+
+        "confirm_modify": "Modifier {{entityType}}",
+        "confirm_delete": "Supprimer {{entityType}}",
+        "confirm_create": "Créer {{entityType}}", 
+
+        
+        "leaveMsg":"留言"
+    },
+    "content":{
+        "confirm_modify": "Are you sure to modify the {{entityType}}?",
+        "confirm_delete": "Are you sure to delete the {{entityType}}?",
+        "confirm_create": "Are you sure to create the {{entityType}}?"
     },
     "btn": {
         "close": "关闭",
         "save": "保存",
         "next": "下一页",
-        "previous": "上一页"
+        "previous": "上一页",
+        "createGroup":"创建组",
+        "send":"发送"
     },
     "tooltip": {
-        "comingSoon": "此功能将近期开放。"
+        "comingSoon": "此功能将近期开放。",
+        "consultEntity": "查看组信息",
+        "modifyEntity": "修改组信息",
+        "deleteEntity": "删除此组"
     },
     "error": {
         "401": "邮件地址或密码不正确，请重新输入。"
@@ -29,6 +52,12 @@
     },
     "welcome": {
         "sentence": "欢迎来到重阳工作室! :)"
+    },
+    "aboutWebsite":{
+        "aboutWebsite":"关于网站",
+        "content1":"此网站的目的是为了提高本人的职业技能。",
+        "content2":"在模拟功能中使用到的数据不是真实的个人数据。",
+        "techUsed":"用到的技术"
     },
     "navbar": {
         "title": "重阳工作室",
@@ -54,7 +83,8 @@
         "signIn": "登入",
         "signUp": "注册",
         "enterEmail": "输入邮箱地址",
-        "enterPassword": "输入密码"
+        "enterPassword": "输入密码",
+        "msgForTester": "您可以使用以下账号进行测试, 电子邮件: admin@chongyangws.com, 密码: 12345678"
     },
     "userMgt": {
         "sidebar_title": "用户管理",
