@@ -14,7 +14,7 @@
         </li>
         <li id="navbar_demos" class="nav-item nav-item-tochange ">
           <a class="nav-link" (click)="activeItem($event)" routerLink="demos"
-            onclick="updateTooltip()">{{'navbar.userMgt'|translate}}</a>
+            onclick="updateTooltip();activecheckMultiSelectUserGroupExist();">{{'navbar.userMgt'|translate}}</a>
         </li>
         <li id="navbar_aboutMe" class="nav-item nav-item-tochange ">
           <a class="nav-link" (click)="activeItem($event)" routerLink="aboutMe">{{'navbar.aboutMe'|translate}}</a>

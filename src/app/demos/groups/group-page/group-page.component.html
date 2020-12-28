@@ -15,20 +15,25 @@
             <form (ngSubmit)="saveForm()" [formGroup]="entityPageForm">
                 <div class="modal-body">
 
-                    <app-input [type]="'input'" [fieldName]="'name'" [propField]="propName" [inputValue]="entityToShow.name"
-                        [labelStr]="'field.groupName'|translate" [submitted]="submitted"
-                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
+                    <app-input [type]="'input'" [fieldName]="'name'" [propField]="propName"
+                        [inputValue]="entityToShow.name" [labelStr]="'field.groupName'|translate"
+                        [submitted]="submitted" [consultOnly]="consultOnly"
+                        [placeholderStr]="'formValite.required'|translate">
                     </app-input>
 
-                    <app-input [type]="'input'" [fieldName]="'shortDesc'" [propField]="propShortDesc" [inputValue]="entityToShow.shortDesc"
-                        [labelStr]="'field.shortDesc'|translate" [submitted]="submitted"
-                        [consultOnly]="consultOnly" [placeholderStr]="'formValite.required'|translate">
+                    <app-input [type]="'input'" [fieldName]="'shortDesc'" [propField]="propShortDesc"
+                        [inputValue]="entityToShow.shortDesc" [labelStr]="'field.shortDesc'|translate"
+                        [submitted]="submitted" [consultOnly]="consultOnly"
+                        [placeholderStr]="'formValite.required'|translate">
                     </app-input>
 
                     <app-input [type]="'textarea'" [fieldName]="'longDesc'" [inputValue]="entityToShow.longDesc"
-                        [labelStr]="'field.longDesc'|translate" [submitted]="submitted"
-                        [consultOnly]="consultOnly">
+                        [labelStr]="'field.longDesc'|translate" [submitted]="submitted" [consultOnly]="consultOnly">
                     </app-input>
+
+                    
+
+
 
                 </div>
                 <div class="modal-footer">
@@ -50,8 +55,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    <span *ngIf="entityToShow?.id==null">{{'title.confirm_create'|translate:'{entityType:"group"}'}}</span>
-                    <span *ngIf="entityToShow?.id!=null">{{'title.confirm_modify'|translate:'{entityType:"group"}'}}</span>
+                    <span
+                        *ngIf="entityToShow?.id==null">{{'title.confirm_create'|translate:'{entityType:"group"}'}}</span>
+                    <span
+                        *ngIf="entityToShow?.id!=null">{{'title.confirm_modify'|translate:'{entityType:"group"}'}}</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
