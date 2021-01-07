@@ -9,6 +9,7 @@ import { AppConfigService } from '../app.config.service';
 
 export abstract class BaseEntityService<T extends BaseEntityModel, E>  {
 
+  urlBase: string;
   urlGet: string;
   urlCreate: string;
   urlUpdate: string;
@@ -20,7 +21,8 @@ export abstract class BaseEntityService<T extends BaseEntityModel, E>  {
 
   entities: T[];
 
-  constructor(entityType:string) {
+  constructor(entityType: string) {
+    this.urlBase = AppConfigService.settings?.apiUrl + entityType;
     this.urlGet = AppConfigService.settings?.apiUrl + entityType + '/get';
     this.urlCreate = AppConfigService.settings?.apiUrl + entityType + '/post';
     this.urlUpdate = AppConfigService.settings?.apiUrl + entityType + '/patch';

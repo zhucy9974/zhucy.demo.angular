@@ -18,7 +18,6 @@ export class LocalDatePipe implements PipeTransform,OnInit {
 
     transform(value: string, format: string, locale:string) {
         //const local: string = this.translateService.getDefaultLang();
-        console.info(locale);
         return formatDate(value, format, locale);
     }
 

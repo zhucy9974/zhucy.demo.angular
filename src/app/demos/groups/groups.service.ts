@@ -13,8 +13,14 @@ import { BaseEntityService } from 'src/app/shared/base-entity.service';
 })
 export class GroupsService extends BaseEntityService<Group, GroupSearchCriterias>{
 
-  constructor(private http: HttpClient, private translateService: TranslateService, private sharedService: SharedService) {  
+  constructor(private http: HttpClient,
+    private translateService: TranslateService,
+    private sharedService: SharedService) {
     super('group');
+  }
+
+  getSimpleGroupList():Observable<Group[]> {
+    return this.http.get<Group[]>(this.urlBase + "/getSimpleList");
   }
 
   getHttp(): HttpClient {
@@ -23,5 +29,5 @@ export class GroupsService extends BaseEntityService<Group, GroupSearchCriterias
   getSharedService(): SharedService {
     return this.sharedService;
   }
-  
+
 }

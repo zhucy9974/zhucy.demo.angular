@@ -1,4 +1,4 @@
 {
     "debugging":true,
-    "apiUrl":"https://www.chongyangdc.click/demo/"
+    "apiUrl":"http://localhost:8080/demo/"
 }

@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { SharedService } from 'src/app/shared/shared.service';
 import * as $ from 'jquery';
 import { Observable } from 'rxjs';
+import { Group } from '../../groups/group.model';
+import { GroupsService } from '../../groups/groups.service';
 
 @Component({
   selector: 'app-user-page',
@@ -16,6 +18,8 @@ export class UserPageComponent implements OnInit {
   @Input() consultOnly: boolean;
   @Input() userToShow: User;
 
+  groupsForSelect$: Observable<Group[]>;
+  groupsSelected$: Observable<Group[]>;
   submitted: boolean = false;
 
   userPageForm: FormGroup;
@@ -24,7 +28,10 @@ export class UserPageComponent implements OnInit {
   propUsername: FormControl;
   propEmail: FormControl;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private sharedService: SharedService) { }
+  constructor(private formBuilder: FormBuilder,
+    private userService: UserService,
+    private sharedService: SharedService,
+    private groupService: GroupsService) { }
 
   async ngOnInit() {
     this.propFirstName = new FormControl('', [
@@ -71,6 +78,8 @@ export class UserPageComponent implements OnInit {
       this.submitted = data;
     });
 
+    this.groupsForSelect$ = this.groupService.getSimpleGroupList();
+
   }
 
   saveForm() {
@@ -92,7 +101,7 @@ export class UserPageComponent implements OnInit {
   }
 
   updateUser() {
-    this.userService.updateUser(this.userToShow).subscribe(res=>{
+    this.userService.updateUser(this.userToShow).subscribe(res => {
       this.sharedService.sendShowMsgDiv({ msgType: 'success', msg: 'The user is modified successfully.' });
       $("#btn_add2").click();
       this.userService.sendCreateOrUpdateUserRes(true);
