@@ -20,7 +20,6 @@ import { AboutWebsiteModule } from './about-website/about-website.module';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { AboutMeModule } from './about-me/about-me.module';
 import { WelcomeModule } from './welcome/welcome.module';
-import { CookieService } from "ngx-cookie-service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemosComponent } from './demos/demos.component';
 import { DemosModule } from './demos/demos.module';
@@ -49,7 +48,7 @@ export function initializeApp(appConfigService: AppConfigService) {
     AboutMeModule,
     WelcomeModule
   ],
-  providers: [CookieService, AppConfigService, { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppConfigService], multi: true }],
+  providers: [AppConfigService, { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppConfigService], multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
